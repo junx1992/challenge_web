@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="overflow-y: visible;">
+  <head>
+    <title>Microsoft Multimedia Challenge</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      .jumbotron {
+        /*height: 600px;*/
+      }
+      .introduction {
+        font-size: 20px;
+      }
+    </style>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+            <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="/">
+          Multimedia
+          </a> -->
+        </div>
+        <div class="collapse navbar-collapse" id="menu">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="/2017">Home</a></li>
+          <li><a href="/2017/people">People</a></li>
+          <li><a href="/2017/challenge">Challenge</a></li>
+          <li><a href="/2017/leaderboard">Leaderboard</a></li>
+          <li><a href="/2017/dataset">Dataset</a></li>
+          <li><a href="/2017/contact">Contact</a></li>
+        </ul>
+</div>
+      </div>
+    </nav>
+
+    <div class="jumbotron">
+      <div class="container">
+        <center><h2>Pre-training for Video Captioning Challenge</h2></center>
+        <center><h2>A Grand Challenge Proposal to ACM Multimedia 2020</h2></center>
+        <br><br><br>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+              <div class="panel-body" style="word-break:keep-all">
+                &emsp;With the proliferation of mobile devices and tremendous increase in Internet bandwidth, video data has been generated and spread explosively. As a result, video in particular has become the fastest growing data type of today’s big multimedia data. Meanwhile, the recent advances in 2D/3D Convolutional Neural Networks (CNN) and Recurrent Neural Networks (RNN) have successfully pushed the limits and improved the state-of-the-art of video understanding. As such, it has become possible to expand the description of a video from individual labels (video classification) to a natural-language utterance (video captioning). The typical framework of modern video captioning models is essentially an encoder-decoder structure. Despite having promising quantitative results, the achievements rely heavily on the requirement of large quantities of annotated video-sentence pairs for such neural model learning. However, performing intensive manual labeling is expensive and impractical in real-world deployments. In this grand challenge, we aim to alleviate the dependency of paired human annotations by learning a pre-trained generic representation or structure over a large-scale programmatically created video-sentence data. The pre-trained generic representation or structure can better reflect the cross-modal interaction in a free way and thus benefit a series of downstream video-language tasks, such as video captioning, sentence localization in videos, and video question answering.<br><br>
+                &emsp;In short, the goal of this grand challenge is two-fold: (a) coalescing community effort around a new challenging large-scale video-sentence pre-training dataset, and (b) offering a fertile ground for designing pre-training strategy of generic representation or structure to facilitate downstream video-language tasks (e.g., video captioning).<br><br>
+                &emsp;To further motivate and challenge the academic and industrial research communities, we are releasing “Auto-captions on GIF,” a large-scale pre-training dataset to public for generic video understanding, which consists of ~200,000 video-sentence pairs that are created by automatically extracting and filtering video caption annotations from billions of web pages. The video-sentence pre-training dataset can be utilized to pre-train the generic representation or structure for video captioning task, and other downstream tasks (e.g., sentence localization in videos, video question answering, etc.) as well in the near future. All the datasets can only be used for research purpose.<br><br>
+              
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <br>
+        <br>
+<div class="row"><div class="col-md-8 col-md-offset-2"><div class="text-danger"><b style="font-size:20px">News:</b><br>
+<span style="font-size:16px"><b>[03-12-2020]:</b> Website is opening.</span><br>
+<!-- <span style="font-size:16px"><b>[06-01-2017]:</b> Test video urls are released.</span><br>
+<span style="font-size:16px"><b>[04-26-2017]:</b> <a class="text-danger" href="/dataset">We have released the training data.</a></span><br>
+<span style="font-size:16px"><b>[04-17-2017]:</b> We are hosting <b><a class="text-danger" href="http://ms-multimedia-challenge.com/2017/challenge">the 2<sup>nd</sup> MSR Video to Language Challenge</a></b>, co-organized with <b><a class="text-danger" href="http://www.acmmm.org/2017/"> ACM Multimedia 2017.</a></b></span><br> -->
+</div></div></div>
+      </div>
+    </div>
+
+  </body>
+</html>

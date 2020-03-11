@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="overflow-y: visible;">
+  <head>
+    <title>Microsoft Multimedia Challenge</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/sprintf.js"></script>
+    <style type="text/css">
+    </style>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $.getJSON("/api/allteam?token=msramsmbest&challenge_type=video", function(data,status){
+          var res = data.res;
+          if (res=="00000") {
+            var team = data.team;
+            var length = team.length;
+            for (var i = 0; i < length; i++) {
+              var teamname = team[i].teamname;
+              var member = team[i].member;
+              var hasSubmit = team[i].hasSubmit;
+              var hasSubmitReport = team[i].hasSubmitReport;
+              var addhtml = '\
+              <tr>\
+              <td>%d\
+              </td>\
+              <td>%s\
+              </td>\
+              <td>%s\
+              </td>\
+              <td>%s\
+              </td>\
+              <td>%s\
+              </td>\
+              <td>%s\
+              </td>\
+              <td>%s\
+              </td>\
+              </tr>\
+              ';
+              var caption_text = sprintf('%s  &lt;<a href="mailto:%s">%s</a>&gt;', member[0].name, member[0].email, member[0].email);
+              var hasSubmit_text;
+              var hasSubmitReport_text;
+              if (hasSubmit == true) {
+                hasSubmit_text = "Yes";
+              }
+              else {
+                hasSubmit_text = "No";
+              }
+              if (hasSubmitReport == true) {
+                hasSubmitReport_text = "Yes";
+              }
+              else {
+                hasSubmitReport_text = "No";
+              }
+              var member_text = "";
+              for (var j = 1; j < member.length; j++) {
+                var name = member[j].name;
+                var email = member[j].email;
+                var organization = member[j].organization;
+                member_text = member_text + sprintf("[ %s  %s  %s]   ", name, email, organization);
+              }
+              $("#table").append(sprintf(addhtml, i, teamname, caption_text, member[0].organization, member_text, hasSubmit_text, hasSubmitReport_text));
+            }
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <table class="table table-striped">
+      <tbody id="table">
+      <tr>
+        <th>ID</th>
+        <th>
+          Team Name
+        </th>
+        <th>
+          Captain
+        </th>
+        <th>
+          Organization
+        </th>
+        <th>
+          Member
+        </th>
+        <th>
+          Has Submit Result?
+        </th>
+        <th>
+          Has Submit Report?
+        </th>
+      </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

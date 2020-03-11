@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="overflow-y: visible;">
+  <head>
+    <title>Microsoft Multimedia Challenge</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/google-code-prettify/run_prettify.js"></script>
+    <script src="/static/js/sprintf.js"></script>
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+      <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+            <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">
+            Multimedia
+          </a>
+        </div>
+<div class="collapse navbar-collapse" id="menu">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/2017/">Home</a></li>
+          <li><a href="/2017/people">People</a></li>
+          <li><a href="/2017/challenge">Challenge</a></li>
+          <li class="active"><a href="/2017/leaderboard">Leaderboard</a></li>
+          <li><a href="/2017/dataset">Dataset</a></li>
+          <li><a href="/2017/contact">Contact</a></li>
+        </ul>
+      </div>
+</div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <br><br><br><br>
+          <div class="list-group">
+            <a href="#image" aria-controls="image" role="tab" data-toggle="tab" class="list-group-item disabled">
+              Image Retrieval Challenge
+            </a>
+            <a href="#fine" aria-controls="fine" role="tab" data-toggle="tab" class="list-group-item disabled">
+            Fine-grained Image Recognition Challenge
+            </a>
+            <a href="#video" aria-controls="video" role="tab" data-toggle="tab" class="list-group-item active">
+            Video to Language Challenge
+            </a>
+            <a href="#qa" aria-controls="qa" role="tab" data-toggle="tab" class="list-group-item disabled">
+            Multimedia Q&amp;A Challenge
+            </a>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="paenl panel-default">
+            <div class="panel-body">
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="video">
+                </div>
+                <h4>The Leaderboard is available. Congratulations to all top performers!</h4>
+                <br>
+                <div>
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#m1" aria-controls="m1" role="tab" data-toggle="tab">M1</a></li>
+                    <li role="presentation"><a href="#m2" aria-controls="m2" role="tab" data-toggle="tab">M2</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="m1">
+                      <table class="table table-bordered table-striped table-hover">
+                        <tr>
+                          <th>Rank
+                          </th>
+                          <th>Team
+                          </th>
+                          <th>Organization
+                          </th>
+                          <th>BLEU@4
+                          </th>
+                          <th>Meteor
+                          </th>
+                          <th>CIDEr-D
+                          </th>
+                          <th>ROUGE-L
+                          </th>
+                        </tr>
+<tr><td>1</td><td>RUC+CMU_V2T</td><td>RUC&nbsp;&amp;&nbsp;CMU</td><td>0.390</td><td>0.255</td><td>0.315</td><td>0.542</td></tr>
+<tr><td>2</td><td>TJU_Media</td><td>TJU</td><td>0.359</td><td>0.226</td><td>0.249</td><td>0.515</td></tr>
+<tr><td>3</td><td>NII</td><td>National&nbsp;Institute&nbsp;of&nbsp;Informatics</td><td>0.359</td><td>0.234</td><td>0.231</td><td>0.514</td></tr>
+<tr><td>4</td><td>MIC_TJU</td><td>Tongji&nbsp;University</td><td>0.351</td><td>0.226</td><td>0.236</td><td>0.509</td></tr>
+<tr><td>5</td><td>Illusion</td><td>IIT&nbsp;Delhi</td><td>0.304</td><td>0.213</td><td>0.206</td><td>0.494</td></tr>
+<tr><td>6</td><td>LVIC_AS</td><td>CEA&nbsp;LIST</td><td>0.289</td><td>0.203</td><td>0.175</td><td>0.487</td></tr>
+<tr><td>7</td><td>TJU-NUS</td><td>TJU&nbsp;&amp;&nbsp;NUS</td><td>0.265</td><td>0.191</td><td>0.151</td><td>0.456</td></tr>
+<tr><td>8</td><td>AFRL</td><td>AFRL</td><td>0.240</td><td>0.186</td><td>0.160</td><td>0.427</td></tr>
+
+                      </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="m2">
+                      <table class="table table-bordered table-striped table-hover">
+                        <tr>
+                          <th>Rank</th>
+                          <th>Team</th>
+                          <th>Organization</th>
+                          <th>C1</th>
+                          <th>C2</th>
+                          <th>C3</th>
+                        </tr>
+<tr><td>1</td><td>RUC+CMU_V2T</td><td>RUC&nbsp;&amp;&nbsp;CMU</td><td>4.437</td><td>3.437</td><td>3.567</td></tr>
+<tr><td>2</td><td>NII</td><td>National&nbsp;Institute&nbsp;of&nbsp;Informatics</td><td>4.078</td><td>3.359</td><td>3.570</td></tr>
+<tr><td>3</td><td>TJU_Media</td><td>TJU</td><td>4.032</td><td>2.962</td><td>3.048</td></tr>
+<tr><td>4</td><td>MIC_TJU</td><td>Tongji&nbsp;University</td><td>3.844</td><td>2.789</td><td>2.978</td></tr>
+<tr><td>4</td><td>Illusion</td><td>IIT&nbsp;Delhi</td><td>4.042</td><td>2.583</td><td>2.921</td></tr>
+<tr><td>6</td><td>TJU-NUS</td><td>TJU&nbsp;&amp;&nbsp;NUS</td><td>3.762</td><td>2.364</td><td>2.376</td></tr>
+<tr><td>7</td><td>AFRL</td><td>AFRL</td><td>3.109</td><td>2.343</td><td>2.411</td></tr>
+<tr><td>8</td><td>LVIC_AS</td><td>CEA&nbsp;LIST</td><td>3.477</td><td>2.322</td><td>2.321</td></tr>
+
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <h3>Metrics</h3>
+                <br>
+                <p>We computed multiple common metrics, including BLEU@4, METEOR, ROUGE-L, and CIDEr-D. The performances of the primary run from each team are measured for comparison across teams. The results of all runs can be downloaded <a href="/static/resource/all_run_2017.xlsx">here</a>.</p>
+                <p>In addition, we will carry out the human evaluation of the systems submitted to this challenge on a subset of the testing set. Human were asked to rank the generated sentences of the primary run from each team and a reference sentence from 1 to 5 (lower - better) with respect to the following criteria.</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:26px;">&middot;</b>&nbsp;&nbsp;&nbsp;&nbsp;<b>Coherence</b>: &nbsp;&nbsp;judge the logic and readability of the sentence.</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:26px;">&middot;</b>&nbsp;&nbsp;&nbsp;&nbsp;<b>Relevance</b>: &nbsp;&nbsp;whether the sentence contains the more relevant and important objects/actions/events in the video clip?</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:26px;">&middot;</b>&nbsp;&nbsp;&nbsp;&nbsp;<b>Helpful for blind (additional criteria)</b>: &nbsp;&nbsp;how helpful would the sentence be for a blind person to understand what is happening in this video clip?</p>
+                <br>
+                <table class="table table-bordered table-striped">
+                  <tr>
+                    <td>M1</td>
+                    <td>BLEU@4, METEOR, ROUGE-L, and CIDEr-D</td>
+                  </tr>
+                  <tr>
+                    <td>M2</td>
+                    <td>Human evaluation of the captions in terms of Coherence, Relevance, and helpful for blind on a scale of 1-5 (lower - better)</td>
+                  </tr>
+                </table>
+                <hr>
+                <h3>Ranking</h3>
+                <br>
+                <p>The ranking for the competition is based on the results from M1 and M2, respectively. Specifically, a rank list of teams is produced by sorting their scores on each M1 evaluation metric, respectively. The final rank of a team is measured by combining its ranking positions in the four ranking list and defined as:</p>
+                <p><i>R</i>(team) = <i>R</i>(team)@BLEU@4 + <i>R</i>(team)@METEOR + <i>R</i>(team)@ROUGE-L + <i>R</i>(team)@CIDEr-D.</p>
+                <p>where <i>R</i>(team) is the rank position of the team, e.g., if the team achieves the best performance in terms of BLEU@4, thenR(team)@BLEU@4 is "1". The smaller the final ranking, the better the performance.</p>
+                <p>Similar in spirit, we will linearly fuse the scores of human evaluation on Coherence, Relevance and Helpful for Blind (in a scale of 1-5) for each team. The final score of each team is given by:</p>
+                <p><i>S</i>(team) = <i>S</i>(team)@Coherence + <i>S</i>(team)@Relevance + <i>S</i>(team)@Helpful for Blind.</p>
+                <p>The larger the score, the better the performance.</p>
+                <p>We finally rank all the participants in two separate lists, one in terms of R(team) and the other S(team).</p>
+                <br>
+                <table class="table table-bordered table-striped">
+                  <tr>
+                    <td>M1</td>
+                    <td><i>R</i>(team) = <i>R</i>(team)@BLEU@4 + <i>R</i>(team)@METEOR + <i>R</i>(team)@ROUGE-L + <i>R</i>(team)@CIDEr-D</td>
+                  </tr>
+                  <tr>
+                    <td>M2</td>
+                    <td><i>S</i>(team) = <i>S</i>(team)@Coherence + <i>S</i>(team)@Relevance + <i>S</i>(team)@Helpful for Blind</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
