@@ -630,7 +630,7 @@
           $("#video_non_overview").fadeIn();
           $(this).addClass("active");
           $("#video_button").removeClass("active");
-          $("#video_title").html("The 2<sup>nd</sup> Video to Language Challenge");
+          $("#video_title").html("The Pre-training for Video Captioning Challenge");
         });
       });
     </script>
@@ -665,26 +665,29 @@
         <div class="col-md-3">
           <br><br><br><br>
           <div class="list-group">
-            <a href="#image" aria-controls="image" role="tab" data-toggle="tab" class="list-group-item disabled">
+            <!-- <a href="#image" aria-controls="image" role="tab" data-toggle="tab" class="list-group-item disabled">
               Image Retrieval Challenge
             </a>
             <a href="#fine" aria-controls="fine" role="tab" data-toggle="tab" class="list-group-item disabled">
             Fine-grained Image Recognition Challenge
-            </a>
+            </a> -->
             <a id="video_button" class="list-group-item" style="cursor:pointer">
             Video to Language Challenge
             </a>
 
-            <a class="list-group-item active" id="video_year_2017">
+            <a class="list-group-item" href="http://ms-multimedia-challenge.com/2017/challenge">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2017
             </a>
-            <a class="list-group-item" href="/2016/challenge">
+            <a class="list-group-item" href="http://ms-multimedia-challenge.com/2016/challenge">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2016
             </a>
-
-            <a href="#qa" aria-controls="qa" role="tab" data-toggle="tab" class="list-group-item disabled">
-            Multimedia Q&amp;A Challenge
+            <a href="#auto-captions" aria-controls="qa" role="tab" data-toggle="tab" class="list-group-item active">
+                The Pre-training For Video Captioning Challenge
             </a>
+
+            <!-- <a href="#qa" aria-controls="qa" role="tab" data-toggle="tab" class="list-group-item disabled">
+            Multimedia Q&amp;A Challenge
+            </a> -->
           </div>
         </div>
         <div class="col-md-9">
@@ -694,7 +697,7 @@
                 <div role="tabpanel" class="tab-pane active" id="video">
                   <div id="video-head">
                     <h2 style="display: inline;" id="video_title">
-                    The 2<sup>nd</sup> Video to Language Challenge
+                    The Pre-training for Video Captioning Challenge
                     </h2>
                     <!-- <div style="float:right">
                       <h5>Welcome   HAHA</h5>
@@ -863,7 +866,7 @@ In addition, we will carry out the human evaluation of the systems submitted to 
               <h3>Ranking</h3>
               <br>
               <p>The ranking for the competition this year is based on objective evaluation and human evaluation, respectively. Specifically, a rank list of teams is produced by sorting their scores on each objective evaluation metric, respectively. The final rank of a team is measured by combining its ranking positions in the four ranking list and defined as:</p>
-              <p><i>R</i>(team) = <i>R</i>(team)@BLEU@4 + <i>R</i>(team)@METEOR + <i>R</i>(team)@ROUGE-L + <i>R</i>(team)@CIDEr.</p>
+              <p><i>R</i>(team) = <i>R</i>(team)@BLEU@4 + <i>R</i>(team)@METEOR + <i>R</i>(team)@ROUGE-L + <i>R</i>(team)@CIDEr + <i>R</i>(team)@SPICE.</p>
               <p>where <i>R</i>(team) is the rank position of the team, e.g., if the team achieves the best performance in terms of BLEU@4, then <i>R</i>(team)@BLEU@4 is "1". The smaller the final ranking, the better the performance.</p>
               <p>Similar in spirit, we will linearly fuse the scores of human evaluation on Coherence, Relevance and Helpful for Blind (in a scale of 1-5) for each team. The final score of each team is given by:</p>
               <p><i>S</i>(team) = <i>S</i>(team)@Coherence + <i>S</i>(team)@Relevance + <i>S</i>(team)@Helpful for Blind.</p>
@@ -878,7 +881,7 @@ In addition, we will carry out the human evaluation of the systems submitted to 
               The Challenge is a team-based contest. Each team can have one or more members, and an individual cannot be a member of multiple teams. 
               </p>
               <p>
-At the end of the Challenge, all teams will be ranked based on both objective evaluation and human evaluation described above. The top three teams will receive award certificates. At the same time, all accepted submissions are qualified for <b><a href="http://www.acmmm.org/2017/">ACM MM 2017 Challenge</a></b> award competition.</p>
+At the end of the Challenge, all teams will be ranked based on both objective evaluation and human evaluation described above. The top three teams will receive award certificates. At the same time, all accepted submissions are qualified for <b><a href="https://2020.acmmm.org/">ACM MM 2017 Challenge</a></b> award competition.</p>
               <br>
               <hr>
 
