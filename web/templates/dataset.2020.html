@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="overflow-y: visible;">
+  <head>
+    <title>Microsoft Multimedia Challenge</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/google-code-prettify/run_prettify.js"></script>
+    <style type="text/css">
+      .main {
+        min-height: 100%;
+      }
+
+    </style>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+            <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="/">
+            Multimedia
+          </a> -->
+        </div>
+<div class="collapse navbar-collapse" id="menu">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/2020">Home</a></li>
+          <li><a href="/2020/people">People</a></li>
+          <li><a href="/2020/challenge">Challenge</a></li>
+          <li><a href="/2020/leaderboard">Leaderboard</a></li>
+          <li class="active"><a href="/2020/dataset">Dataset</a></li>
+          <li><a href="/2020/contact">Contact</a></li>
+        </ul>
+      </div>
+</div>
+    </nav>
+
+    <div class="container main">
+      <div>
+
+        <div class="col-md-12">
+          <p>&emsp;We are finalizing the pre-training video-sentence dataset and will make it publically available in March 2020. Here we show some GIF video examples and the corresponding captions in our Auto-captions on GIF dataset as following:</p>>
+          <img src="/static/img/pre_training_case.jpg"  />
+          <br>
+          <p>&emsp;To formalize the task of pre-training for video captioning, we provide three datasets to the participants:</p>
+          <br>
+          <p>&emsp;&emsp;&emsp;A pre-training dataset of ~200K GIF videos in Auto-captions on GIF. Each GIF video is equipped with one caption.</p>
+          <p>&emsp;&emsp;&emsp;A training dataset of ~9.5K videos in MSR-VTT. Each video is annotated with 20 captions.</p>
+          <p>&emsp;&emsp;&emsp;A validation dataset of ~0.5K videos in MSR-VTT. Each video is annotated with 20 captions.</p>
+          <p>&emsp;In addition to the datasets above, we will for evaluation a secret test set of 60K (video, caption) pairs.</p>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

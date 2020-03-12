@@ -648,12 +648,12 @@
         </div>
 <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/2017">Home</a></li>
-          <li><a href="/2017/people">People</a></li>
-          <li class="active"><a href="/2017/challenge">Challenge</a></li>
-          <li><a href="/2017/leaderboard">Leaderboard</a></li>
-          <li><a href="/2017/dataset">Dataset</a></li>
-          <li><a href="/2017/contact">Contact</a></li>
+          <li><a href="/2020">Home</a></li>
+          <li><a href="/2020/people">People</a></li>
+          <li class="active"><a href="/2020/challenge">Challenge</a></li>
+          <li><a href="/2020/leaderboard">Leaderboard</a></li>
+          <li><a href="/2020/dataset">Dataset</a></li>
+          <li><a href="/2020/contact">Contact</a></li>
         </ul>
       </div>
 </div>
@@ -767,53 +767,68 @@
 
               <div id="video_non_overview">
 
-              <h3>Challenge</h3>
+              <!-- <h3>Challenge</h3>
               <br>
               <p>To further motivate and challenge the academic and industrial research community, Microsoft will release Microsoft Research - Video to Text (MSR-VTT), a large-scale video benchmark to public for bridging video and language. The dataset contains about 50 hours and 260K clip-sentence pairs in total, covering the most comprehensive categories and diverse visual content, and representing the largest dataset in terms of sentence and vocabulary. The dataset can be used to train and evaluate video to language tasks, and other tasks (e.g., video retrieval, event detection, video categorization, etc.) as well in the near future. This challenge allows to use external data to train and tune parameters of algorithms. Therefore, each submission must explicitly cite the kind of external data used in the submission file.
               </p>
               <br>
-              <hr>
+              <hr> -->
 
               <h3>Task Description</h3>
               <br>
-              <p>This year we will focus on video to language task. Given an input video clip, the goal is to automatically generate a complete and natural sentence to describe video content, ideally encapsulating its most informative dynamics.</p>
-<p> 
-The contestants are asked to develop video to language system based on the MSR-VTT dataset provided by the Challenge (as training data) and any other public/private data to recognize a wide range of object, scene, event, etc., in the images/videos. For the evaluation purpose, a contesting system is asked to produce at least one sentence of the test videos. The accuracy will be evaluated against human pre-generated sentence(s) during evaluation stage.
+              <p>This year we will focus on visual-language pre-training for the downstream task of video captioning. Given the automatically collected GIF videos and the corresponding captions, the goal of visual-language pre-training is to learn a generic representation or structure that can better reflect the cross-modal interaction between visual content and textual sentence. The learnt generic representation or structure is further adapted to facilitate the downstream task of video captioning, i.e., describing video content with a complete and natural sentence.</p>
+              <p>The contestants are asked to develop video captioning system based on the Auto-captions on GIF dataset provided by the Challenge (as pre-training data) and the public MSR-VTT benchmark (as training data for downstream task). For the evaluation purpose, a contesting system is asked to produce at least one sentence of the test videos. The accuracy will be evaluated against human pre-generated sentence(s) during evaluation stage.
               </p>
+              <br>
+              <hr>
+
+              <h3>Relevance to Previous Challenges</h3>
+              <br>
+              <p>Most of the organizers in this proposal have successfully co-organized MSR Video to Language Challenge in ACM MM 2016 and ACM MM 2017, as listed below. Pervious video captioning challenges predominantly focused on training video captioning systems with the manually annotated video-sentence pairs. This challenge goes a step beyond traditional video captioning and targets for pre-training a generic representation or structure that facilitates downstream video captioning task. Since there is no challenge dedicated to pre-training for video captioning in major multimedia conferences, our challenge will offer a valuable venue to foster research into visual-language pre-training.</p>
+              <p>&emsp;<a href="http://ms-multimedia-challenge.com/2016/">MSR Video to Language Challenge 2016</a>, ACM Multimedia 2016 Grand Challenge (30 teams)</p> 
+              <p>&emsp;<a href="http://ms-multimedia-challenge.com/2017/">MSR Video to Language Challenge 2017</a>, ACM Multimedia 2017 Grand Challenge (15 teams)</p>
               <br>
               <hr>
 
               <h3>Important Dates</h3>
               <br>
-              <p><b>&middot; April 18, 2017:</b> Dataset available for download (training set)</p>
+              <!-- <p><b>&middot; April 18, 2017:</b> Dataset available for download (training set)</p>
               <p><b>&middot; June 1, 2017:</b> Test set available for download</p>
               <p><b>&middot; June 15, 2017:</b> Results and one-page notebook paper submission</p>
               <p><b>&middot; June 16 ~ June 28, 2017:</b> Objective evaluation and human evaluation</p>
               <p><b>&middot; July 3, 2017:</b> Evaluation results announce</p>
-              <p><b>&middot; July 14, 2017:</b> Paper submission deadline (please follow the instructions on the main conference website)</p>
+              <p><b>&middot; July 14, 2017:</b> Paper submission deadline (please follow the instructions on the main conference website)</p> -->
+
+              <p><b>&middot; March 10, 2020:</b> Web Site and Call for Participation Ready</p>
+              <p><b>&middot; March 18, 2020:</b> Dataset available for download (pre-training, training, and validation set)</p>
+              <p><b>&middot; June 1, 2020:</b> Test set available for download</p>
+              <p><b>&middot; June 20, 2020:</b> Results submission</p>
+              <p><b>&middot; June 19 ~ June 23, 2020:</b> Objective evaluation</p>
+              <p><b>&middot; June 24, 2020:</b> Evaluation results announce</p>
+              <p><b>&middot; June 29, 2020:</b> Paper submission deadline</p>
               <br>
               <hr>
 
               <h3>Submission File</h3>
               <br>
-              <p>To enter the competition, you need to create an account on <a href="#">Evaluation Server</a>. This account allows you to upload your results to the server. Each team is allowed to submit the results of at most three runs and selects one run as the primary run of the submission, which will be measured for performance comparison across teams. Each run must be formatted in a JSON File as</p>
+              <p>To enter the competition, you need to create an account on <a href="#">Evaluation Server</a>. This account allows you to upload your results to the server. Each team is allowed to submit the results of at most three runs and selects one run as the primary run of the submission (we do not guarantee to evaluate second and third runs), which will be measured for performance comparison across teams. Each run must be formatted in a Jason File as </p>
               <pre class="prettyprint lang-py" class=>
 {
-  "version": "VERSION 1.2",
+  "version": "VERSION 1.3",
   "result":[
   {
-    "video_id": "video2218",
-    "caption": "a panel of people talk about things"
+    "video_id": "video2188",
+    "caption": "a monkey fell out of his bed and hit his head"
   },
   ...
   {
-    "video_id": "video1835",
-    "caption": "a person is playing the piano"
+    "video_id": "video6822",
+    "caption": "a person is riding a small motor bike"
   }
   ],
-  "external_data":{
-    "used": "true", # Boolean flag. True indicates used of external data.
-    "details": "First fully-connected layer from VGG-16 pre-trained on ILSVRC-2012 training set" # String with details of your external data.
+  "pre-training_data":{
+    "used": "true", # Boolean flag. True indicates used of pre-trained data(i.e., Auto-captions on GIF).
+    "details": "First pre-train captioning model with Auto-captions on GIF and then fine-tune it with MSR-VTT" # String with details of how to train your models with pre-training data, e.g., first pre-train captioning model with Auto-captions on GIF and then fine-tune it with MSR-VTT, or train captioning model over the joint combination of Auto-captions on GIF and MSR-VTT.
   }
 }
 
@@ -829,11 +844,11 @@ The contestants are asked to develop video to language system based on the MSR-V
               <h3>Evaluation Metric</h3>
               <br>
               <p>
-              The evaluation provided here can be used to obtain results on the testing set of MSR-VTT. It computes multiple common metrics, including BLEU@4, METEOR, ROUGE-L, and CIDEr. </p>
-              <p>
+                For the evaluation in the downstream task of video captioning, we will use and publish in a leaderboard the automatic metric results, including BLEU@4, METEOR, ROUGE-L, CIDEr and SPICE, on the testing set of MSR-VTT benchmark. </p>
+              <!-- <p>
 In addition, we will carry out the human evaluation of the systems submitted to this challenge on a subset of the testing set. Human were asked to rank the generated sentences of the primary run from each team and a reference sentence from 1 to 5 (lower - better) with respect to the following criteria.
-              </p>
-              <p style="color:blue">
+              </p> -->
+              <!-- <p style="color:blue">
               &nbsp;&nbsp;&nbsp;&nbsp;<b>&middot; </b>Coherence: judge the logic and readability of the sentence.
               </p>
               <p style="color:blue">
@@ -842,7 +857,7 @@ In addition, we will carry out the human evaluation of the systems submitted to 
               <p style="color:blue">
               &nbsp;&nbsp;&nbsp;&nbsp;<b>&middot; </b>Helpful for blind (additional criteria): how helpful would the sentence be for a blind person to understand what is happening in this video clip?
               </p>
-              <br>
+              <br> -->
               <hr>
               
               <h3>Ranking</h3>

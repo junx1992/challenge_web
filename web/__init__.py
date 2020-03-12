@@ -17,14 +17,16 @@ def index():
     headers = request.headers
     host = headers['Host']
     if host.startswith('2016'):
-        return redirect('http://ms-multimedia-challenge.com/2016')
+        return redirect('http://auto-video-captions.top/2016')
     elif host.startswith('2017'):
-        return redirect('http://ms-multimedia-challenge.com/2017')
-    return redirect('/2017')
+        return redirect('http://auto-video-captions.top/2017')
+    elif host.startswith('2020'):
+        return redirect('http://auto-video-captions.top/2020')
+    return redirect('/2020')
 
 @app.route('/<year>/', methods=['GET'])
 def index_year(year):
-    if year != '2016' and year != '2017':
+    if year != '2016' and year != '2017' and year != '2020':
         abort(404)
     return render_template('index.%s.html'%year)
 
@@ -33,14 +35,16 @@ def people():
     headers = request.headers
     host = headers['Host']
     if host.startswith('2016'):
-        return redirect('http://ms-multimedia-challenge.com/2016/people')
+        return redirect('http://auto-video-captions.top/2016/people')
     elif host.startswith('2017'):
-        return redirect('http://ms-multimedia-challenge.com/2017/people')
-    return redirect('/2017/people')
+        return redirect('http://auto-video-captions.top/2017/people')
+    elif host.startswith('2020'):
+        return redirect('http://auto-video-captions.top/2020/people')
+    return redirect('/2020/people')
 
 @app.route('/<year>/people', methods=['GET'])
 def people_year(year):
-    if year != '2016' and year != '2017':
+    if year != '2016' and year != '2017' and year != '2020':
         abort(404)
     return render_template('people.%s.html'%year)
 
@@ -49,14 +53,16 @@ def challenge():
     headers = request.headers
     host = headers['Host']
     if host.startswith('2016'):
-        return redirect('http://ms-multimedia-challenge.com/2016/challenge')
+        return redirect('http://auto-video-captions.top/2016/challenge')
     elif host.startswith('2017'):
-        return redirect('http://ms-multimedia-challenge.com/2017/challenge')
+        return redirect('http://auto-video-captions.top/2017/challenge')
+    elif host.startswith('2020'):
+        return redirect('http://auto-video-captions.top/2020/challenge')
     return redirect('/2017/challenge')
 
 @app.route('/<year>/challenge', methods=['GET'])
 def challenge_year(year):
-    if year != '2016' and year != '2017':
+    if year != '2016' and year != '2017' and year != '2020':
         abort(404)
     return render_template('challenge.%s.html'%year, random=random_str())
 
@@ -65,14 +71,16 @@ def dataset():
     headers = request.headers
     host = headers['Host']
     if host.startswith('2016'):
-        return redirect('http://ms-multimedia-challenge.com/2016/dataset')
+        return redirect('http://auto-video-captions.top/2016/dataset')
     elif host.startswith('2017'):
-        return redirect('http://ms-multimedia-challenge.com/2017/dataset')
-    return redirect('/2017/dataset')
+        return redirect('http://auto-video-captions.top/2017/dataset')
+    elif host.startswith('2020'):
+        return redirect('http://auto-video-captions.top/2020/dataset')
+    return redirect('/2020/dataset')
 
 @app.route('/<year>/dataset', methods=['GET'])
 def dataset_year(year):
-    if year != '2016' and year != '2017':
+    if year != '2016' and year != '2017' and year != '2020':
         abort(404)
     return render_template('dataset.%s.html'%year)
 
@@ -81,14 +89,16 @@ def leaderboard():
     headers = request.headers
     host = headers['Host']
     if host.startswith('2016'):
-        return redirect('http://ms-multimedia-challenge.com/2016/leaderboard')
+        return redirect('http://auto-video-captions.top/2016/leaderboard')
     elif host.startswith('2017'):
-        return redirect('http://ms-multimedia-challenge.com/2017/leaderboard')
-    return redirect('/2017/leaderboard')
+        return redirect('http://auto-video-captions.top/2017/leaderboard')
+    elif host.startswith('2020'):
+        return redirect('http://auto-video-captions.top/2020/leaderboard')
+    return redirect('/2020/leaderboard')
 
 @app.route('/<year>/leaderboard', methods=['GET'])
 def leaderboard_year(year):
-    if year != '2016' and year != '2017':
+    if year != '2016' and year != '2017' and year != '2020':
         abort(404)
     return render_template('leaderboard.%s.html'%year)
 
@@ -97,14 +107,16 @@ def contact():
     headers = request.headers
     host = headers['Host']
     if host.startswith('2016'):
-        return redirect('http://ms-multimedia-challenge.com/2016/contact')
+        return redirect('http://auto-video-captions.top/2016/contact')
     elif host.startswith('2017'):
-        return redirect('http://ms-multimedia-challenge.com/2017/contact')
-    return redirect('/2017/contact')
+        return redirect('http://auto-video-captions.top/2017/contact')
+    elif host.startswith('2020'):
+        return redirect('http://auto-video-captions.top/2020/contact')
+    return redirect('/2020/contact')
 
 @app.route('/<year>/contact', methods=['GET'])
 def contact_year(year):
-    if year != '2016' and year != '2017':
+    if year != '2016' and year != '2017' and year != '2020':
         abort(404)
     return render_template('contact.%s.html'%year)
 
