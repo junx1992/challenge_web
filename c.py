@@ -10,4 +10,4 @@ register_team = db.video
 a = register_team.find()
 import hashlib
 for item in a:
-	print item['_id'], item['teamname']
+	print (item['_id'], item['teamname'], item['password'])
