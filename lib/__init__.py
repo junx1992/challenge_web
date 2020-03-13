@@ -138,7 +138,7 @@ def auth(challenge_type, username, password):
     import hashlib
     one = register_team.find_one({
         'username':username,
-        'password':hashlib.md5(password).hexdigest()
+        'password':hashlib.md5(password.encode('utf-8')).hexdigest()
         })
     if one == None:
         return False, ''
