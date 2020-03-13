@@ -10,7 +10,7 @@ def generate_session():
     import os
     from model import RedisDB
     con = RedisDB().con
-    code = ''.join(map(lambda xx:(hex(ord(xx))[2:]),os.urandom(16)))
+    code = ''.join(map(lambda xx:(hex(xx)[2:]),os.urandom(16)))
     while True:
         if con.sismember('session',code) == False:
             con.sadd('session',code)
@@ -75,7 +75,7 @@ def check_team_member(challenge_type, username, password, team_name, member):
     import hashlib
     _id = register_team.insert({
         'username':username,
-        'password':hashlib.md5(password).hexdigest(),
+        'password':hashlib.md5(password.encode('utf-8')).hexdigest(),
         'teamname':team_name,
         'member':member})
     team_id = str(_id)
@@ -156,7 +156,7 @@ def get_teamid_by_session(session):
     from model import RedisDB
     con = RedisDB().con
     key = 'session2teamid:'+session
-    value = con.get(key)
+    value = con.get(key).decode('utf-8')
     if value != None:
         con.expire(key, 7200)
     return value

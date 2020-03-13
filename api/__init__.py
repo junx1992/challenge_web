@@ -69,7 +69,7 @@ def register():
 		msg = "Registration\n"
 		for item in member:
 			msg += "%s %s %s\n"%(item['name'],item['email'],item['organization'])
-		send_email("tiyao@microsoft.com", msg)
+		#send_email("tiyao@microsoft.com", msg)
 		print (msg)
 		resp = jsonify(res=SUCCESS)
 		resp.set_cookie('session', place)
