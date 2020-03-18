@@ -38,7 +38,7 @@ def send_email(member, message):
 
     smtp = smtplib.SMTP('localhost')
     msg = MIMEText(message, 'plain', 'utf-8')
-    msg['From'] = Header("Pre-training-Video-Captioning-CHALLENGE<root@ms-multimedia-challenge.com>")
+    msg['From'] = Header("Pre-training-Video-Captioning-CHALLENGE<root@pre-training-captioning.com>")
     msg['To'] = Header(member)
     msg['Subject'] = '[Pre-training-Video-Captioning-CHALLENGE Notice]'
     print (member)
@@ -247,7 +247,7 @@ def check_and_send_reset_password_email(challenge_type, team_name, caption_name,
 
         print (caption_email)
 
-        send_email(caption_email, 'No reply\nClick the following link to reset the password in 30 minutes.\nhttp://auto-video-captions.com/reset?token=%s&challenge_type=video'%code)
+        send_email(caption_email, 'No reply\nClick the following link to reset the password in 30 minutes.\nhttp://www.auto-video-captions.com/reset?token=%s&challenge_type=video'%code)
         # import requests
         # url = 'http://182.92.104.30/mail'
         # data = {
