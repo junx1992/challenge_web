@@ -10,6 +10,7 @@
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
+		margin-bottom: -0.5em;
 	}
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -2528,6 +2529,8 @@
 			section .inner {
 				max-width: 90%;
 				width: 90%;
+				margin-bottom: -1em;
+				margin-top: -1em
 			}
 
 		}
@@ -2556,6 +2559,11 @@
 
 	header p {
 		color: #717171;
+	}
+	p + p {
+		margin-bottom: -1em;
+		margin-top: -1em;
+
 	}
 
 /* Table */
@@ -3122,7 +3130,7 @@
 			}
 
 		#header .logo {
-			font-family: 'Pacifico', cursive;
+			font-family: 'Roman', cursive;
 			display: inline-block;
 			height: inherit;
 			left: 0;
@@ -3366,6 +3374,8 @@
 		text-align: left;
 		position: relative;
 		z-index: 9999;
+		margin-top: -2em;
+		margin-bottom: -2em;
 	}
 
 		#banner input, #banner select, #banner textarea {
