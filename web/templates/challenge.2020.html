@@ -30,8 +30,8 @@
 		<header class="major special">
 			<h2>Task Description</h2>
 		</header>
-        <p>This year we will focus on visual-language pre-training for the downstream task of video captioning. Given the automatically collected GIF videos and the corresponding captions, the goal of visual-language pre-training is to learn a generic representation or structure that can better reflect the cross-modal interaction between visual content and textual sentence. The learnt generic representation or structure is further adapted to facilitate the downstream task of video captioning, i.e., describing video content with a complete and natural sentence.</p>
-        <p>The contestants are asked to develop video captioning system based on the Auto-captions on GIF dataset provided by the Challenge (as pre-training data) and the public MSR-VTT benchmark (as training data for downstream task). For the evaluation purpose, a contesting system is asked to produce at least one sentence for each test video. The accuracy will be evaluated against human pre-generated sentence(s) during evaluation stage.
+        <p>This year we will focus on visual-language pre-training for the downstream task of video captioning. Given the automatically collected GIF videos and the corresponding captions, the goal of visual-language pre-training is to learn a generic representation or structure that can better reflect the cross-modal interaction between visual content and textual sentence. The learnt generic representation or structure is further adapted to facilitate the downstream task of video captioning, i.e., describing video content with a complete and natural sentence.<br><br>
+        The contestants are asked to develop video captioning system based on the Auto-captions on GIF dataset provided by the Challenge (as pre-training data) and the public MSR-VTT benchmark (as training data for downstream task). For the evaluation purpose, a contesting system is asked to produce at least one sentence for each test video. The accuracy will be evaluated against human pre-generated sentence(s) during evaluation stage.</p>
 
     </div>
 </section>
@@ -42,8 +42,8 @@
             <h2>Relevance to Previous Challenges</h2>
         </header>
         <p>Most of the organizers in this proposal have successfully co-organized MSR Video to Language Challenge in ACM MM 2016 and ACM MM 2017, as listed below. Pervious video captioning challenges predominantly focused on training video captioning systems with the manually annotated video-sentence pairs. This challenge goes a step beyond traditional video captioning and targets for pre-training a generic representation or structure that facilitates downstream video captioning task. Since there is no challenge dedicated to pre-training for video captioning in major multimedia conferences, our challenge will offer a valuable venue to foster research into visual-language pre-training.</p>
-        <p>&emsp;<a href="http://ms-multimedia-challenge.com/2016/">MSR Video to Language Challenge 2016</a>, ACM Multimedia 2016 Grand Challenge (30 teams)</p> 
-        <p>&emsp;<a href="http://ms-multimedia-challenge.com/2017/">MSR Video to Language Challenge 2017</a>, ACM Multimedia 2017 Grand Challenge (15 teams)</p>
+        <p>&emsp;<a href="http://ms-multimedia-challenge.com/2016/">MSR Video to Language Challenge 2016</a>, ACM Multimedia 2016 Grand Challenge (30 teams)<br>
+         &emsp;<a href="http://ms-multimedia-challenge.com/2017/">MSR Video to Language Challenge 2017</a>, ACM Multimedia 2017 Grand Challenge (15 teams)</p>
     </div>
 
 </section>
@@ -53,7 +53,7 @@
         <header class="major special">
             <h2>Submission File</h2>
         </header>
-        <p>To enter the competition, you need to create an account on <a href="#">Evaluation Server</a>. This account allows you to upload your results to the server. Each team is allowed to submit the results of at most three runs and selects one run as the primary run of the submission (we do not guarantee to evaluate second and third runs), which will be measured for performance comparison across teams. Each run must be formatted in a Jason File as </p>
+        <p>To enter the competition, you need to create an account on <a href="#">Evaluation Server</a>. This account allows you to upload your results to the server. Each team is allowed to submit the results of at most three runs and selects one run as the primary run of the submission (we do not guarantee to evaluate second and third runs), which will be measured for performance comparison across teams. Each run must be formatted in a Jason File as <br>
               <pre class="prettyprint lang-py" class=>
 {
   "version": "VERSION 1.3",
@@ -75,11 +75,10 @@
 }
 
               </pre>
-              <p><b>Note: </b>comments in <font color='brown'>brown</font> are illustrative and help us to provide inline detailed explanations. Please avoid them in your sumisions.</p>
-              <p>To help with better understanding the format of the submission text file, a sample submission can be seen <a href="/static/resource/result.zip">here</a>. Participants please strictly follow the submission format.</p>
+              <b>Note: </b>comments in <font color='brown'>brown</font> are illustrative and help us to provide inline detailed explanations. Please avoid them in your sumisions.<br>
+              To help with better understanding the format of the submission text file, a sample submission can be seen <a href="/static/resource/result.zip">here</a>. Participants please strictly follow the submission format.<br>
 <br>
-<p class="text-danger">All the results should be zipped into a single file named by <b>result.zip</b>. Within the zipped folder, results from different runs should be placed in separate files and one of them should be noticed as primary run in the name (e.g., <b>result1(primary).json</b>, result2.json, result3.json). </p>
-<p class="text-danger">Every team is also required to upload a one-page notebook paper that briefly describes your system. The paper format follows <a href="http://www.acm.org/publications/proceedings-template">ACM proceeding style</a>.</p>
+<p class="text-danger">All the results should be zipped into a single file named by <b>result.zip</b>. Within the zipped folder, results from different runs should be placed in separate files and one of them should be noticed as primary run in the name (e.g., <b>result1(primary).json</b>, result2.json, result3.json). Every team is also required to upload a one-page notebook paper that briefly describes your system. The paper format follows <a href="http://www.acm.org/publications/proceedings-template">ACM proceeding style</a>.</p>
    </div>
 
 </section>
