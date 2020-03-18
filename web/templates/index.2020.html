@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Home</title>
+<title>Pre-training Video Captioning Challenge</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="/static/css/main.css" />
@@ -32,6 +32,8 @@
 
 	</div>
 </section>
+<br>
+<br>
 
 <!-- One -->
 <section id="one">
@@ -39,14 +41,36 @@
 		<header>
 			<h2>Introduction</h2>
 		</header>
-		<p>In this grand challenge, we aim to alleviate the dependency of paired human annotations by learning a pre-trained generic representation or structure over a large-scale programmatically created video-sentence data. The pre-trained generic representation or structure can better reflect the cross-modal interaction in a free way and thus benefit a series of downstream video-language tasks, such as video captioning, sentence localization in videos, and video question answering.</p>
-        <p>The goal of this grand challenge is two-fold: (a) coalescing community effort around a new challenging large-scale video-sentence pre-training dataset, and (b) offering a fertile ground for designing pre-training strategy of generic representation or structure to facilitate downstream video-language tasks (e.g., video captioning).</p>
-        <p>To further motivate and challenge the academic and industrial research communities, we are releasing “Auto-captions on GIF,” a large-scale pre-training dataset to public for generic video understanding, which consists of ~200,000 video-sentence pairs that are created by automatically extracting and filtering video caption annotations from billions of web pages. The video-sentence pre-training dataset can be utilized to pre-train the generic representation or structure for video captioning task, and other downstream tasks (e.g., sentence localization in videos, video question answering, etc.) as well in the near future. All the datasets can only be used for research purpose.</p>
+		<p>The goal of this challenge is to offer a fertile ground for designing vision-language pre-training techniques that facilitate the vision-language downstream tasks (e.g., video captioning this year). Meanwhile, to further motivate and challenge the multimedia community, we provide a large-scale video-language pre-training dataset (namely "Auto-captions on GIF") for contestants to solve this challenging but emerging task.</p>
+        <p>Particularly, the contestants are asked to develop video captioning system based on Auto-captions on GIF dataset (as pre-training data) and the public MSR-VTT benchmark (as training data for downstream task). For the evaluation purpose, a contesting system is asked to produce at least one sentence of the test videos. The accuracy will be evaluated against human pre-generated sentence(s).</p>
+        </div>
+</section>
+
+<section id="example">
+	<div class="inner">
+		<div class="box alt">
+			<div class="row 50% uniform">
+				<div class="3u"><span class="image fit"><img src="/static/img/1_out.gif" alt="" /></span>This monkey on the back of horse</div>
+				<div class="3u"><span class="image fit"><img src="/static/img/2_out.gif" alt="" /></span>Disney made the best cake of all time using projection</div>
+				<div class="3u"><span class="image fit"><img src="/static/img/3_out.gif" alt="" /></span>The dry driver returns to his car and presents his mate with kebab</div>
+				<div class="3u$"><span class="image fit"><img src="/static/img/4_out.gif" alt="" /></span>Tiny squid flopping around on the rocky bottom of fish tank</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="two">
+	<div class="inner">
+		<header>
+            <h2>Important Dates</h2>
+            <p>[03-12-2020]:</b> Website is opening.</p>
+		</header>
 	</div>
 </section>
 
 <!-- Two -->
-<section id="two">
+<section id="three">
 	<div class="inner">
 		<header>
             <h2>News</h2>
