@@ -305,7 +305,7 @@ def reset_password_by_token(challenge_type, token, username, teamname, captionna
         if one['username'] != username or one['teamname'] != teamname or one['member'][0]['name'] != captionname:
             return False, ''
         import hashlib
-        register_team.update({'_id':_id}, {'$set':{'password':hashlib.md5(password).hexdigest()}})
+        register_team.update({'_id':_id}, {'$set':{'password':hashlib.md5(password.encode('utf-8')).hexdigest()}})
         code = generate_session()
         key = 'session2teamid:' + code
         value = teamid + '&' +challenge_type
