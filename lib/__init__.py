@@ -270,6 +270,7 @@ def get_reset_info_by_token(token, challenge_type):
     if teamid == None:
         return False, ''
     from bson import ObjectId
+    teamid = teamid.decode('utf-8')
     _id = ObjectId(teamid)
     from model import MongoDB
     db = MongoDB().db
@@ -288,6 +289,7 @@ def reset_password_by_token(challenge_type, token, username, teamname, captionna
     from model import RedisDB
     con = RedisDB().con
     teamid = con.get('session2password:' + token)
+    teamid = teamid.decode('utf-8')
     if teamid == None:
         return False, ''
     from bson import ObjectId
