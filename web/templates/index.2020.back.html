@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="overflow-y: visible;">
+  <head>
+    <title>Pre-training for Video Captioning Challenge</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      .jumbotron {
+        /*height: 600px;*/
+      }
+      .introduction {
+        font-size: 20px;
+      }
+    </style>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+            <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="/">
+          Multimedia
+          </a> -->
+        </div>
+        <div class="collapse navbar-collapse" id="menu">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="/2017">Home</a></li>
+          <li><a href="/2020/people">People</a></li>
+          <li><a href="/2020/challenge">Challenge</a></li>
+          <li><a href="/2020/leaderboard">Leaderboard</a></li>
+          <li><a href="/2020/dataset">Dataset</a></li>
+          <!-- <li><a href="/2020/contact">Contact</a></li> -->
+        </ul>
+</div>
+      </div>
+    </nav>
+
+        <section class="page-title">
+          <!-- <img src="images/banner.png" class="hero-image"> -->
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                  <h1 class="title">Pre-training for Video Captioning Challenge @ ACM Multimedia 2020</h1>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <br>
+        <br>
+        <br>
+
+        <section class="introduction">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-sm-12">
+                  <h2 class="section-title">Introduction</h2>
+                  <p class="para-text">
+                    In this grand challenge, we aim to alleviate the dependency of paired human annotations by learning a pre-trained generic representation or structure over a large-scale programmatically created video-sentence data. The pre-trained generic representation or structure can better reflect the cross-modal interaction in a free way and thus benefit a series of downstream video-language tasks, such as video captioning, sentence localization in videos, and video question answering.
+                  </p>
+                  <p class="para-text">
+                    The goal of this grand challenge is two-fold: (a) coalescing community effort around a new challenging large-scale video-sentence pre-training dataset, and (b) offering a fertile ground for designing pre-training strategy of generic representation or structure to facilitate downstream video-language tasks (e.g., video captioning).</p>
+                  <p class="para-text">
+                    To further motivate and challenge the academic and industrial research communities, we are releasing “Auto-captions on GIF,” a large-scale pre-training dataset to public for generic video understanding, which consists of ~200,000 video-sentence pairs that are created by automatically extracting and filtering video caption annotations from billions of web pages. The video-sentence pre-training dataset can be utilized to pre-train the generic representation or structure for video captioning task, and other downstream tasks (e.g., sentence localization in videos, video question answering, etc.) as well in the near future. All the datasets can only be used for research purpose.
+                  </p>
+              </div>
+      
+              <div class="col-md-4 col-sm-12">
+                <aside class="news">
+                  <h2 class="section-title">News</h2>
+                  <ul class="aside-list">
+                    <li class = "para-text">
+                      [03-12-2020]:</b> Website is opening.
+                    </li>
+                      <!-- <li class="list-item news-item">
+                        <div class="date-time">
+                          <p class="day-month">10&ndash;Jun</p>
+                          <p class="year">2018</p>
+                        </div>
+                        <div class="news">
+                          <span>Deadline for technical papers submission.</span>
+                        </div>
+                      </li>
+      
+                    <li class="list-item news-item">
+                      <div class="date-time">
+                        <p class="day-month">08&ndash;Jun</p>
+                        <p class="year">2018</p>
+                      </div>
+                      <div class="news">
+                        <span>Deadline for submission. <strong>The evaluation severs will be closed at 11:59PM (Hawaii Time Zone).</strong></span>
+                      </div>
+                    </li>
+      
+                    <li class="list-item news-item">
+                      <div class="date-time">
+                        <p class="day-month">28&ndash;Apr</p>
+                        <p class="year">2018</p>
+                      </div>
+                      <div class="news">
+                        <span>Task-B releases its test set.</span>
+                      </div>
+                    </li>
+      
+                    <li class="list-item news-item">
+                      <div class="date-time">
+                        <p class="day-month">22&ndash;Apr</p>
+                        <p class="year">2018</p>
+                      </div>
+                      <div class="news">
+                        <span>Task-A is public.</span>
+                      </div>
+                    </li>
+      
+                    <li class="list-item news-item">
+                      <div class="date-time">
+                        <p class="day-month">17&ndash;Apr</p>
+                        <p class="year">2018</p>
+                      </div>
+                      <div class="news">
+                        <span>The evaluation server for Tasks 1-3 and C is opened.</span>
+                      </div>
+                    </li>
+      
+                    <li class="list-item news-item">
+                      <div class="date-time">
+                        <p class="day-month">23&ndash;Mar</p>
+                        <p class="year">2018</p>
+                      </div>
+                      <div class="news">
+                        <span>The ActivityNet Challenge 2018 started.</span>
+                      </div>
+                    </li>
+      
+                    <li class="list-item news-item">
+                      <div class="date-time">
+                        <p class="day-month">07&ndash;Dec</p>
+                        <p class="year">2017</p>
+                      </div>
+                      <div class="news">
+                        <span>ActivityNet Challenge 2018 website is up.</span>
+                      </div>
+                    </li> -->
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+<!-- 
+        
+        <br>
+        <br>
+<div class="row"><div class="col-md-8 col-md-offset-2"><div class="text-danger"><b style="font-size:20px">News:</b><br>
+<span style="font-size:16px"><b>[03-12-2020]:</b> Website is opening.</span><br> -->
+<!-- <span style="font-size:16px"><b>[06-01-2017]:</b> Test video urls are released.</span><br>
+<span style="font-size:16px"><b>[04-26-2017]:</b> <a class="text-danger" href="/dataset">We have released the training data.</a></span><br>
+<span style="font-size:16px"><b>[04-17-2017]:</b> We are hosting <b><a class="text-danger" href="http://ms-multimedia-challenge.com/2017/challenge">the 2<sup>nd</sup> MSR Video to Language Challenge</a></b>, co-organized with <b><a class="text-danger" href="http://www.acmmm.org/2017/"> ACM Multimedia 2017.</a></b></span><br> -->
+</div></div></div>
+      </div>
+    </div>
+
+  </body>
+</html>
+
+
