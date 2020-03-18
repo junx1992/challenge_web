@@ -38,9 +38,9 @@ def send_email(member, message):
 
     smtp = smtplib.SMTP('localhost')
     msg = MIMEText(message, 'plain', 'utf-8')
-    msg['From'] = Header("Pre-training-Video-Captioning-CHALLENGE<root@pre-training-captioning.com>")
+    msg['From'] = Header("Pre-training-Video-Captioning-Challenge<root@pre-training-captioning.com>")
     msg['To'] = Header(member)
-    msg['Subject'] = '[Pre-training-Video-Captioning-CHALLENGE Notice]'
+    msg['Subject'] = '[Pre-training-Video-Captioning-Challenge Notice]'
     print (member)
     try:
         smtp.sendmail("root@pre-training-captioning.com", [member], msg.as_string())
