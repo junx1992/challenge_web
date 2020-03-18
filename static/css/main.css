@@ -10,11 +10,12 @@
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
-		margin-bottom: -0.5em;
 	}
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 		display: block;
+		margin-top: -1.5em;
+		margin-bottom: -1.5em;
 	}
 
 	body {
@@ -2537,12 +2538,14 @@
 
 	header p {
 		position: relative;
-		margin: 0 0 1.5em 0;
+		margin-top: -1em;
+		margin-bottom: -1em;		
 	}
 
 	header h2 + p {
 		font-size: 1.25em;
 		margin-top: -1em;
+		margin-bottom: -1em;
 	}
 
 	header h3 + p {
@@ -2561,8 +2564,8 @@
 		color: #717171;
 	}
 	p + p {
-		margin-bottom: -1em;
-		margin-top: -1em;
+		margin-bottom: -1.5em;
+		margin-top: -1.5em;
 
 	}
 
