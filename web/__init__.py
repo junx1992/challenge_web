@@ -17,11 +17,11 @@ def index():
     headers = request.headers
     host = headers['Host']
     if host.startswith('2016'):
-        return redirect('http://auto-video-captions.top/2016')
+        return redirect('http://www.aut-video-captions.top/2016')
     elif host.startswith('2017'):
-        return redirect('http://auto-video-captions.top/2017')
+        return redirect('http://www.aut-video-captions.top/2017')
     elif host.startswith('2020'):
-        return redirect('http://auto-video-captions.top/2020')
+        return redirect('http://www.aut-video-captions.top/2020')
     return redirect('/2020')
 
 @app.route('/<year>/', methods=['GET'])
@@ -35,12 +35,13 @@ def people():
     headers = request.headers
     host = headers['Host']
     if host.startswith('2016'):
-        return redirect('http://auto-video-captions.top/2016/people')
+        return redirect('http://www.aut-video-captions.top/2016/people')
     elif host.startswith('2017'):
-        return redirect('http://auto-video-captions.top/2017/people')
+        return redirect('http://www.aut-video-captions.top/2017/people')
     elif host.startswith('2020'):
-        return redirect('http://auto-video-captions.top/2020/people')
+        return redirect('http://www.aut-video-captions.top/2020/people')
     return redirect('/2020/people')
+
 
 @app.route('/<year>/people', methods=['GET'])
 def people_year(year):
@@ -53,11 +54,11 @@ def challenge():
     headers = request.headers
     host = headers['Host']
     if host.startswith('2016'):
-        return redirect('http://auto-video-captions.top/2016/challenge')
+        return redirect('http://www.aut-video-captions.top/2016/challenge')
     elif host.startswith('2017'):
-        return redirect('http://auto-video-captions.top/2017/challenge')
+        return redirect('http://www.aut-video-captions.top/2017/challenge')
     elif host.startswith('2020'):
-        return redirect('http://auto-video-captions.top/2020/challenge')
+        return redirect('http://www.aut-video-captions.top/2020/challenge')
     return redirect('/2017/challenge')
 
 @app.route('/<year>/challenge', methods=['GET'])
@@ -71,11 +72,11 @@ def dataset():
     headers = request.headers
     host = headers['Host']
     if host.startswith('2016'):
-        return redirect('http://auto-video-captions.top/2016/dataset')
+        return redirect('http://www.aut-video-captions.top/2016/dataset')
     elif host.startswith('2017'):
-        return redirect('http://auto-video-captions.top/2017/dataset')
+        return redirect('http://www.aut-video-captions.top/2017/dataset')
     elif host.startswith('2020'):
-        return redirect('http://auto-video-captions.top/2020/dataset')
+        return redirect('http://www.aut-video-captions.top/2020/dataset')
     return redirect('/2020/dataset')
 
 @app.route('/<year>/dataset', methods=['GET'])
@@ -89,11 +90,11 @@ def leaderboard():
     headers = request.headers
     host = headers['Host']
     if host.startswith('2016'):
-        return redirect('http://auto-video-captions.top/2016/leaderboard')
+        return redirect('http://www.aut-video-captions.top/2016/leaderboard')
     elif host.startswith('2017'):
-        return redirect('http://auto-video-captions.top/2017/leaderboard')
+        return redirect('http://www.aut-video-captions.top/2017/leaderboard')
     elif host.startswith('2020'):
-        return redirect('http://auto-video-captions.top/2020/leaderboard')
+        return redirect('http://www.aut-video-captions.top/2020/leaderboard')
     return redirect('/2020/leaderboard')
 
 @app.route('/<year>/leaderboard', methods=['GET'])
@@ -102,23 +103,44 @@ def leaderboard_year(year):
         abort(404)
     return render_template('leaderboard.%s.html'%year)
 
+
 @app.route('/contact', methods=['GET'])
 def contact():
     headers = request.headers
     host = headers['Host']
     if host.startswith('2016'):
-        return redirect('http://auto-video-captions.top/2016/contact')
+        return redirect('http://www.aut-video-captions.top/2016/contact')
     elif host.startswith('2017'):
-        return redirect('http://auto-video-captions.top/2017/contact')
+        return redirect('http://www.aut-video-captions.top/2017/contact')
     elif host.startswith('2020'):
-        return redirect('http://auto-video-captions.top/2020/contact')
+        return redirect('http://www.aut-video-captions.top/2020/contact')
     return redirect('/2020/contact')
+
+@app.route('/<year>/team', methods=['GET'])
+def team_year(year):
+    if year != '2016' and year != '2017' and year != '2020':
+        abort(404)
+    return render_template('team.%s.html'%year)
+
+
+@app.route('/team', methods=['GET'])
+def team():
+    headers = request.headers
+    host = headers['Host']
+    if host.startswith('2016'):
+        return redirect('http://www.aut-video-captions.top/2016/team')
+    elif host.startswith('2017'):
+        return redirect('http://www.aut-video-captions.top/2017/team')
+    elif host.startswith('2020'):
+        return redirect('http://www.aut-video-captions.top/2020/team')
+    return redirect('/2020/team')
 
 @app.route('/<year>/contact', methods=['GET'])
 def contact_year(year):
     if year != '2016' and year != '2017' and year != '2020':
         abort(404)
     return render_template('contact.%s.html'%year)
+
 
 @app.route('/browse', methods=['GET'])
 def browse():
