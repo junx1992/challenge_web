@@ -156,7 +156,10 @@ def get_teamid_by_session(session):
     from model import RedisDB
     con = RedisDB().con
     key = 'session2teamid:'+session
-    value = con.get(key).decode('utf-8')
+    if not con.get(key) is not None:
+        value = con.get(key).decode('utf-8')
+    else:
+        value = None
     if value != None:
         con.expire(key, 7200)
     return value
