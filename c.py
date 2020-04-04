@@ -13,3 +13,5 @@ for item in a:
 	print (item['_id'], item['teamname'])
 	for member in item['member']:
 		print(member['name'], member['email'], member['organization'])
+
+	print('\n\n')
