@@ -71,6 +71,15 @@ def register():
 			msg += "%s %s %s\n"%(item['name'],item['email'],item['organization'])
 		send_email("junx1992@gmail.com", msg)
 		print (msg)
+		msg_data = "Dear Team " + team_name + "\n\n"
+		msg_data += "Welcome to join in our challenge! This year, we provide a large-scale video-language pre-training dataset (Auto-captions on GIF) for solving the challenging but emerging vision-language pre-training task.\n\n"
+		msg_data += "The link for downloading video-sentence pairs in Auto-captions on GIF is at http://auto-video-captions.top/static/dataset/pre-training.zip. Note that due to the copyright issue, we only provide the url link for each GIF officially and every team needs to crawl the GIFs by yourself. \n\n"
+		msg_data += "Another option is that as we know, one team from SYSU has downloaded all the original GIFs and shared the data at pan.baidu (https://pan.baidu.com/s/1oDLy86Msc05sB_VagYqyXg, pass: 237m) and Google Drive (https://drive.google.com/drive/folders/1YXd2Qu1Nr_6l0ccgo9vN9NWlyWnXacXU?usp=sharing). You can directly capitalize on the off-the-shelf data as well.\n\n"
+
+		msg_data += "Best,\n"
+		msg_data += "Organizing Committee"
+		send_email(caption_email, msg_data)
+
 		resp = jsonify(res=SUCCESS)
 		resp.set_cookie('session', place)
 		return resp
