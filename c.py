@@ -9,9 +9,13 @@ db = MongoDB().db
 register_team = db.video
 a = register_team.find()
 import hashlib
+our_num = 8
+all_num = 0
 for item in a:
-	print (item['_id'], item['teamname'])
-	for member in item['member']:
-		print(member['name'], member['email'], member['organization'])
-
-	print('\n\n')
+    all_num += 1
+    print (item['_id'], item['teamname'])
+    for member in item['member']:
+        print(member['name'], member['email'], member['organization'])
+    print('\n\n')
+print("All Num:", all_num)
+print("All Clean Num:", all_num-our_num)
