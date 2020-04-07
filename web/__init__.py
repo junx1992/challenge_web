@@ -14,14 +14,14 @@ def random_str():
 
 @app.route('/', methods=['GET'])
 def index():
-    headers = request.headers
-    host = headers['Host']
-    if host.startswith('2016'):
-        return redirect('http://www.aut-video-captions.top/2016')
-    elif host.startswith('2017'):
-        return redirect('http://www.aut-video-captions.top/2017')
-    elif host.startswith('2020'):
-        return redirect('http://www.aut-video-captions.top/2020')
+    # headers = request.headers
+    # host = headers['Host']
+    # if host.startswith('2016'):
+    #     return redirect('http://www.aut-video-captions.top/2016')
+    # elif host.startswith('2017'):
+    #     return redirect('http://www.aut-video-captions.top/2017')
+    # elif host.startswith('2020'):
+    #     return redirect('http://www.aut-video-captions.top/2020')
     return redirect('/2020')
 
 @app.route('/<year>/', methods=['GET'])
