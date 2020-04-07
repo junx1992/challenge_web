@@ -9,7 +9,7 @@ db = MongoDB().db
 register_team = db.video
 a = register_team.find()
 import hashlib
-our_num = 8
+our_num = 10
 all_num = 0
 for item in a:
     all_num += 1
