@@ -32,14 +32,14 @@ def index_year(year):
 
 @app.route('/people', methods=['GET'])
 def people():
-    headers = request.headers
-    host = headers['Host']
-    if host.startswith('2016'):
-        return redirect('http://www.aut-video-captions.top/2016/people')
-    elif host.startswith('2017'):
-        return redirect('http://www.aut-video-captions.top/2017/people')
-    elif host.startswith('2020'):
-        return redirect('http://www.aut-video-captions.top/2020/people')
+    # headers = request.headers
+    # host = headers['Host']
+    # if host.startswith('2016'):
+    #     return redirect('http://www.aut-video-captions.top/2016/people')
+    # elif host.startswith('2017'):
+    #     return redirect('http://www.aut-video-captions.top/2017/people')
+    # elif host.startswith('2020'):
+    #     return redirect('http://www.aut-video-captions.top/2020/people')
     return redirect('/2020/people')
 
 
@@ -51,14 +51,14 @@ def people_year(year):
 
 @app.route('/challenge', methods=['GET'])
 def challenge():
-    headers = request.headers
-    host = headers['Host']
-    if host.startswith('2016'):
-        return redirect('http://www.aut-video-captions.top/2016/challenge')
-    elif host.startswith('2017'):
-        return redirect('http://www.aut-video-captions.top/2017/challenge')
-    elif host.startswith('2020'):
-        return redirect('http://www.aut-video-captions.top/2020/challenge')
+    # headers = request.headers
+    # host = headers['Host']
+    # if host.startswith('2016'):
+    #     return redirect('http://www.aut-video-captions.top/2016/challenge')
+    # elif host.startswith('2017'):
+    #     return redirect('http://www.aut-video-captions.top/2017/challenge')
+    # elif host.startswith('2020'):
+    #     return redirect('http://www.aut-video-captions.top/2020/challenge')
     return redirect('/2017/challenge')
 
 @app.route('/<year>/challenge', methods=['GET'])
@@ -69,14 +69,14 @@ def challenge_year(year):
 
 @app.route('/dataset', methods=['GET'])
 def dataset():
-    headers = request.headers
-    host = headers['Host']
-    if host.startswith('2016'):
-        return redirect('http://www.aut-video-captions.top/2016/dataset')
-    elif host.startswith('2017'):
-        return redirect('http://www.aut-video-captions.top/2017/dataset')
-    elif host.startswith('2020'):
-        return redirect('http://www.aut-video-captions.top/2020/dataset')
+    # headers = request.headers
+    # host = headers['Host']
+    # if host.startswith('2016'):
+    #     return redirect('http://www.aut-video-captions.top/2016/dataset')
+    # elif host.startswith('2017'):
+    #     return redirect('http://www.aut-video-captions.top/2017/dataset')
+    # elif host.startswith('2020'):
+    #     return redirect('http://www.aut-video-captions.top/2020/dataset')
     return redirect('/2020/dataset')
 
 @app.route('/<year>/dataset', methods=['GET'])
@@ -87,14 +87,14 @@ def dataset_year(year):
 
 @app.route('/leaderboard', methods=['GET'])
 def leaderboard():
-    headers = request.headers
-    host = headers['Host']
-    if host.startswith('2016'):
-        return redirect('http://www.aut-video-captions.top/2016/leaderboard')
-    elif host.startswith('2017'):
-        return redirect('http://www.aut-video-captions.top/2017/leaderboard')
-    elif host.startswith('2020'):
-        return redirect('http://www.aut-video-captions.top/2020/leaderboard')
+    # headers = request.headers
+    # host = headers['Host']
+    # if host.startswith('2016'):
+    #     return redirect('http://www.aut-video-captions.top/2016/leaderboard')
+    # elif host.startswith('2017'):
+    #     return redirect('http://www.aut-video-captions.top/2017/leaderboard')
+    # elif host.startswith('2020'):
+    #     return redirect('http://www.aut-video-captions.top/2020/leaderboard')
     return redirect('/2020/leaderboard')
 
 @app.route('/<year>/leaderboard', methods=['GET'])
