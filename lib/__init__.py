@@ -246,6 +246,7 @@ def check_and_send_reset_password_email(challenge_type, team_name, caption_name,
         con.expire('session2password:' + code, 21600)
 
         print (caption_email)
+        print ('http://www.auto-video-captions.top/reset?token=%s&challenge_type=video'%code)
 
         send_email(caption_email, 'No reply\nClick the following link to reset the password in 30 minutes.\nhttp://www.auto-video-captions.top/reset?token=%s&challenge_type=video'%code)
         # import requests
