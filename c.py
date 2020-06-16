@@ -16,7 +16,7 @@ for item in a:
     print (item['_id'], item['teamname'])
     for member in item['member']:
         print(member['name'], member['email'], member['organization'])
-        mail_list.add(member['email'])
+        mail_list.append(member['email'])
     print('\n\n')
 print("All Num:", all_num)
 print("All Clean Num:", all_num-our_num)
