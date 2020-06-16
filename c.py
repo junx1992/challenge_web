@@ -4,7 +4,7 @@ class MongoDB:
 		from pymongo import MongoClient
 		self.con = MongoClient('localhost')
 		self.db = self.con.challenge
-
+mail_list = []
 db = MongoDB().db
 register_team = db.video
 a = register_team.find()
@@ -16,6 +16,11 @@ for item in a:
     print (item['_id'], item['teamname'])
     for member in item['member']:
         print(member['name'], member['email'], member['organization'])
+        mail_list.add(member['email'])
     print('\n\n')
 print("All Num:", all_num)
 print("All Clean Num:", all_num-our_num)
+with open('email_list.txt', 'w') as fh:
+    for email in mail_list:
+        fh.write(email)
+        fh.write('\n')
