@@ -1,5 +1,4 @@
 *.pyc
 tmp/
 log/
-static/resource/
 .DS_Store
