@@ -15,7 +15,7 @@ def unzip_folder(folder):
 def check_all_sub_folder(folder):
 	sub_folders = [os.path.join(folder, o) for o in os.listdir(folder) if os.path.isdir(os.path.join(folder, o))]
 	for name in sub_folders:
-		sub_folder = os.path.join('/export/home/xujun94/code/challenge_web', folder, name)
+		sub_folder = os.path.join('/export/home/xujun94/code/challenge_web', name)
 		os.system('python3 eval.py --folder {0}'.format(sub_folder))
 
 api = Blueprint('api', __name__)
