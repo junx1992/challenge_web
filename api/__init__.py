@@ -193,6 +193,15 @@ def getinfo():
 	else:
 		return jsonify(res=SUCCESS, info=info)
 
+def unzip_all_folders(folder):
+	result_files = os.listdir(folder)
+	for result_name in result_files:
+		result_file = os.path.join(folder, result_name)
+		tar_folder = os.path.join(folder, result_name.replace('.zip', ''))
+		if '_time' in result_name and '.zip' in result_name:
+			if not os.path.exists(tar_folder):
+				os.system('unzip {0} -d {1}'.format(result_file,tar_folder)
+
 @api.route('/submit', methods=['POST'])
 def submit():
 	cookies = request.cookies
@@ -215,7 +224,7 @@ def submit():
 	filetype = filename.split('.')[-1]
 	import time
 	nowtime = time.strftime('%Y-%m-%d-%H-%M', time.localtime(int(time.time())))
-	filename = teamid + nowtime + '.' + filetype
+	filename = teamid + '_time_' + nowtime + '.' + filetype
 	import os
 	#os.system("rm tmp/result/%s*"%teamid)
 	f.save('tmp/result/' + filename)
@@ -265,7 +274,7 @@ def submit_report():
 	filetype = filename.split('.')[-1]
 	import time
 	nowtime = time.strftime('%Y-%m-%d-%H-%M', time.localtime(int(time.time())))
-	filename = teamid + nowtime + '.' + filetype
+	filename = teamid + '_time_' + nowtime + '.' + filetype
 	import os
 	#os.system("rm tmp/report/%s*"%teamid)
 	f.save('tmp/report/' + filename)
