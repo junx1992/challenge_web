@@ -222,16 +222,15 @@ def submit():
 	os.system("cp tmp/result/%s tmp/result/%s"%(filename, teamid + '.zip'))
 
 	from lib import team_submit
-	def unzip_all_folders(folder):
-		result_files = os.listdir(folder)
-		for result_name in result_files:
-			result_file = os.path.join(folder, result_name)
-			tar_folder = os.path.join(folder, result_name.replace('.zip', ''))
-			if '_time' in result_name and '.zip' in result_name:
-				if not os.path.exists(tar_folder):
-					os.system('unzip {0} -d {1}'.format(result_file,tar_folder)
 	team_submit(teamid)
-	unzip_all_folders('tmp/result/')
+	folder = 'tmp/result/'
+	result_files = os.listdir(folder)
+	for result_name in result_files:
+		result_file = os.path.join(folder, result_name)
+		tar_folder = os.path.join(folder, result_name.replace('.zip', ''))
+		if '_time' in result_name and '.zip' in result_name:
+			if not os.path.exists(tar_folder):
+				os.system('unzip {0} -d {1}'.format(result_file,tar_folder)
 	return jsonify(res=SUCCESS)
 
 @api.route('/submission', methods=['GET'])
