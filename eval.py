@@ -34,5 +34,5 @@ if __name__=='__main__':
                 cocoRes = coco.loadRes(os.path.join(sub_folder, resFile))
                 cocoEval = COCOEvalCap(coco, cocoRes)
                 cocoEval.evaluate()
-                with open(performace_txt, 'w') as fid:
+                with open(performace_txt, 'a') as fid:
                     fid.write(resFile + ' ' + str(cocoEval.eval) + '\n')
