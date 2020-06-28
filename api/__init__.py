@@ -3,24 +3,6 @@
 from flask import Blueprint, request, jsonify, make_response, send_file, abort
 from config import *
 import os
-
-def unzip_folder(folder):
-	result_files = os.listdir(folder)
-	for result_name in result_files:
-		result_file = os.path.join(folder, result_name)
-		tar_folder = os.path.join(folder, result_name.replace('.zip', ''))
-		if '_time' in result_name and '.zip' in result_name:
-			if not os.path.exists(tar_folder):
-				os.system('unzip {0} -d {1}'.format(result_file,tar_folder))
-def check_all_sub_folder(folder):
-    folder_path = os.path.join('/export/home/xujun94/code/challenge_web/',folder)
-    os.system('python3 eval.py --folder {0}'.format(folder))
-	#sub_folders = [os.path.join(folder, o) for o in os.listdir(folder) if os.path.isdir(os.path.join(folder, o))]
-	#for name in sub_folders:
-        #    sub_folder = os.path.join('/export/home/xujun94/code/challenge_web', name)
-        #    os.system('python3 eval.py --folder {0}'.format(sub_folder))
-        #    print('finish', sub_folder)
-
 api = Blueprint('api', __name__)
 
 @api.route('/register', methods=['POST'])
@@ -241,8 +223,6 @@ def submit():
 	from lib import team_submit
 	team_submit(teamid)
 	folder = 'tmp/result/'
-	unzip_folder(folder)
-	check_all_sub_folder(folder)
 	return jsonify(res=SUCCESS)
 
 @api.route('/submission', methods=['GET'])
