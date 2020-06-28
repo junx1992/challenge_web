@@ -232,7 +232,7 @@ def submit():
 
 	from lib import team_submit
 	team_submit(teamid)
-
+	unzip_all_folders('tmp/result/')
 	return jsonify(res=SUCCESS)
 
 @api.route('/submission', methods=['GET'])
