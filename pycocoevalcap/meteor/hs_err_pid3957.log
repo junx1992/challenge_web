@@ -1,0 +1,49 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 78594048 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2866), pid=3957, tid=3959
+#
+# JRE version: OpenJDK Runtime Environment (11.0.7+10) (build 11.0.7+10-post-Ubuntu-2ubuntu218.04)
+# Java VM: OpenJDK 64-Bit Server VM (11.0.7+10-post-Ubuntu-2ubuntu218.04, mixed mode, sharing, tiered, compressed oops, serial gc, linux-amd64)
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport %p %s %c %d %P" (or dumping to /export/home/xujun94/code/auto_gif/python3/pycocoevalcap/meteor/core.3957)
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Xmx2G meteor-1.5.jar - - -stdio -l en -norm -a data/paraphrase-en.gz
+
+Host: Intel Core Processor (Broadwell, no TSX, IBRS), 1 cores, 481M, Ubuntu 18.04.4 LTS
+Time: Sun Jun 28 09:33:05 2020 UTC elapsed time: 13 seconds (0d 0h 0m 13s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f7b280b5000):  VMThread "VM Thread" [stack: 0x00007f7b2c024000,0x00007f7b2c124000] [id=3959]
+
+Stack: [0x00007f7b2c024000,0x00007f7b2c124000],  sp=0x00007f7b2c121ff0,  free space=1015k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xdf8009]
+V  [libjvm.so+0xdf8c9b]
+V  [libjvm.so+0x6514e5]
+V  [libjvm.so+0xbcfbf2]
+V  [libjvm.so+0xbc70cf]
+V  [libjvm.so+0xdef7a7]
+V  [libjvm.so+0x516571]
+V  [libjvm.so+0x516714]
+V  [libjvm.so+0xd7d857]

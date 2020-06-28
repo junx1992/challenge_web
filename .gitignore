@@ -2,3 +2,5 @@
 log/
 .DS_Store
 tmp/gunicorn.pid
+pycocoevalcap/meteor/data/paraphrase-en.gz
+pycocoevalcap/spice/lib/stanford-corenlp-3.6.0-models.jar
