@@ -13,12 +13,16 @@ if __name__=='__main__':
 
     annFile='/export/home/xujun94/code/challenge_web/tmp/groundtruth/mm2020_test_sen.json'
     coco = COCO(annFile)
-    resFiles = [resFile for resFile in os.listdir(args.folder) if '.json' in resFile]
+    folder = args.folder
+    sub_folders = [os.path.join(folder, o) for o in os.listdir(folder) if os.path.isdir(os.path.join(folder,o))]
+    for sub_folder in sub_folders:
 
-    for resFile in resFiles:
-        print('Evaluate: ' + resFile)
-        cocoRes = coco.loadRes(os.path.join(args.folder, resFile))
-        cocoEval = COCOEvalCap(coco, cocoRes)
-        cocoEval.evaluate()
-        with open(os.path.join(args.folder, 'performance.txt'), 'a') as fid:
-            fid.write(resFile + ' ' + str(cocoEval.eval) + '\n')
+        resFiles = [resFile for resFile in os.listdir(sub_folder) if '.json' in resFile]
+
+        for resFile in resFiles:
+            print('Evaluate: ' + resFile)
+            cocoRes = coco.loadRes(os.path.join(sub_folder, resFile))
+            cocoEval = COCOEvalCap(coco, cocoRes)
+            cocoEval.evaluate()
+            with open(os.path.join(sub_folder, 'performance.txt'), 'a') as fid:
+                fid.write(resFile + ' ' + str(cocoEval.eval) + '\n')
