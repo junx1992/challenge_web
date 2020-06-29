@@ -93,26 +93,40 @@ if __name__=='__main__':
                     count_mapping[team_time_id] = 0            
                 mail_list = name_mapping[team_id]
                 performace_txt = os.path.join(sub_folder, 'performance.txt')
+                except_txt = os.path.join(sub_folder, 'exception.txt')
                 message = "Here is your evaluation result for " + time + "\n"
                 if not os.path.exists(performace_txt):
-                    if count_mapping[team_time_id] < 3:
-                        resFiles = [resFile for resFile in os.listdir(sub_folder) if '.json' in resFile]
-                        res_count = 0 
-                        for resFile in resFiles:
-                            if res_count < 3:
-                                print('Evaluate: ' + resFile)
-                                cocoRes = coco.loadRes(os.path.join(sub_folder, resFile))
-                                cocoEval = COCOEvalCap(coco, cocoRes)
-                                cocoEval.evaluate()
-                                with open(performace_txt, 'a') as fid:
-                                    fid.write(resFile + ' ' + str(cocoEval.eval) + '\n')
-                                    message += resFile + ' ' + str(cocoEval.eval) + '\n'
-                                res_count += 1
-                        message += '\n\n'
-                        message += 'Best,\n'
-                        message += 'Organizing Committee'                
-                        send_email(mail_list, message, time)
-                        count_mapping[team_time_id] += 1
+                    if not os.path.exists(except_txt):
+                        try:
+                            if count_mapping[team_time_id] < 3:
+                                resFiles = [resFile for resFile in os.listdir(sub_folder) if '.json' in resFile]
+                                res_count = 0 
+                                for resFile in resFiles:
+                                    if res_count < 3:
+                                        print('Evaluate: ' + resFile)
+                                        cocoRes = coco.loadRes(os.path.join(sub_folder, resFile))
+                                        cocoEval = COCOEvalCap(coco, cocoRes)
+                                        cocoEval.evaluate()
+                                        with open(performace_txt, 'a') as fid:
+                                            fid.write(resFile + ' ' + str(cocoEval.eval) + '\n')
+                                            message += resFile + ' ' + str(cocoEval.eval) + '\n'
+                                        res_count += 1
+                                message += '\n\n'
+                                message += 'Best,\n'
+                                message += 'Organizing Committee'                
+                                send_email(mail_list, message, time)
+                                print('send email for success', mail_list)
+                                count_mapping[team_time_id] += 1
+                        except Exception as e:
+                            with open(except_txt, 'w') as fh:
+                                fh.write(str(e))
+                            err_message = "Your Submitted file does not meet the standard requirement of our challenge. The sample submit file can be referred to http://auto-video-captions.top/static/resource/result.zip. [video_id should be same with the test json file]"
+                            err_message += '\n\n'
+                            err_message += 'Best,\n'
+                            err_message += 'Organizing Committee'
+                            send_email(mail_list, message, time)  
+                            print('send email for fail', mail_list)                                            
+                            print(str(e))
 
 
 
