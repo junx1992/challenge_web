@@ -38,12 +38,12 @@ def send_email(member, message):
 
     smtp = smtplib.SMTP('localhost')
     msg = MIMEText(message, 'plain', 'utf-8')
-    msg['From'] = Header("Pre-training-Video-Captioning-Challenge<root@pre-training-captioning.top>")
+    msg['From'] = Header("Pre-training-Video-Captioning-Challenge<root@auto-video-captions.top>")
     msg['To'] = Header(member)
     msg['Subject'] = '[Pre-training-Video-Captioning-Challenge Notice]'
     print (member)
     try:
-        smtp.sendmail("root@pre-training-captioning.top", [member], msg.as_string())
+        smtp.sendmail("root@auto-video-captions.top", [member], msg.as_string())
         return 'ok'
     except:
         return 'error'

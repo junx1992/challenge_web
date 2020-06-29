@@ -1,3 +1,4 @@
+#-*-coding:utf-8-*-
 from pycocotools.coco import COCO
 from pycocoevalcap.eval import COCOEvalCap
 import matplotlib.pyplot as plt
@@ -6,7 +7,33 @@ from json import encoder
 import argparse
 import os
 
-black_id = '5e72f8d5718d130c92d3130c'
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
+
+mail = 'junx1992@gmail.com'
+
+
+class MongoDB:
+	def __init__(self):
+		from pymongo import MongoClient
+		self.con = MongoClient('localhost')
+		self.db = self.con.challenge
+
+def send_email(mail_list, message, time):
+    smtp = smtplib.SMTP('localhost')
+    msg = MIMEText(message, 'plain', 'utf-8')
+    msg['From'] = Header("Pre-training-Video-Captioning-Challenge<root@auto-video-captions.top>")
+    msg['To'] = Header(mail_list[0])
+    msg['Subject'] = '[Pre-training-Video-Captioning-Challenge Evaluation Result Notice '+ time + ']'
+    print (mail)
+    try:
+        smtp.sendmail("root@auto-video-captions.top", mail_list, msg.as_string())
+        print('send email success')
+        return 'ok'
+    except:
+        return 'error'
+        print('send failed')
 
 def unzip_folder(folder):
 	result_files = os.listdir(folder)
@@ -17,22 +44,76 @@ def unzip_folder(folder):
 			if not os.path.exists(tar_folder):
 				os.system('unzip {0} -d {1}'.format(result_file,tar_folder))
 
+def get_team_id_mail_mapping():
+    db = MongoDB().db
+    register_team = db.video
+    a = register_team.find()
+    import hashlib
+    name_mapping = {}
+    for item in a:
+        team_id = str(item['_id'])
+        mail_list = []
+        for member in item['member']:
+            mail_list.append(str(member['email']))
+        name_mapping[team_id] = mail_list
+    return name_mapping
+    
 if __name__=='__main__':
     annFile='./tmp/groundtruth/mm2020_test_sen.json'
     coco = COCO(annFile)
     folder = './tmp/result'
-    unzip_folder(folder)
-    sub_folders = [os.path.join(folder, o) for o in os.listdir(folder) if os.path.isdir(os.path.join(folder,o))]
-    for sub_folder in sub_folders:
-        performace_txt = os.path.join(sub_folder, 'performance.txt')
-        if black_id in sub_folder:
-            continue
-        if not os.path.exists(performace_txt):
-            resFiles = [resFile for resFile in os.listdir(sub_folder) if '.json' in resFile]
-            for resFile in resFiles:
-                print('Evaluate: ' + resFile)
-                cocoRes = coco.loadRes(os.path.join(sub_folder, resFile))
-                cocoEval = COCOEvalCap(coco, cocoRes)
-                cocoEval.evaluate()
-                with open(performace_txt, 'a') as fid:
-                    fid.write(resFile + ' ' + str(cocoEval.eval) + '\n')
+    while True:
+        unzip_folder(folder)
+        sub_folders = [os.path.join(folder, o) for o in os.listdir(folder) if os.path.isdir(os.path.join(folder,o))]
+        name_mapping = get_team_id_mail_mapping()
+        count_mapping = {}
+        for sub_folder in sub_folders:
+            if '_video_time_' in sub_folder:
+                base_name = os.path.basename(sub_folder)
+                index = base_name.index('_video_time')
+                team_id = base_name[0:index]
+                time = base_name[index+12:]
+                day_time = time[0:10]    
+                team_time_id = team_id + '_' +day_time
+                if not team_time_id in count_mapping:
+                    count_mapping[team_time_id] = 0 
+                performace_txt = os.path.join(sub_folder, 'performance.txt')
+                if os.path.exists(performace_txt):
+                    count_mapping[team_time_id] += 1 
+
+        for sub_folder in sub_folders:
+            if '_video_time_' in sub_folder: 
+                base_name = os.path.basename(sub_folder)
+                index = base_name.index('_video_time')
+                team_id = base_name[0:index]
+                time = base_name[index+12:]
+                day_time = time[0:10]    
+                team_time_id = team_id + '_' +day_time 
+                if not team_time_id in count_mapping:
+                    count_mapping[team_time_id] = 0            
+                mail_list = name_mapping[team_id]
+                performace_txt = os.path.join(sub_folder, 'performance.txt')
+                message = "Here is your evaluation result for " + time + "\n"
+                if not os.path.exists(performace_txt):
+                    if count_mapping[team_time_id] < 3:
+                        resFiles = [resFile for resFile in os.listdir(sub_folder) if '.json' in resFile]
+                        res_count = 0 
+                        for resFile in resFiles:
+                            if res_count < 3:
+                                print('Evaluate: ' + resFile)
+                                cocoRes = coco.loadRes(os.path.join(sub_folder, resFile))
+                                cocoEval = COCOEvalCap(coco, cocoRes)
+                                cocoEval.evaluate()
+                                with open(performace_txt, 'a') as fid:
+                                    fid.write(resFile + ' ' + str(cocoEval.eval) + '\n')
+                                    message += resFile + ' ' + str(cocoEval.eval) + '\n'
+                                res_count += 1
+                        message += '\n\n'
+                        message += 'Best,\n'
+                        message += 'Organizing Committee'                
+                        send_email(mail_list, message, time)
+                        count_mapping[team_time_id] += 1
+
+
+
+        
