@@ -65,7 +65,7 @@ if __name__=='__main__':
     while True:
         unzip_folder(folder)
         sub_folders = [os.path.join(folder, o) for o in os.listdir(folder) if os.path.isdir(os.path.join(folder,o))]
-        name_mapping = get_team_id_mail_mapping()
+        #name_mapping = get_team_id_mail_mapping()
         count_mapping = {}
         for sub_folder in sub_folders:
             if '_video_time_' in sub_folder:
@@ -91,7 +91,7 @@ if __name__=='__main__':
                 team_time_id = team_id + '_' +day_time 
                 if not team_time_id in count_mapping:
                     count_mapping[team_time_id] = 0            
-                mail_list = name_mapping[team_id]
+                #mail_list = name_mapping[team_id]
                 performace_txt = os.path.join(sub_folder, 'performance2.txt')
                 except_txt = os.path.join(sub_folder, 'exception.txt')
                 message = "Here is your evaluation result for " + time + "\n"
@@ -114,8 +114,8 @@ if __name__=='__main__':
                                 message += '\n\n'
                                 message += 'Best,\n'
                                 message += 'Organizing Committee'                
-                                send_email(mail_list, message, time)
-                                print('send email for success', mail_list)
+                                #send_email(mail_list, message, time)
+                                #print('send email for success', mail_list)
                                 count_mapping[team_time_id] += 1
                         except Exception as e:
                             with open(except_txt, 'w') as fh:
@@ -124,8 +124,8 @@ if __name__=='__main__':
                             err_message += '\n\n'
                             err_message += 'Best,\n'
                             err_message += 'Organizing Committee'
-                            send_email(mail_list, message, time)  
-                            print('send email for fail', mail_list)                                            
+                            #send_email(mail_list, message, time)  
+                            #print('send email for fail', mail_list)                                            
                             print(str(e))
 
 
