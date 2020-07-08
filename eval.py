@@ -77,7 +77,7 @@ if __name__=='__main__':
                 team_time_id = team_id + '_' +day_time
                 if not team_time_id in count_mapping:
                     count_mapping[team_time_id] = 0 
-                performace_txt = os.path.join(sub_folder, 'performance.txt')
+                performace_txt = os.path.join(sub_folder, 'performance2.txt')
                 if os.path.exists(performace_txt):
                     count_mapping[team_time_id] += 1 
 
@@ -92,7 +92,7 @@ if __name__=='__main__':
                 if not team_time_id in count_mapping:
                     count_mapping[team_time_id] = 0            
                 mail_list = name_mapping[team_id]
-                performace_txt = os.path.join(sub_folder, 'performance.txt')
+                performace_txt = os.path.join(sub_folder, 'performance2.txt')
                 except_txt = os.path.join(sub_folder, 'exception.txt')
                 message = "Here is your evaluation result for " + time + "\n"
                 if not os.path.exists(performace_txt):
