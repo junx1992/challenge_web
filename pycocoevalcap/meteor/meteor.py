@@ -21,14 +21,13 @@ class Meteor:
         self.env = os.environ
         self.env['LC_ALL'] = 'en_US.UTF_8'
         self.meteor_cmd = ['java', '-jar', '-Xmx2G', METEOR_JAR, \
-                '-', '-', '-stdio', '-l', 'en', '-norm', '-a', 'data/paraphrase-en.gz']
-        self.meteor_p = subprocess.Popen(' '.join(self.meteor_cmd), \
+                '-', '-', '-stdio', '-l', 'en', '-norm']
+        self.meteor_p = subprocess.Popen(self.meteor_cmd, \
                 cwd=os.path.dirname(os.path.abspath(__file__)), \
                 stdin=subprocess.PIPE, \
                 stdout=subprocess.PIPE, \
-                stderr=subprocess.PIPE, \
-                env=self.env, universal_newlines=True, bufsize=1,\
-                shell=True)
+                stderr=subprocess.PIPE,
+                env=self.env, universal_newlines=True, bufsize=1)
         # Used to guarantee thread safety
         self.lock = threading.Lock()
 
