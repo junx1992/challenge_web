@@ -103,6 +103,16 @@ def leaderboard_year(year):
         abort(404)
     return render_template('leaderboard.%s.html'%year)
 
+@app.route('/<year>/tmp', methods=['GET'])
+def tmp_year(year):
+    if year != '2016' and year != '2017' and year != '2020':
+        abort(404)
+    return render_template('leaderboard.%s.new.html'%year)
+
+@app.route('/tmp', methods=['GET'])
+def tmp():
+    return redirect('/2020/tmp')
+
 
 @app.route('/contact', methods=['GET'])
 def contact():

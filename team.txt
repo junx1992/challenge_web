@@ -1,0 +1,337 @@
+abc
+abc	junx1992@gmail.com	JD AIaa
+ddd	ddd	ddd
+
+
+
+123321
+123321	junx1992@gmail.com	123321
+
+
+
+VARMS
+Peter Pan	panyw.ustc@gmail.com	JD AI Research
+
+
+
+C-Team
+Zhi Li	1026193953@qq.com	1
+
+
+
+Debut
+Kele Xu	kelele.xu@Gmail.com	PDL
+Jianqiao Zhao	oxfordzhao@gmail.com	CSUT
+
+
+
+sysu_luojj26
+Jianjie Luo	luojj26@mail2.sysu.edu.cn	Sun Yat-sen University
+
+
+
+Jerry
+Jerry	junx1992@outlook.com	USTC
+
+
+
+test_send
+test_send	junx1992@gmail.com	test_send
+
+
+
+test_send2
+test_send	junx1992@outlook.com	test_send
+
+
+
+BIT
+Jing Ge	398817430@qq.com	Beijing Institute of Technology
+
+
+
+BAOJI
+Bao ji	panywei@mail.ustc.edu.cn	University of Science and Technology of China
+
+
+
+Happy!
+Sunshine	zhufangyi@bupt.edu.cn	Beijing University of Posts and Telecommunications
+
+
+
+ML-Labs@DCU
+Phuc K.H. Le	khac.le2@mail.dcu.ie	Dublin City University
+
+
+
+nikki
+nikki	jiaxin.wu@my.cityu.edu.hk	City University of Hong Kong
+
+
+
+MiG-Lab
+满天星	mtniu@stu.xidian.edu.cn	xidian
+
+
+
+MSVLPT
+ArrowLuo	hs_luo@qq.com	SWJTU
+
+
+
+CVTE-Research-DM
+Shuai Zhu	zhushuai@cvte.com	CVTE(Guangzhou Shiyuan Electronic Technology Co., Ltd)
+Zhi Li	lizhi@cvte.com	CVTE(Guangzhou Shiyuan Electronic Technology Co., Ltd)
+
+
+
+FDU
+Shaoxiang Chen	sxchen13@fudan.edu.cn	Fudan University
+
+
+
+longyuyang
+Longyu Yang	1651792@tongji.edu.cn	Tongji University
+
+
+
+MUST_Group
+Jianhaoyan	ryanyam524759288@gmail.com	MUST
+
+
+
+challenger
+xiangpeng li	xiangpengli.cs@gmail.com	University of Electronic Science and Technology of China
+
+
+
+vlr_alibaba_xwh
+eriche	eriche.hust@gmail.com	hust
+
+
+
+test_33
+test_33	junx1992@gmail.com	test_33
+
+
+
+test_44
+test_44	junx1992@outlook.com	test_44
+
+
+
+mima reader
+Ye Wu	helloworldyw@163.com	Shandong University
+Xiaoya Yin	15866689153@163.com	Shandong University
+Wenrui Cai	sdu_cwr@163.com	Shandong University
+Tianzi Niu	m15704613968@163.com	Shandong University
+Shanshan Dong	1105452718@qq.com	Shandong University
+
+
+
+PKU_AMIMA
+JinFa Huang	vhjf305@gmail.com	Peking University
+Lun Huang	huanglun@pku.edu.cn	Peking University
+
+
+
+Hailin Jin
+Hailin Jin	hljin@adobe.com	Adobe
+
+
+
+TJU_Storm
+Jianqiao An	anjianqiao@tju.edu.cn	Tianjin University
+
+
+
+IGNB
+王旭	wangxu1729@gmail.com	中科院软件所
+
+
+
+RUC_AIM3
+Shizhe Chen	cszhe1@ruc.edu.cn	Renmin University of China
+Yuqing Song	syuqing@ruc.edu.cn	Renmin University of China
+Yida Zhao	zyiday@ruc.edu.cn	Renmin University of China
+Qin Jin	qjin@ruc.edu.cn	Renmin University of China
+
+
+
+Debut2020
+Kele Xu	kelele.xu@gmail.com	School of Computer, NUDT
+
+
+
+UESTC_CFM
+is.pengpengzeng	gmail.com	uestc
+
+
+
+TUNSHOU
+XuWang	625021847@qq.com	北京信息科技大学
+
+
+
+NUAA_106
+WuBo	gjy1955@outlook.com	NUAA
+
+
+
+cse&sdu
+Wei Zhang	davidzhang@sdu.edu.cn	Shandong University
+Lin Ma	forest.linma@gmail.com	Tencent AI Lab
+Xinyu Lin	xylin1028@gmail.com	Shandong University
+Jiaming Chen	ppjmchen@gmail.com	Shandong University
+Donghui Mao	dhmao0516@gmail.com	Shandong University
+Jinfan Zhou	zhoujinfan1202@gmail.com	Shandong University
+Ziyu Meng	mziyu0813@gmail.com	Shandong University
+
+
+
+Try  our best
+Kaiyi Lin	lky.linkaiyi@gmail.com	msra
+
+
+
+死猪也得扶上树
+qiaoyixuan	1149501196@qq.com	BUAA_colab
+sxx	1136965276@qq.com	BUAA_colab
+
+
+
+TH-S
+Haoran Chen	chenhaoran.earth@live.com	Tsinghua University
+Huiran Yu	yuhuiran@gmail.com	Tsinghua University
+
+
+
+IVIPC-King
+Lanxiao Wang	lanxiao.wang@std.uestc.edu.cn	University of Electronic Science and Technology of China
+Chao Shang	shangc@std.uestc.edu.cn	University of Electronic Science and Technology of China
+Heqian Qiu	hqqiu@std.uestc.edu.cn	University of Electronic Science and Technology of China
+Taijin Zhao	zhtjww@std.uestc.edu.cn	University of Electronic Science and Technology of China
+Benliu Qiu	qbenliu@std.uestc.edu.cn	University of Electronic Science and Technology of China
+Hongliang Li	hlli@uestc.edu.cn	University of Electronic Science and Technology of China
+
+
+
+DeepBlueAI
+Luo Zhipeng	luozp@deepblueai.com	DeepBlue Technology (Shanghai) Co., Ltd
+Xu Zhenyu	xuzy@deepblueai.com	DeepBlue Technology (Shanghai) Co., Ltd
+Che Lixuan	chelx@deepblueai.com	DeepBlue Technology (Shanghai) Co., Ltd
+Zhang  Zhiguang	zhangzhg@deepblueai.com	DeepBlue Technology (Shanghai) Co., Ltd
+
+
+
+TheEarlyRisers
+Samuel	albanie@robots.ox.ac.uk	Univ. of Oxford
+
+
+
+UCAS_nobody
+Yajie Zhang	acdart@163.com	University of Chinese Academy of Sciences
+
+
+
+UNC
+Jie Lei	jielei@cs.unc.edu	UNC Chapel Hill
+
+
+
+njust_pcalab
+wuqianliang	wuqianliang@njust.edu.cn	njust
+
+
+
+rluo
+Ruotian Luo	rluo@ttic.edu	TTIC
+
+
+
+AiR
+Liqi Yan	yanliqi@westlake.edu.cn	Westlake University
+
+
+
+mengmeng
+mengyun	mengyun19950606@163.com	xidian university
+
+
+
+Insight-NUIG
+Bharathi Raja Chakravarthi	bharathi.raja@insight-centre.org	National University of Ireland Galway
+
+
+
+Hertz
+Sourya Dipta Das	dipta.juetce@gmail.com	Jadavpur University
+Shah Nisarg Anish	snisarg812@gmail.com	IIT Jodhpur
+Akash Deep Jassal 	akashdeepjassal1996@gmail.com	PEC
+
+
+
+Uni Augsburg
+Philipp Harzig	philipp.harzig@informatik.uni-augsburg.de	University of Augsburg
+
+
+
+sunchouliu
+孙乾	1156398179@qq.com	NUAA
+仇静博	qjbo_jade@163.com	NUAA
+刘振龙	dragonliu2018@gmail.com	NUAA
+
+
+
+hhh123
+Jun Yu	lyr123@mail.ustc.edu.cn	USTC
+Yongrui Li	1321884999@qq.com	USTC
+
+
+
+Old Boys
+Yiqing Huang	huang-yq17@mails.tsinghua.edu.cn	Tsinghua University Electric Engineering
+Siyu Xu	siyuhsu@qq.com	Shanghai Ocean University
+Qiuyu Cai	caiqiuyu@bupt.edu.cn	Beijing University of Post and Telecommunications
+
+
+
+Cai
+Qiuyu Cai	caiqiuyu@bupt.edu.cn	Beijing University of Posts and Telecommunications
+
+
+
+MM-visualteam
+weiyikang	1257399870@qq.com	tju
+wangzhirui	858932509@qq.com	tju
+liujian	1343791796@qq.com	tju
+
+
+
+qifeihhh
+Siyu Xu	siyuxu55@qq.com	No
+
+
+
+BUPTMM
+liukun	liu_kun@bupt.edu.cn	Beijing University of Posts and Telecommunications
+
+
+
+enjoy
+enjoy	1085141498@qq.com	didichuxing
+
+
+
+devy
+Hengxin Cai	308388063@qq.com	NUDT
+
+
+
+111222
+111222	junx1992@gmail.com	111222
+111222	junx1992@outlook.com	111222
+
+
+
