@@ -26,7 +26,7 @@ def index():
 
 @app.route('/<year>/', methods=['GET'])
 def index_year(year):
-    if year != '2016' and year != '2017' and year != '2020':
+    if year != '2016' and year != '2017' and year != '2020' and year != '2021':
         abort(404)
     return render_template('index.%s.html'%year)
 
