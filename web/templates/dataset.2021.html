@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Pre-training for Video Captioning Challenge</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="/static/css/main2021.css" />
+</head>
+<body>
+
+<!-- Header -->
+<header id="header">
+	<div class="inner">
+		<a href="/2021" class="logo">ACM MM 2020</a>
+		<nav id="nav">
+            <a href="/2021">Home</a>
+            <a href="/2021/people">People</a>
+            <a href="/2021/challenge">Challenge</a>
+            <a href="/2021/dataset">Dataset</a>
+            <!-- <a href="/2021/leaderboard">Evaluation</a> -->
+			
+		</nav>
+	</div>
+</header>
+<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+<!-- Main -->
+<section id="main" >
+	<div class="inner">
+		<header class="major special">
+			<h2>Details</h2>
+		</header>
+        <p>In the first track of pre-training for video captioning, we have released <a href="https://arxiv.org/pdf/2007.02375.pdf">action</a> for vision-language pre-training. The table below shows the statistics of ACTION dataset.:</p>
+        <table class="alt">
+            <thread>
+                <tr>
+                    <th>Dataset</th>
+                    <th>Context</th>
+                    <th>Source</th>
+                    <th>#Video</th>
+                    <th>#Sentence</th>
+                    <th>#Word</th>
+                    <th>Vocabulary</th>
+                </tr>
+            </thread>
+            <tbody>
+                <tr>
+                    <td><b>ACTION</b></td>
+                    <td>multi-category</td>
+                    <td>Automatic crawling from web</td>
+                    <td>213,078</td>
+                    <td>224,989</td>
+                    <td>2,291,565</td>
+                    <td>50,039</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <p>To formalize the task of pre-training for video captioning, we provide three datasets to the participants:<br>
+        &emsp;&emsp;&emsp;A pre-training dataset of ~220K GIF videos in ACTION. Each GIF video is equipped with one caption.<br>
+        &emsp;&emsp;&emsp;A training dataset of ~9.5K videos in MSR-VTT. Each video is annotated with 20 captions.<br>
+        &emsp;&emsp;&emsp;A validation dataset of ~0.5K videos in MSR-VTT. Each video is annotated with 20 captions.<br>
+        In addition to the datasets above, we will include a testing set of 60K <video, caption> pairs for evaluation. </p>
+
+        <p>In the second track of pre-training for video categorization, we are finalizing the pre-training video dataset (YOVO-3M) and will make it publically available in March 2021. Here we show the statistics of YOVO-3M dataset as following:</p>
+            <table class="alt">
+                <thread>
+                    <tr>
+                        <th>Dataset</th>
+                        <th>Facet</th>
+                        <th>Source</th>
+                        <th>Video Title</th>
+                        <th>#Category</th>
+                        <th>#Video</th>
+                    </tr>
+                </thread>
+                <tbody>
+                    <tr>
+                        <td><b>YOVO-3M</b></td>
+                        <td>multi-faceted</td>
+                        <td>Automatic crawling from web</td>
+                        <td>√</td>
+                        <td>2,015</td>
+                        <td>2,958,092</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>            
+        <p>To formalize the task of pre-training for video categorization, we provide four datasets to the participants:<br>
+            &emsp;&emsp;&emsp;•	A pre-training dataset of ~3M videos in YOVO-3M<br>
+            &emsp;&emsp;&emsp;•	A training dataset of ~50K videos in YOVO-Downstream.<br>
+            &emsp;&emsp;&emsp;•	A validation dataset of ~25K videos in YOVO-Downstream.<br>   
+            &emsp;&emsp;&emsp;•	A testing dataset of ~25K videos in YOVO-Downstream.<br>       
+        </p>
+  </div>
+</section>
+
+<section id='downloads'>
+    <div class="inner">
+        <header class="major special">
+            <h2>Downloads</h2>
+        </header>
+        <!-- <p>The video-sentence pairs in Auto-captions on GIF is <a href="/static/dataset/pre-training.zip">here</a>.</p>
+        <p>The <a href="/static/dataset/mm2020_test_no_sen.zip">test data</a> has been released! .) <br><br></p> -->
+        <p>Coming Soon!</p>
+    </div>
+</section>
+
+<!-- <section id='citations'>
+    <div class="inner">
+        <header class="major special">
+            <h2>Citations</h2>
+        </header>
+        <pre>
+<blockquote>@article{autogif2020,
+title={Auto-captions on GIF: A Large-scale Video-sentence Dataset for Vision-language Pre-training},
+author={Yingwei Pan and Yehao Li and Jianjie Luo and Jun Xu and Ting Yao and Tao Mei},
+journal={arXiv preprint arXiv:2007.02375},
+year={2020}}
+            
+@inproceedings{msrvtt,
+title={MSR-VTT: A Large Video Description Dataset for Bridging Video and Language},
+author={Jun Xu and Tao Mei and Ting Yao and Yong Rui},
+booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+year={2016}}</blockquote>
+        </pre>
+    </div>
+</section> -->
+
+
+<!-- Scripts -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/skel.min.js"></script>
+<script src="/static/js/util.js"></script>
+<script src="/static/js/main.js"></script>
+
+</body>
+</html>
