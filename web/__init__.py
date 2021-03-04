@@ -40,12 +40,12 @@ def people():
     #     return redirect('http://www.aut-video-captions.top/2017/people')
     # elif host.startswith('2020'):
     #     return redirect('http://www.aut-video-captions.top/2020/people')
-    return redirect('/2020/people')
+    return redirect('/2021/people')
 
 
 @app.route('/<year>/people', methods=['GET'])
 def people_year(year):
-    if year != '2016' and year != '2017' and year != '2020':
+    if year != '2016' and year != '2017' and year != '2020' and year != '2021':
         abort(404)
     return render_template('people.%s.html'%year)
 
@@ -59,11 +59,11 @@ def challenge():
     #     return redirect('http://www.aut-video-captions.top/2017/challenge')
     # elif host.startswith('2020'):
     #     return redirect('http://www.aut-video-captions.top/2020/challenge')
-    return redirect('/2017/challenge')
+    return redirect('/2021/challenge')
 
 @app.route('/<year>/challenge', methods=['GET'])
 def challenge_year(year):
-    if year != '2016' and year != '2017' and year != '2020':
+    if year != '2016' and year != '2017' and year != '2020' and year != '2021':
         abort(404)
     return render_template('challenge.%s.html'%year, random=random_str())
 
@@ -77,11 +77,11 @@ def dataset():
     #     return redirect('http://www.aut-video-captions.top/2017/dataset')
     # elif host.startswith('2020'):
     #     return redirect('http://www.aut-video-captions.top/2020/dataset')
-    return redirect('/2020/dataset')
+    return redirect('/2021/dataset')
 
 @app.route('/<year>/dataset', methods=['GET'])
 def dataset_year(year):
-    if year != '2016' and year != '2017' and year != '2020':
+    if year != '2016' and year != '2017' and year != '2020' and year != '2021':
         abort(404)
     return render_template('dataset.%s.html'%year)
 
@@ -99,7 +99,7 @@ def leaderboard():
 
 @app.route('/<year>/leaderboard', methods=['GET'])
 def leaderboard_year(year):
-    if year != '2016' and year != '2017' and year != '2020':
+    if year != '2016' and year != '2017' and year != '2020' and year != '2021':
         abort(404)
     return render_template('leaderboard.%s.html'%year)
 
@@ -128,7 +128,7 @@ def contact():
 
 @app.route('/<year>/team', methods=['GET'])
 def team_year(year):
-    if year != '2016' and year != '2017' and year != '2020':
+    if year != '2016' and year != '2017' and year != '2020' and year != '2021':
         abort(404)
     return render_template('team.%s.html'%year)
 
