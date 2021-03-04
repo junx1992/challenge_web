@@ -15,9 +15,20 @@
 		<nav id="nav">
 			<a href="/2021">Home</a>
 			<a href="/2021/people">People</a>
-			<a href="/2021/challenge">Challenge</a>
-			<a href="/2021/dataset">Dataset</a>
-			<!-- <a href="/2021/leaderboard">Evaluation</a>			 -->
+            <SELECT name="select" onchange="window.open(this.options[this.selectedIndex].value,target='_self')">
+                <OPTION value="/2021/challenge" selected>Challenge2021</OPTION>
+                <OPTION value='/2020/challenge'>Challenge2020</OPTION>
+                </SELECT>
+
+
+            <SELECT name="select" onchange="window.open(this.options[this.selectedIndex].value,target='_self')">
+                <OPTION value="/2021/dataset" selected>Dataset2021</OPTION>
+                <OPTION value='/2020/dataset'>Dataset2020</OPTION>
+                </SELECT>
+			<!-- <a href="/2021/challenge">Challenge</a>
+			<a href="/2021/dataset">Dataset</a> -->
+			
+            <!-- <a href="/2021/leaderboard">Evaluation</a>			 -->
 		</nav>
 	</div>
 </header>
