@@ -30,11 +30,11 @@
 		<header class="major special">
 			<h2>Task Description</h2>
 		</header>
-        <p>This year we will focus on two tasks, i.e., pre-training for video captioning downstream task and pre-training for video categorization downstream task.</p><br>
+        <p>This year we will focus on two tasks, i.e., pre-training for video captioning downstream task and pre-training for video categorization downstream task.</p>
         <p>In the first track, given the GIF videos and the corresponding captions in ACTION, the goal of pre-training is to learn a generic representation or structure that can better reflect the cross-modal interaction between visual content and textual sentence. The learnt generic representation or structure is further adapted to facilitate the downstream task of video captioning, i.e., describing video content with a complete and natural sentence.</p><br>
-        <p>The contestants are asked to develop video captioning system based on the ACTION dataset provided by the Challenge (as pre-training data) and the public MSR-VTT benchmark (as training data for downstream task). For the evaluation purpose, a contesting system is asked to produce at least one sentence of the test videos. The accuracy will be evaluated against human pre-generated sentence(s).</p><br>
+        <p>The contestants are asked to develop video captioning system based on the ACTION dataset provided by the Challenge (as pre-training data) and the public MSR-VTT benchmark (as training data for downstream task). For the evaluation purpose, a contesting system is asked to produce at least one sentence of the test videos. The accuracy will be evaluated against human pre-generated sentence(s).</p>
         <p>In the second track, given the YouTube videos and the corresponding searched queries & titles in YOVO-3M, the goal is to pre-train a generic video representation, which can be further leveraged to facilitate the downstream task of video categorization.</p><br>
-        <p>The contestants are asked to develop video categorization system based on the YOVO-3M dataset provided by the Challenge (as pre-training data) and the released YOVO-Downstream dataset (as training data for downstream task). For the evaluation purpose, a contesting system is asked to predict the category of the test videos. The accuracy will be evaluated against human annotated categories during evaluation stage.</p><br>
+        <p>The contestants are asked to develop video categorization system based on the YOVO-3M dataset provided by the Challenge (as pre-training data) and the released YOVO-Downstream dataset (as training data for downstream task). For the evaluation purpose, a contesting system is asked to predict the category of the test videos. The accuracy will be evaluated against human annotated categories during evaluation stage.</p>
     </div>
 </section>
 
@@ -81,27 +81,26 @@
 }
 
               </pre><br>
-              <pre class="prettyprint lang-py" class=>
-                {
-                  "version": "VERSION 1.3",
-                  "result":[
-                  {
-                    "video_id": "video2188",
-                    "category_id": 1
-                  },
-                  ...
-                  {
-                    "video_id": "video6822",
-                    "caption": 100
-                  }
-                  ],
-                  "pre-training_data":{
-                    "used": "true", <font color='brown'># Boolean flag. True indicates used of pre-trained data(i.e., Auto-captions on GIF).</font>
-                    "details": "First pre-train captioning model with YOVO-3M and then fine-tune it with YOVO-Downstream" <font color='brown'># String with details of how to train your models with pre-training data</font>
-                  }
-                }
-                
         <h3>Pre-training for Video Categorization Track</h3>
+              <pre class="prettyprint lang-py" class=>
+{
+  "version": "VERSION 1.3",
+  "result":[
+   {
+    "video_id": "video2188",
+    "category_id": 1
+    },
+    ...
+    {
+    "video_id": "video6822",
+    "caption": 100
+    }
+    ],
+    "pre-training_data":{
+    "used": "true", <font color='brown'># Boolean flag. True indicates used of pre-trained data(i.e., Auto-captions on GIF).</font>
+    "details": "First pre-train captioning model with YOVO-3M and then fine-tune it with YOVO-Downstream" <font color='brown'># String with details of how to train your models with pre-training data</font>
+    }
+}
 
               <p><b>Note: </b>comments in <font color='brown'>brown</font> are illustrative and help us to provide inline detailed explanations. Please avoid them in your sumisions.</p>
               <p>To help with better understanding the format of the submission text file, a sample submission can be seen <a href="/static/resource/result.zip">here</a>. Participants please strictly follow the submission format.<br>
