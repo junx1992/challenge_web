@@ -72,14 +72,21 @@ def register():
 		send_email("junx1992@gmail.com", msg)
 		print (msg)
 		msg_data = "Dear Team " + teamname + "\n\n"
-		msg_data += "Welcome to join in our challenge! This year, we provide a large-scale video-language pre-training dataset (Auto-captions on GIF) for solving the challenging but emerging vision-language pre-training task.\n\n"
-		msg_data += "============Pre-training data=============\n"
-		msg_data += "The link for downloading video-sentence pairs in Auto-captions on GIF is at http://auto-video-captions.top/static/dataset/pre-training.zip. Note that due to the copyright issue, we only provide the url link for each GIF officially and every team needs to crawl the GIFs by yourself. \n\n"
-		msg_data += "Another option is that as we know, one team from SYSU has downloaded all the original GIFs and shared the data at pan.baidu (https://pan.baidu.com/s/1oDLy86Msc05sB_VagYqyXg, pwd: 237m) and Google Drive (https://drive.google.com/drive/folders/1YXd2Qu1Nr_6l0ccgo9vN9NWlyWnXacXU?usp=sharing). You can directly capitalize on the off-the-shelf data as well.\n\n"
+		msg_data += "Welcome to join in our challenge! This year, we provide two large-scale video pre-training datasets (ACTION and YOVO-3M) for solving the challenging but emerging vision-language pre-training task.\n\n"
+		msg_data += "For the first track of pre-training for video captioning, the link for downloading video-sentence pairs in ACTION is at http://auto-video-captions.top/static/dataset/ACTION.annotation.json. Note that due to the copyright issue, we only provide the url link for each GIF officially and every team needs to crawl the GIFs by yourself.\n\n"
+		msg_data += "Another option is that as we know, one team from SYSU has downloaded all the original GIFs and shared the data at pan.baidu (https://pan.baidu.com/s/17zhXiDL-MNHG3lyCObKu8w, pwd: lzf0) and Google Drive (https://drive.google.com/drive/folders/13ZRb9_yfjUCt3JfJ6q1ibAcXYlLBtoFg?usp=sharing). You can directly capitalize on the off-the-shelf data as well.\n\n"
+		msg_data += "For the second track of pre-training for video categorization, the link for downloading videos in YOVO-3M and YOVO-Downstream is at http://auto-video-captions.top/static/dataset/Video-Pretrain-Data.zip and http://auto-video-captions.top/static/dataset/Video-Categorization-Data.zip, respectively. Note that due to the copyright issue, we only provide the url link for each YouTube video officially and every team needs to crawl the videos by yourself.\n\n"
+		msg_data += "Another option is that as we know, one team from USTC has downloaded all the original videos and shared the data at pan.baidu:  YOVO-3M (https://pan.baidu.com/s/1PPTPGbdxnAregXW26rQ-9g, pwd: pjo2) and YOVO-Downstream (https://pan.baidu.com/s/1SSOmUHi_jWOnsLctugtNwg, pwd: 6gj7). You can directly capitalize on the off-the-shelf data as well.\n\n"
 
-		msg_data += "============Testing data================\n"
-		msg_data += "Meanwhile, the testing set has been released now. The link for downloading testing videos is at http://auto-video-captions.top/static/dataset/mm2020_test_no_sen.zip. Note that due to the copyright issue, we only provide the url link for each video officially and every team needs to crawl the videos by yourself.\n"
-		msg_data += "One team from SYSU has downloaded all the original testing videos and shared the data at pan.baidu (https://pan.baidu.com/s/1fCxixaC0dy8LyveynH9L-A, pwd: gyd5) and Google Drive (https://drive.google.com/file/d/1rssqYU6WvxxBw3OCXtSc6opsLmtbWfJM/view?usp=sharing). You can directly capitalize on the off-the-shelf data as well.\n\n"
+
+
+		# msg_data += "============Pre-training data=============\n"
+		# msg_data += "The link for downloading video-sentence pairs in Auto-captions on GIF is at http://auto-video-captions.top/static/dataset/pre-training.zip. Note that due to the copyright issue, we only provide the url link for each GIF officially and every team needs to crawl the GIFs by yourself. \n\n"
+		# msg_data += "Another option is that as we know, one team from SYSU has downloaded all the original GIFs and shared the data at pan.baidu (https://pan.baidu.com/s/1oDLy86Msc05sB_VagYqyXg, pwd: 237m) and Google Drive (https://drive.google.com/drive/folders/1YXd2Qu1Nr_6l0ccgo9vN9NWlyWnXacXU?usp=sharing). You can directly capitalize on the off-the-shelf data as well.\n\n"
+
+		# msg_data += "============Testing data================\n"
+		# msg_data += "Meanwhile, the testing set has been released now. The link for downloading testing videos is at http://auto-video-captions.top/static/dataset/mm2020_test_no_sen.zip. Note that due to the copyright issue, we only provide the url link for each video officially and every team needs to crawl the videos by yourself.\n"
+		# msg_data += "One team from SYSU has downloaded all the original testing videos and shared the data at pan.baidu (https://pan.baidu.com/s/1fCxixaC0dy8LyveynH9L-A, pwd: gyd5) and Google Drive (https://drive.google.com/file/d/1rssqYU6WvxxBw3OCXtSc6opsLmtbWfJM/view?usp=sharing). You can directly capitalize on the off-the-shelf data as well.\n\n"
 		msg_data += "Best,\n"
 		msg_data += "Organizing Committee"
 		send_email(caption_email, msg_data)
