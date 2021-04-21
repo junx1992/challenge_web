@@ -1,44 +1,660 @@
 <!DOCTYPE html>
 <html lang="zh-CN" style="overflow-y: visible;">
   <head>
-    <title>Pre-training for Video Understanding Challenge</title>
+    <title>Pre-training for Video Captioning Challenge</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="/static/css/main2021.css" />
     <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" type="text/css" href="/static/js/google-code-prettify/prettify.css">
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/google-code-prettify/run_prettify.js"></script>
     <script src="/static/js/sprintf.js"></script>
+    <link rel="stylesheet" href="/static/css/main2021.css" />
     <style type="text/css">
+      .introduction {
+        font-size: 20px;
+      }
+
     </style>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        var nowpage = "";
+        var nowtitle = "";
+        var nowmemberid = 0;
+        var teamname;
+        var member;
+        $.getJSON("/api/getinfo",function(data,status){
+          if(data.res=="00000") {
+            var addhtml='<div style="float:right">\
+                      <p style="font-size:16px; margin-bottom: -2px;"><b>Welcome   %s</b></p>\
+                      <p style="font-size:15px; margin-top: 2px;">%s</p><br>\
+                      <button class="btn btn-primary" id="logout" style="float:right">Logout</button>\
+                      <div style="float:right">&nbsp;&nbsp;</div>\
+                      <div class="dropdown" style="float:right" >\
+                      <button id="submit-menu" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Submit<span class="caret"></span></button>\
+                      <ul class="dropdown-menu" aria-labelledby="submit-menu">\
+                      <li><a id="submit" style="cursor:pointer;">%s</a></li>\
+                      <li><a id="submit_report" style="cursor:pointer;"import>%s</a></li>\
+                      </ul>\
+                      </div>\
+                      <div style="float:right">&nbsp;&nbsp;</div>\
+                      <button class="btn btn-info" id="update" style="float:right">Update</button>\
+                    </div>';
+            var info=data.info;
+            teamname=info.teamname;
+            member=info.member;
+            var length=member.length;
+            var namelist=member[0].name
+            for (var i=1;i<length;i++) {
+              namelist = namelist + " " + member[i].name
+            }
+            var hasSubmit=info.hasSubmit;
+            var hasSubmitReport=info.hasSubmitReport;
+            var submitText = "";
+            var submitReportText = "";
+            if(hasSubmit==false)
+              submitText = "Submit Result";
+            else {
+              $("#download_submission").show();
+              submitText = "Resubmit Result";
+            }
+            if(hasSubmitReport==false)
+              submitReportText = "Submit Report";
+            else {
+              $("#download_report").show();
+              submitReportText = "Resubmit Report";
+            }
+            $("#video-head").append(sprintf(addhtml, teamname, namelist, submitText, submitReportText))
+          }
+          else {
+            var addhtml='<button class="btn btn-primary" id="video_register" style="float:right;">Register</button>\
+                    <div style="float:right">&nbsp;&nbsp;</div>\
+                    <button class="btn btn-success" id="video_login" style="float:right;">Login</button>\
+                    ';
+            $("#video-head").append(addhtml);
+          }
+        });
+
+        $(document).on("click", "#video_login", function(){
+          nowpage = "video";
+          nowtitle = "Pre-training for Video Captioning Challenge Login";
+          $("#login_title").text(nowtitle);
+          $(".login-main").show();
+          $(".login-forget").hide();
+          $("#login").modal("show");
+        });
+        $(document).on("click", "#video_register", function(){
+          nowpage = "video";
+          nowtitle = "Pre-training for Video Captioning Challenge Register";
+          $("#register_title").text(nowtitle);
+          $("#register").modal("show");
+          $("#register_member").empty();
+          nowmemberid = 1;
+          $("input").val("");
+        });
+        $(document).on("click", "#addmember", function(){
+          var addhtml = '<div class="form-group" id="member%d">\
+                <label class="control-label">Member %d</label>\
+                <div class="row">\
+                  <div class="col-md-4">\
+                    <input type="text" class="form-control" id="member%d_name" placeholder="name">\
+                  </div>\
+                  <div class="col-md-4">\
+                    <input type="email" class="form-control" id="member%d_email" placeholder="email">\
+                  </div>\
+                  <div class="col-md-4">\
+                    <input type="text" class="form-control" id="member%d_organization" placeholder="organization">\
+                  </div>\
+                </div>\
+              </div>';
+          $("#register_member").append(sprintf(addhtml,nowmemberid,nowmemberid,nowmemberid,nowmemberid,nowmemberid));
+          nowmemberid++;
+        });
+        $(document).on("click", "#deletemember", function(){
+          if(nowmemberid==1)
+            return;
+          $(sprintf("#member%d",nowmemberid-1)).remove();
+          nowmemberid--;
+        });
+        $(document).on("click", "#register_button", function(){
+
+          $(".has-error").find("span").remove();
+          $(".has-error").removeClass("has-error");
+          var flag = true;
+
+          var username = $("#username").val();
+          if(username == "") {
+            var parent = $("#username").parent();
+            var addhtml = '<span class="help-block">User name can not be empty</span>';
+            parent.append(addhtml);
+            parent.addClass("has-error");
+            flag = false;
+          }
+
+          var password = $("#password").val();
+          if(password == "") {
+            var parent = $("#password").parent();
+            var addhtml = '<span class="help-block">Password can not be empty</span>';
+            parent.append(addhtml);
+            parent.addClass("has-error");
+            flag = false;
+          }
+          else if(password.length<6){
+            var parent = $("#password").parent();
+            var addhtml = '<span class="help-block">The length of password should be longer than 6</span>';
+            parent.append(addhtml);
+            parent.addClass("has-error");
+            flag = false;
+          }
+
+          var password_repeat = $("#password-repeat").val();
+          if(password_repeat != password) {
+            var parent = $("#password-repeat").parent();
+            var addhtml = '<span class="help-block">The two passwords did not match</span>';
+            parent.append(addhtml);
+            parent.addClass("has-error");
+            flag = false;
+          }
+
+          var teamname = $("#teamname").val();
+          if(teamname == "") {
+            var parent = $("#teamname").parent();
+            var addhtml = '<span class="help-block">Team name can not be empty</span>';
+            parent.append(addhtml);
+            parent.addClass("has-error");
+            flag = false;
+          }
+
+          var caption_name = $("#caption_name").val();
+          var caption_email = $("#caption_email").val();
+          var caption_organization = $("#caption_organization").val();
+          if(caption_name==""||caption_email==""||caption_organization=="") {
+            var addhtml = '<span class="help-block">Please complete all the infomation</span>';
+            $("#caption").append(addhtml).addClass("has-error");
+            flag = false;
+          }
+
+          for(var i=1;i<nowmemberid;i++) {
+            var member_name = $(sprintf("#member%d_name",i)).val();
+            var member_email = $(sprintf("#member%d_email",i)).val();
+            var member_organization = $(sprintf("#member%d_organization",i)).val();
+            if(member_name==""||member_email==""||member_organization=="") {
+              var addhtml = '<span class="help-block">Please complete all the infomation</span>';
+              $(sprintf("#member%d",i)).append(addhtml).addClass("has-error");
+              flag = false;
+            }
+          }
+          if(flag==false)
+            return;
+
+          var para={
+            "challenge_type":nowpage,
+            "username":username,
+            "password":password,
+            "teamname":teamname,
+            "caption_name":caption_name,
+            "caption_email":caption_email,
+            "caption_organization":caption_organization,
+            "member_num":nowmemberid
+          }
+          for(var i=1;i<nowmemberid;i++){
+            var member_name = $(sprintf("#member%d_name",i)).val();
+            var member_email = $(sprintf("#member%d_email",i)).val();
+            var member_organization = $(sprintf("#member%d_organization",i)).val();
+            para[sprintf("member%d_name",i)]=member_name;
+            para[sprintf("member%d_email",i)]=member_email;
+            para[sprintf("member%d_organization",i)]=member_organization;
+          }
+
+          $(this).text("Registering...").addClass("disabled");
+          $.post("/api/register",para,function(data,status){
+            if(data.res=="00000"){
+              alert("register success");
+              window.location.reload();
+            }
+            else if(data.res=="10001"){
+              //
+            }
+            else if(data.res=="20001"){
+              var addhtml = '<span class="help-block">User name is unavailable</span>';
+              $("#username").parent().append(addhtml).addClass("has-error");
+            }
+            else if(data.res=="20002"){
+              var addhtml = '<span class="help-block">Team name is unavailable</span>';
+              $("#teamname").parent().append(addhtml).addClass("has-error");
+            }
+            else if(data.res=="20003"){
+              var place = data.place;
+              if(place==0){
+                var addhtml = '<span class="help-block">This member has been registered in another team</span>';
+                $("#caption").append(addhtml).addClass("has-error");
+              }
+              else{
+                var addhtml = '<span class="help-block">This member has been registered in another team</span>';
+                $(sprintf("#member%d",data.place)).append(addhtml).addClass("has-error");               
+              }
+            }
+            $("#register_button").text("Register").removeClass("disabled");
+          });
+
+        });
+        $(document).on("click", "#login_button", function(){
+          var flag = true;
+          var username=$("#login-username").val();
+          if(username == "") {
+            var parent = $("#login-username").parent();
+            var addhtml = '<span class="help-block">User name can not be empty</span>';
+            parent.append(addhtml);
+            parent.addClass("has-error");
+            flag = false;
+          }
+
+          var password=$("#login-password").val();
+          if(password == "") {
+            var parent = $("#login-password").parent();
+            var addhtml = '<span class="help-block">Password can not be empty</span>';
+            parent.append(addhtml);
+            parent.addClass("has-error");
+            flag = false;
+          }
+
+          if(flag==false){
+            return;
+          }
+          var para={
+            "challenge_type":nowpage,
+            "username":username,
+            "password":password
+          }
+          $.post("/api/login",para,function(data,status){
+            if(data.res=="00000") {
+              window.location.reload();
+            }
+            else if(data.res=="100001"){
+              //
+            }
+            else if(data.res=="30001") {
+              var addhtml = '<span class="help-block">Username or password error</span>';
+              $("#login-username").parent().append(addhtml).addClass("has-error");
+              $("#login-password").parent().append(addhtml).addClass("has-error");
+            }
+          });
+        });
+        $(document).on("focus","input",function(){
+          
+          $(".has-error").find("span").remove();
+          $(".has-error").removeClass("has-error");
+        });
+        $(document).on("click", "#logout", function(){
+          $.getJSON("/api/logout", function(data,status){
+            if(data.res=="00000"){
+              window.location.reload();
+            }
+          });
+        });
+        $(document).on("click", "#submit", function() {
+          nowpage = "video";
+          nowtitle = "Pre-training for Video Captioning Challenge Result Submit";
+          $("#submit_title").text(nowtitle);
+          $("#submit_progress").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
+          $("#submit_progress").hide();
+          $("#submit_description").text("");
+          $("#submit-modal").modal("show");
+        });
+        $(document).on("click", "#submit_select_button", function() {
+          $("#submit_real_file").click();
+        });
+        $(document).on("change", "#submit_real_file", function() {
+          var name = this.files[0].name;
+          var size = parseInt(this.files[0].size);
+          var d = "B";
+          if (size > 1024) {
+            size = size * 1.0 / 1024;
+            d = "KB";
+          }
+          if (size > 1024) {
+            size = size * 1.0 / 1024;
+            d = "MB";
+          }
+          $("#submit_description").text(sprintf("%s  %.2f%s",name,size,d));
+          $("#submit_progress").show();
+        });
+        $(document).on("click", "#submit_button", function() {
+          $("#submit_progress").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
+          $(this).addClass("disabled");
+          var files = $("#submit_real_file")[0].files;
+          var len = files.length;
+          var fd = new FormData();
+          fd.append('file', files[0]);
+          $.ajax({
+            url:"/api/submit",
+            type:"POST",
+            data:fd,
+            processData:false,
+            contentType:false,
+            xhr:function() {
+              var xhrobj = $.ajaxSettings.xhr();
+              if (xhrobj.upload) {
+                xhrobj.upload.addEventListener("progress", function(event) {
+                  var percent = 0;
+                  var position = event.loaded || event.position;
+                  var total = event.total || event.totalSize;
+                  if (event.lengthComputable) {
+                    percent = Math.ceil(position * 1.0 / total * 100);
+                  }
+                  $("#submit_progress").find(".progress-bar").attr("style",sprintf("min-width:2em;width:%d%%", percent)).attr("aria-valuenow", sprintf("%d", percent)).text(sprintf("%d%%", percent));
+                });
+              }
+              return xhrobj;
+            },
+            success: function() {
+              $("#submit_progress>.progress-bar").addClass("progress-bar-success");
+              alert("submit successful");
+              $("#submit_button").removeClass("disabled");
+              $("#submit-modal").modal("hide");
+              $("#submit").text("Resubmit Result");
+              $("#download_submission").show();
+            }
+          })
+        });
+
+        $(document).on("click", "#submit_report", function() {
+          nowpage = "video";
+          nowtitle = "Pre-training for Video Captioning Challenge Report Submit";
+          $("#submit_report_title").text(nowtitle);
+          $("#submit_report_progress").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
+          $("#submit_report_progress").hide();
+          $("#submit_report_description").text("");
+          $("#submit-report-modal").modal("show");
+        });
+        $(document).on("click", "#submit_report_select_button", function() {
+          $("#submit_report_real_file").click();
+        });
+        $(document).on("change", "#submit_report_real_file", function() {
+          var name = this.files[0].name;
+          var size = parseInt(this.files[0].size);
+          var d = "B";
+          if (size > 1024) {
+            size = size * 1.0 / 1024;
+            d = "KB";
+          }
+          if (size > 1024) {
+            size = size * 1.0 / 1024;
+            d = "MB";
+          }
+          $("#submit_report_description").text(sprintf("%s  %.2f%s",name,size,d));
+          $("#submit_report_progress").show();
+        });
+        $(document).on("click", "#submit_report_button", function() {
+          $("#submit_report_progress").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
+          $(this).addClass("disabled");
+          var files = $("#submit_report_real_file")[0].files;
+          var len = files.length;
+          var fd = new FormData();
+          fd.append('file', files[0]);
+          $.ajax({
+            url:"/api/submit_report",
+            type:"POST",
+            data:fd,
+            processData:false,
+            contentType:false,
+            xhr:function() {
+              var xhrobj = $.ajaxSettings.xhr();
+              if (xhrobj.upload) {
+                xhrobj.upload.addEventListener("progress", function(event) {
+                  var percent = 0;
+                  var position = event.loaded || event.position;
+                  var total = event.total || event.totalSize;
+                  if (event.lengthComputable) {
+                    percent = Math.ceil(position * 1.0 / total * 100);
+                  }
+                  $("#submit_report_progress").find(".progress-bar").attr("style",sprintf("min-width:2em;width:%d%%", percent)).attr("aria-valuenow", sprintf("%d", percent)).text(sprintf("%d%%", percent));
+                });
+              }
+              return xhrobj;
+            },
+            success: function() {
+              $("#submit_report_progress>.progress-bar").addClass("progress-bar-success");
+              alert("submit successful");
+              $("#submit_report_button").removeClass("disabled");
+              $("#submit-report-modal").modal("hide");
+              $("#submit_report").text("Resubmit Report");
+              $("#download_report").show();
+            }
+          })
+        });
+        $(document).on("click", "#update", function(){
+          nowpage = "video";
+          $("#update-modal").modal("show");
+          $("#update-teamname").val(teamname);
+          $("#update-caption-name").val(member[0].name);
+          $("#update-caption-email").val(member[0].email);
+          $("#update-caption-organization").val(member[0].organization);
+          var length = member.length;
+          nowmemberid = 1;
+          var addhtml = '<div class="form-group" id="update-member%d">\
+                <label class="control-label">Member %d</label>\
+                <div class="row">\
+                  <div class="col-md-4">\
+                    <input type="text" class="form-control" id="update-member%d_name" placeholder="name">\
+                  </div>\
+                  <div class="col-md-4">\
+                    <input type="email" class="form-control" id="update-member%d_email" placeholder="email">\
+                  </div>\
+                  <div class="col-md-4">\
+                    <input type="text" class="form-control" id="update-member%d_organization" placeholder="organization">\
+                  </div>\
+                </div>\
+              </div>';
+          while (nowmemberid < length) {
+            $("#update-member").append(sprintf(addhtml, nowmemberid, nowmemberid, nowmemberid, nowmemberid, nowmemberid));
+            $(sprintf("#update-member%d_name", nowmemberid)).val(member[nowmemberid].name);
+            $(sprintf("#update-member%d_email", nowmemberid)).val(member[nowmemberid].email);
+            $(sprintf("#update-member%d_organization", nowmemberid)).val(member[nowmemberid].organization);
+            nowmemberid++;
+          }
+        });
+        $(document).on("click", "#update-addmember", function(){
+          var addhtml = '<div class="form-group" id="update-member%d">\
+                <label class="control-label">Member %d</label>\
+                <div class="row">\
+                  <div class="col-md-4">\
+                    <input type="text" class="form-control" id="update-member%d_name" placeholder="name">\
+                  </div>\
+                  <div class="col-md-4">\
+                    <input type="email" class="form-control" id="update-member%d_email" placeholder="email">\
+                  </div>\
+                  <div class="col-md-4">\
+                    <input type="text" class="form-control" id="update-member%d_organization" placeholder="organization">\
+                  </div>\
+                </div>\
+              </div>';
+          $("#update-member").append(sprintf(addhtml,nowmemberid,nowmemberid,nowmemberid,nowmemberid,nowmemberid));
+          nowmemberid++;
+        });
+        $(document).on("click", "#update-deletemember", function(){
+          if(nowmemberid==1)
+            return;
+          $(sprintf("#update-member%d",nowmemberid-1)).remove();
+          nowmemberid--;
+        });
+        $(document).on("click", "#update_button", function(){
+          $(".has-error").find("span").remove();
+          $(".has-error").removeClass("has-error");
+          var flag = true;
+
+          var teamname = $("#update-teamname").val();
+          if (teamname == "") {
+            var parent = $("#update-teamname").parent();
+            var addhtml = '<span class="help-block">Team name can not be empty</span>';
+            parent.append(addhtml);
+            parent.addClass("has-error");
+            flag = false;
+          }
+
+          var caption_name = $("#update-caption-name").val();
+          var caption_email = $("#update-caption-email").val();
+          var caption_organization = $("#update-caption-organization").val();
+          if(caption_name==""||caption_email==""||caption_organization=="") {
+            var addhtml = '<span class="help-block">Please complete all the infomation</span>';
+            $("#update-caption").append(addhtml).addClass("has-error");
+            flag = false;
+          }
+
+          for(var i=1;i<nowmemberid;i++) {
+            var member_name = $(sprintf("#update-member%d_name",i)).val();
+            var member_email = $(sprintf("#update-member%d_email",i)).val();
+            var member_organization = $(sprintf("#update-member%d_organization",i)).val();
+            if(member_name==""||member_email==""||member_organization=="") {
+              var addhtml = '<span class="help-block">Please complete all the infomation</span>';
+              $(sprintf("#member%d",i)).append(addhtml).addClass("has-error");
+              flag = false;
+            }
+          }
+          if(flag==false)
+            return;
+
+          var para={
+            "challenge_type":nowpage,
+            "teamname":teamname,
+            "caption_name":caption_name,
+            "caption_email":caption_email,
+            "caption_organization":caption_organization,
+            "member_num":nowmemberid
+          }
+          for(var i=1;i<nowmemberid;i++){
+            var member_name = $(sprintf("#update-member%d_name",i)).val();
+            var member_email = $(sprintf("#update-member%d_email",i)).val();
+            var member_organization = $(sprintf("#update-member%d_organization",i)).val();
+            para[sprintf("member%d_name",i)]=member_name;
+            para[sprintf("member%d_email",i)]=member_email;
+            para[sprintf("member%d_organization",i)]=member_organization;
+          }
+
+          $(this).text("Updating...").addClass("disabled");
+          $.post("/api/update",para,function(data,status){
+            if(data.res=="00000"){
+              alert("update success");
+              window.location.reload();
+            }
+            else if(data.res=="10001"){
+              //
+            }
+            else if(data.res=="20002"){
+              var addhtml = '<span class="help-block">Team name is unavailable</span>';
+              $("#update-teamname").parent().append(addhtml).addClass("has-error");
+            }
+            else if(data.res=="20003"){
+              var place = data.place;
+              if(place==0){
+                var addhtml = '<span class="help-block">This member has been registered in another team</span>';
+                $("#update-caption").append(addhtml).addClass("has-error");
+              }
+              else{
+                var addhtml = '<span class="help-block">This member has been registered in another team</span>';
+                $(sprintf("#update-member%d",data.place)).append(addhtml).addClass("has-error");               
+              }
+            }
+            $("#update_button").text("Update ").removeClass("disabled");
+          });
+        });
+        $(document).on("click", "#login-forget-btn", function(){
+          $(".login-forget").show();
+          $(".login-main").hide();
+        });
+        $(document).on("click", "#login-forget-send", function(){
+          $(".has-error").find("span").remove();
+          $(".has-error").removeClass("has-error");
+          var flag = true;
+
+          var team_name = $("#login-forget-teamname").val();
+          if (team_name == "") {
+            var parent = $("#login-forget-caption").parent();
+            var addhtml = '<span class="help-block">Team name can not be empty</span>';
+            parent.append(addhtml);
+            parent.addClass("has-error");
+            flag = false;
+          }
+
+          var caption_name = $("#login-forget-caption").val();
+          if (caption_name == "") {
+            var parent = $("#login-forget-caption").parent();
+            var addhtml = '<span class="help-block">Cpation name can not be empty</span>';
+            parent.append(addhtml);
+            parent.addClass("has-error");
+            flag = false;
+          }
+
+          var caption_email = $("#login-forget-caption-email").val();
+          if (caption_email == "") {
+            var parent = $("#login-forget-caption-email").parent();
+            var addhtml = '<span class="help-block">Cpation email can not be empty</span>';
+            parent.append(addhtml);
+            parent.addClass("has-error");
+            flag = false;
+          }
+
+          if (flag == false)
+            return;
+
+          var para = {
+            "challenge_type":nowpage,
+            "team_name":team_name,
+            "caption_name":caption_name,
+            "caption_email":caption_email
+          }
+          $.post("/api/changepassword", para, function(data, status){
+            if (data.res=="00000") {
+              alert(sprintf("We have sent an reset email to %s, please check it", caption_email))
+              $("#login").modal('hide')
+            }
+            else if (data.res=="10001") {
+              //
+            }
+            else if (data.res=="60001") {
+              alert("Team Name does not match to Captain Information")
+            }
+          });
+        });
+         $("#video_button").click(function(){
+            $("#video_non_overview").fadeOut();
+            $("#video_overview").fadeIn();
+            $(this).addClass("active");
+            $("#video_year_2017").removeClass("active");
+            $("#video_title").html("Pre-training for Video Captioning Challenge");
+          });
+        $("#video_year_2017").click(function(){
+          $("#video_overview").fadeOut();
+          $("#video_non_overview").fadeIn();
+          $(this).addClass("active");
+          $("#video_button").removeClass("active");
+          $("#video_title").html("Pre-training for Video Captioning Challenge");
+        });
+      });
+    </script>
   </head>
   <body>
-      <nav class="navbar navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-            <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-          </button>
-          <!-- <a class="navbar-brand" href="/">
-            Multimedia
-          </a> -->
+
+    <header id="header">
+        <div class="inner">
+            <a href="/2021" class="logo">ACM MM 2021</a>
+            <nav id="nav">
+                <a href="/2021">Home</a>
+                <a href="/2021/people">People</a>
+                <a href="/2021/challenge">Challenge</a>
+                <a href="/2021/dataset">Dataset</a>
+                <a href="/2021/leaderboard">Evaluation</a>
+            </nav>
         </div>
-<div class="collapse navbar-collapse" id="menu">
-        <ul class="nav navbar-nav navbar-right">
-            <a href="/2021">Home</a>
-            <a href="/2021/people">People</a>
-            <a href="/2021/challenge">Challenge</a>
-            <a href="/2021/dataset">Dataset</a>
-            <a href="/2021/leaderboard">Evaluation</a>
-          <!-- <li><a href="/2020/contact">Contact</a></li> -->
-        </ul>
-      </div>
-</div>
-    </nav>
+    </header>
+    <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+
     <div class="container">
+        
       <div class="row">
         <div class="col-md-3">
           <br><br><br><br>
@@ -50,145 +666,358 @@
             Fine-grained Image Recognition Challenge
             </a> -->
             <a id="video_button" class="list-group-item" style="cursor:pointer">
+            Video to Language Challenge
+            </a>
+
+            <a class="list-group-item" href="http://ms-multimedia-challenge.com/2017/challenge">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2017
+            </a>
+            <a class="list-group-item" href="http://ms-multimedia-challenge.com/2016/challenge">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2016
+            </a>
+            <a id="auto_button" class="list-group-item" style="cursor:pointer">
               Pre-training for Video Captioning Challenge
               </a>
-  
-              <a class="list-group-item" href="http://ms-multimedia-challenge.com/2017/challenge">
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2017
-              </a>
-              <a class="list-group-item" href="http://ms-multimedia-challenge.com/2016/challenge">
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2016
-              </a>
-              <a id="auto_button" class="list-group-item" style="cursor:pointer">
+            <a class="list-group-item active" href="http://www.auto-video-captions.top">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2020
+            </a>
+            <!-- <a href="#auto-captions" aria-controls="qa" role="tab" data-toggle="tab" class="list-group-item active">
                 Pre-training for Video Captioning Challenge
-                </a>
-              <a class="list-group-item active" href="http://www.auto-video-captions.top">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2020
-              </a>
-              <!-- <a href="#auto-captions" aria-controls="qa" role="tab" data-toggle="tab" class="list-group-item active">
-                  Pre-training for Video Captioning Challenge
-              </a> -->
-  
-              <!-- <a href="#qa" aria-controls="qa" role="tab" data-toggle="tab" class="list-group-item disabled">
-              Multimedia Q&amp;A Challenge
-              </a> -->
-  
-              <!-- <a href="#qa" aria-controls="qa" role="tab" data-toggle="tab" class="list-group-item disabled">
-              Multimedia Q&amp;A Challenge
-              </a> -->
+            </a> -->
+
+            <!-- <a href="#qa" aria-controls="qa" role="tab" data-toggle="tab" class="list-group-item disabled">
+            Multimedia Q&amp;A Challenge
+            </a> -->
           </div>
         </div>
         <div class="col-md-9">
-          <div class="paenl panel-default">
+          <div class="panel panel-default">
             <div class="panel-body">
               <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="video">
-                </div>
-                <h4>The Leaderboard is coming soon ...... </h4>
-                <!-- <br>
-                <div>
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#m1" aria-controls="m1" role="tab" data-toggle="tab">M1</a></li>
-                    <li role="presentation"><a href="#m2" aria-controls="m2" role="tab" data-toggle="tab">M2</a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade active in" id="m1">
-                      <table class="table table-bordered table-striped table-hover">
-                        <tr>
-                          <th>Rank
-                          </th>
-                          <th>Team
-                          </th>
-                          <th>Organization
-                          </th>
-                          <th>BLEU@4
-                          </th>
-                          <th>Meteor
-                          </th>
-                          <th>CIDEr-D
-                          </th>
-                          <th>ROUGE-L
-                          </th>
-                        </tr>
-<tr><td>1</td><td>RUC+CMU_V2T</td><td>RUC&nbsp;&amp;&nbsp;CMU</td><td>0.390</td><td>0.255</td><td>0.315</td><td>0.542</td></tr>
-<tr><td>2</td><td>TJU_Media</td><td>TJU</td><td>0.359</td><td>0.226</td><td>0.249</td><td>0.515</td></tr>
-<tr><td>3</td><td>NII</td><td>National&nbsp;Institute&nbsp;of&nbsp;Informatics</td><td>0.359</td><td>0.234</td><td>0.231</td><td>0.514</td></tr>
-<tr><td>4</td><td>MIC_TJU</td><td>Tongji&nbsp;University</td><td>0.351</td><td>0.226</td><td>0.236</td><td>0.509</td></tr>
-<tr><td>5</td><td>Illusion</td><td>IIT&nbsp;Delhi</td><td>0.304</td><td>0.213</td><td>0.206</td><td>0.494</td></tr>
-<tr><td>6</td><td>LVIC_AS</td><td>CEA&nbsp;LIST</td><td>0.289</td><td>0.203</td><td>0.175</td><td>0.487</td></tr>
-<tr><td>7</td><td>TJU-NUS</td><td>TJU&nbsp;&amp;&nbsp;NUS</td><td>0.265</td><td>0.191</td><td>0.151</td><td>0.456</td></tr>
-<tr><td>8</td><td>AFRL</td><td>AFRL</td><td>0.240</td><td>0.186</td><td>0.160</td><td>0.427</td></tr>
-
-                      </table>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="m2">
-                      <table class="table table-bordered table-striped table-hover">
-                        <tr>
-                          <th>Rank</th>
-                          <th>Team</th>
-                          <th>Organization</th>
-                          <th>C1</th>
-                          <th>C2</th>
-                          <th>C3</th>
-                        </tr>
-<tr><td>1</td><td>RUC+CMU_V2T</td><td>RUC&nbsp;&amp;&nbsp;CMU</td><td>4.437</td><td>3.437</td><td>3.567</td></tr>
-<tr><td>2</td><td>NII</td><td>National&nbsp;Institute&nbsp;of&nbsp;Informatics</td><td>4.078</td><td>3.359</td><td>3.570</td></tr>
-<tr><td>3</td><td>TJU_Media</td><td>TJU</td><td>4.032</td><td>2.962</td><td>3.048</td></tr>
-<tr><td>4</td><td>MIC_TJU</td><td>Tongji&nbsp;University</td><td>3.844</td><td>2.789</td><td>2.978</td></tr>
-<tr><td>4</td><td>Illusion</td><td>IIT&nbsp;Delhi</td><td>4.042</td><td>2.583</td><td>2.921</td></tr>
-<tr><td>6</td><td>TJU-NUS</td><td>TJU&nbsp;&amp;&nbsp;NUS</td><td>3.762</td><td>2.364</td><td>2.376</td></tr>
-<tr><td>7</td><td>AFRL</td><td>AFRL</td><td>3.109</td><td>2.343</td><td>2.411</td></tr>
-<tr><td>8</td><td>LVIC_AS</td><td>CEA&nbsp;LIST</td><td>3.477</td><td>2.322</td><td>2.321</td></tr>
-
-                      </table>
-                    </div>
+                  <div id="video-head">
+                    <h2 style="display: inline;" id="video_title">
+                    Pre-training for Video Captioning Challenge
+                    </h2>
+                    <!-- <div style="float:right">
+                      <h5>Welcome   HAHA</h5>
+                      <p>aaaa dddd dddd dddd dddd</p>
+                      <p style="float:right"><a id="logout">Logout</a></p>
+                    </div> -->
+                    <!-- <button class="btn btn-primary" id="video_register" style="float:right;">Register</button>
+                    <div style="float:right">&nbsp;&nbsp;</div>
+                    <button class="btn btn-success" id="video_login" style="float:right;">Login</button> -->
                   </div>
-                </div> -->
-                <hr>
-                <h3>Metrics</h3>
-                <br>
-                <p>We computed multiple common metrics, including BLEU@4, METEOR, ROUGE-L, and CIDEr-D. The performances of the primary run from each team are measured for comparison across teams. The results of all runs can be downloaded <a href="/static/resource/all_run_2017.xlsx">here</a>.</p>
-                <p>In addition, we will carry out the human evaluation of the systems submitted to this challenge on a subset of the testing set. Human were asked to rank the generated sentences of the primary run from each team and a reference sentence from 1 to 5 (lower - better) with respect to the following criteria.</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:26px;">&middot;</b>&nbsp;&nbsp;&nbsp;&nbsp;<b>Coherence</b>: &nbsp;&nbsp;judge the logic and readability of the sentence.</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:26px;">&middot;</b>&nbsp;&nbsp;&nbsp;&nbsp;<b>Relevance</b>: &nbsp;&nbsp;whether the sentence contains the more relevant and important objects/actions/events in the video clip?</p>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:26px;">&middot;</b>&nbsp;&nbsp;&nbsp;&nbsp;<b>Helpful for blind (additional criteria)</b>: &nbsp;&nbsp;how helpful would the sentence be for a blind person to understand what is happening in this video clip?</p>
-                <br>
-                <table class="table table-bordered table-striped">
-                  <tr>
-                    <td>M1</td>
-                    <td>BLEU@4, METEOR, ROUGE-L, CIDEr-D and SPICE</td>
-                  </tr>
-                  <tr>
-                    <td>M2</td>
-                    <td>Human evaluation of the captions in terms of Coherence, Relevance, and helpful for blind on a scale of 1-5 (lower - better)</td>
-                  </tr>
-                </table>
-                <hr>
-                <h3>Ranking</h3>
-                <br>
-                <p>The ranking for the competition is based on the results from M1 and M2, respectively. Specifically, a rank list of teams is produced by sorting their scores on each M1 evaluation metric, respectively. The final rank of a team is measured by combining its ranking positions in the four ranking list and defined as:</p>
-                <p><i>R</i>(team) = <i>R</i>(team)@BLEU@4 + <i>R</i>(team)@METEOR + <i>R</i>(team)@ROUGE-L + <i>R</i>(team)@CIDEr-D + <i>R</i>(team)@SPICE.</p>
-                <p>where <i>R</i>(team) is the rank position of the team, e.g., if the team achieves the best performance in terms of BLEU@4, thenR(team)@BLEU@4 is "1". The smaller the final ranking, the better the performance.</p>
-                <p>Similar in spirit, we will linearly fuse the scores of human evaluation on Coherence, Relevance and Helpful for Blind (in a scale of 1-5) for each team. The final score of each team is given by:</p>
-                <p><i>S</i>(team) = <i>S</i>(team)@Coherence + <i>S</i>(team)@Relevance + <i>S</i>(team)@Helpful for Blind.</p>
-                <p>The larger the score, the better the performance.</p>
-                <p>We finally rank all the participants in two separate lists, one in terms of R(team) and the other S(team).</p>
-                <br>
-                <table class="table table-bordered table-striped">
-                  <tr>
-                    <td>M1</td>
-                    <td><i>R</i>(team) = <i>R</i>(team)@BLEU@4 + <i>R</i>(team)@METEOR + <i>R</i>(team)@ROUGE-L + <i>R</i>(team)@CIDEr-D + <i>R</i>(team)@SPICE</td>
-                  </tr>
-                  <tr>
-                    <td>M2</td>
-                    <td><i>S</i>(team) = <i>S</i>(team)@Coherence + <i>S</i>(team)@Relevance + <i>S</i>(team)@Helpful for Blind</td>
-                  </tr>
-                </table>
+                </div>
+              <br>
+              <br>
+              <hr>
+
+
+
+              <div id="video_non_overview">
+                    <div class="inner">
+                        <header class="major special">
+                            <h2>Leaderboard (Top-3 Winners)</h2>
+                        </header>
+                        <div class="table-wrapper">
+                          <table class="alt">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>Team Name</th>
+                                <th>Affiliation</th>
+                                <th>BLEU@4</th>
+                                <th>METEOR</th>
+                                <th>CIDEr-D</th>
+                                <th>SPICE</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>1</td>
+                                <td>Old Boys</td>
+                                <td>Tsinghua University,<br>
+                                    Beijing University of Posts and Telecommunications,<br>
+                                    Shanghai Ocean University</td>
+                                <td>21.14</td>
+                                <td>17.38</td>
+                                <td>24.42</td>
+                                <td>5.65</td>
+                              </tr>
+                              <tr>
+                                <td>2</td>
+                                <td>sysu-cs</td>
+                                <td>Sun Yat-sen University</td>
+                                <td>20.41</td>
+                                <td>17.02</td>
+                                <td>23.80</td>
+                                <td>5.39</td>
+                              </tr>
+                              <tr>
+                                <td>3</td>
+                                <td>IVIPC-King</td>
+                                <td>University of Electronic Science and Technology of China</td>
+                                <td>18.24</td>
+                                <td>16.46</td>
+                                <td>21.36</td>
+                                <td>5.25</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
+
+                    <div class="inner">
+                        <header class="major special">
+                            <h2>Metrics</h2>
+                        </header>
+                        <p>We computed multiple common metrics, including BLEU@4, METEOR, CIDEr-D and SPICE. The best-performing run from each team is taken into account for comparison across teams. </p>
+                    </div>
+
+                    <div class="inner">
+                        <header class="major special">
+                            <h2>Ranking</h2>
+                        </header>
+                        <p>The ranking for the competition is based on the results from above metrics, respectively. Specifically, a rank list of teams is produced by sorting their scores on each metric. The final rank of a team is measured by combining its ranking positions in the four ranking list and defined as:<br>
+                            &emsp;&emsp;<i>R</i>(team) = <i>R</i>(team)@BLEU@4 + <i>R</i>(team)@METEOR + <i>R</i>(team)@CIDEr-D + <i>R</i>(team)@SPICE.<br>
+                        where <i>R</i>(team) is the rank position of the team, e.g., if the team achieves the best performance in terms of BLEU@4, thenR(team)@BLEU@4 is "1". The smaller the final ranking, the better the performance.</p>
+                   </div>    
+                   
+                   <div class="inner">
+                     <header class="major special">
+                       <h2>Citations</h2> 
+                     </header>
+                     <pre>
+<blockquote>@article{autogif2020,
+title={Auto-captions on GIF: A Large-scale Video-sentence Dataset for Vision-language Pre-training},
+author={Yingwei Pan and Yehao Li and Jianjie Luo and Jun Xu and Ting Yao and Tao Mei},
+journal={arXiv preprint arXiv:2007.02375},
+year={2020}}
+                                    
+@inproceedings{msrvtt,
+title={MSR-VTT: A Large Video Description Dataset for Bridging Video and Language},
+author={Jun Xu and Tao Mei and Ting Yao and Yong Rui},
+booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+year={2016}}</blockquote></pre>
+                   </div>
               </div>
+                </div>
+              </div>
+              
+
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="register" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="register_title"></h4>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="return false;">
+              <div class="form-group">
+                <label class="control-label" for="username">Username</label>
+                <input type="text" class="form-control" id="username">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="password">Password</label>
+                <input type="password" class="form-control" id="password">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="password-repeat">Password Repeat</label>
+                <input type="password" class="form-control" id="password-repeat">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="teamname">Team Name</label>
+                <input type="text" class="form-control" id="teamname">
+              </div>
+              <div class="form-group" id="caption">
+                <label class="control-label" >Captain</label>
+                <div class="row">
+                  <div class="col-md-4">
+                    <input type="text" class="form-control" id="caption_name" placeholder="name">
+                  </div>
+                  <div class="col-md-4">
+                    <input type="email" class="form-control" id="caption_email" placeholder="email">
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" class="form-control" id="caption_organization" placeholder="organization">
+                  </div>
+                </div>
+              </div>
+              <div id="register_member">
+              </div>
+            </form>
+            <br>
+            <button class="btn btn-primary" id="addmember"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Add Member
+            </button>
+            &nbsp;
+            <button class="btn btn-danger" id="deletemember"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>&nbsp;Delete Member
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="register_button">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="login" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="login_title"></h4>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="return false;">
+              <div class="form-group login-main">
+                <label class="control-label" for="login-username">Username</label>
+                <input type="text" class="form-control" id="login-username">
+              </div>
+              <div class="form-group login-main">
+                <label class="control-label" for="login-password">Password</label>
+                <input type="password" class="form-control" id="login-password">
+              </div>
+              <div class="login-forget">
+                <p>Please provide your team name, the captain's name and mailbox, we will send an password reset email to this mailbox.</p>
+              </div>
+              <div class="form-group login-forget" style="display: none">
+                <label class="control-label" for="login-forget-teamname">Team Name</label>
+                <input type="text" class="form-control" id="login-forget-teamname">
+              </div>
+              <div class="form-group login-forget" style="display: none;">
+                <label class="control-label" for="login-forget-caption">Captain's Name</label>
+                <input type="text" class="form-control" id="login-forget-caption">
+              </div>
+              <div class="form-group login-forget" style="display: none;">
+                <label class="control-label" for="login-forget-caption-email">Captain's Mailbox</label>
+                <input type="email" class="form-control" id="login-forget-caption-email">
+              </div>
+              <br>
+              <a id="login-forget-btn" class="login-main" style="cursor:pointer;">Forget Password?</a>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success login-main" id="login_button">Login</button>
+            <button type="button" class="btn btn-success login-forget" id="login-forget-send" style="display: none">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="submit-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="submit_title"></h4>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="return false;">
+              <input type="file" id="submit_real_file" style="display:none;">
+              <button class="btn btn-primary btn-lg" id="submit_select_button">Select File</button>
+              &nbsp;<a id="download_submission" href="/api/submission?r={{random}}" style="display:none;">download latest submission</a>
+              <br><br>
+              <p id="submit_description"></p>
+              <br>
+              <div class="progress" id="submit_progress">
+                <div class="progress-bar" role="progressbar" style="min-width: 2em;width: 0%" aria-valuenow="0" aria-valuemax="100" aria-valuemin="0">0%</div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" id="submit_button">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <div class="modal fade" id="submit-report-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="submit_report_title"></h4>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="return false;">
+              <input type="file" id="submit_report_real_file" style="display:none;">
+              <button class="btn btn-primary btn-lg" id="submit_report_select_button">Select File</button>
+              &nbsp;<a id="download_report" href="/api/submission_report?r={{random}}" style="display:none;">download latest submission</a>
+              <br><br>
+              <p id="submit_report_description"></p>
+              <br>
+              <div class="progress" id="submit_report_progress">
+                <div class="progress-bar" role="progressbar" style="min-width: 2em;width: 0%" aria-valuenow="0" aria-valuemax="100" aria-valuemin="0">0%</div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" id="submit_report_button">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="update-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Team Infomation Update</h4>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="return false;">
+              <div class="form-group">
+                <label class="control-lable" for="update-teamname">Team Name</label>
+                <input type="text" class="form-control" id="update-teamname">
+              </div>
+              <div class="form-group" id="update-caption">
+                <label class="control-label">Captain</label>
+                <div class="row">
+                  <div class="col-md-4">
+                    <input type="text" class="form-control" id="update-caption-name" placeholder="name">
+                  </div>
+                  <div class="col-md-4">
+                    <input type="email" class="form-control" id="update-caption-email" placeholder="email">
+                  </div>
+                  <div class="col-md-4">
+                    <input type="email" class="form-control" id="update-caption-organization" placeholder="organization">
+                  </div>
+                </div>
+                <div id="update-member">
+                </div>
+              </div>
+            </form>
+            <br>
+            <button class="btn btn-primary" id="update-addmember"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Add Member
+            </button>
+            &nbsp;
+            <button class="btn btn-danger" id="update-deletemember"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>&nbsp;Delete Member
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="update_button">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Scripts -->
+
+<script src="/static/js/skel.min.js"></script>
+<script src="/static/js/util.js"></script>
+<script src="/static/js/main.js"></script>
   </body>
 </html>
