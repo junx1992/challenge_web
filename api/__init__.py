@@ -24,6 +24,7 @@ def register():
 	caption_name = form['caption_name']
 	caption_email = form['caption_email']
 	caption_organization = form['caption_organization']
+	track_id = form['track_id']
 
 	if caption_name == "" or caption_email == "" or caption_organization == "":
 		return jsonify(res=PARAMETER_ERROR)
@@ -113,7 +114,7 @@ def update():
 	caption_organization = form['caption_organization']
 	if caption_name == "" or caption_email == "" or caption_organization == "":
 		return jsonify(res=PARAMETER_ERROR)
-
+	track_id = form['track_id']
 	member_num = int(form['member_num'])
 	member = [{
 		'name':caption_name,

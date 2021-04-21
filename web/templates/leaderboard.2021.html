@@ -176,7 +176,7 @@
             $("#caption").append(addhtml).addClass("has-error");
             flag = false;
           }
-
+          var track_id = $("#track").val();
           for(var i=1;i<nowmemberid;i++) {
             var member_name = $(sprintf("#member%d_name",i)).val();
             var member_email = $(sprintf("#member%d_email",i)).val();
@@ -198,6 +198,7 @@
             "caption_name":caption_name,
             "caption_email":caption_email,
             "caption_organization":caption_organization,
+            "track_id": track_id,
             "member_num":nowmemberid
           }
           for(var i=1;i<nowmemberid;i++){
