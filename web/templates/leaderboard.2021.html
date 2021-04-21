@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" style="overflow-y: visible;">
   <head>
-    <title>Pre-training for Video Captioning Challenge</title>
+    <title>Pre-training for Video Understanding Challenge</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -80,7 +80,7 @@
 
         $(document).on("click", "#video_login", function(){
           nowpage = "video";
-          nowtitle = "Pre-training for Video Captioning Challenge Login";
+          nowtitle = "Pre-training for Video Understanding Challenge Login";
           $("#login_title").text(nowtitle);
           $(".login-main").show();
           $(".login-forget").hide();
@@ -88,7 +88,7 @@
         });
         $(document).on("click", "#video_register", function(){
           nowpage = "video";
-          nowtitle = "Pre-training for Video Captioning Challenge Register";
+          nowtitle = "Pre-training for Video Understanding Challenge Register";
           $("#register_title").text(nowtitle);
           $("#register").modal("show");
           $("#register_member").empty();
@@ -297,7 +297,7 @@
         });
         $(document).on("click", "#submit", function() {
           nowpage = "video";
-          nowtitle = "Pre-training for Video Captioning Challenge Result Submit";
+          nowtitle = "Pre-training for Video Understanding Challenge Result Submit";
           $("#submit_title").text(nowtitle);
           $("#submit_progress").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
           $("#submit_progress").hide();
@@ -363,7 +363,7 @@
 
         $(document).on("click", "#submit_report", function() {
           nowpage = "video";
-          nowtitle = "Pre-training for Video Captioning Challenge Report Submit";
+          nowtitle = "Pre-training for Video Understanding Challenge Report Submit";
           $("#submit_report_title").text(nowtitle);
           $("#submit_report_progress").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
           $("#submit_report_progress").hide();
@@ -624,14 +624,14 @@
             $("#video_overview").fadeIn();
             $(this).addClass("active");
             $("#video_year_2017").removeClass("active");
-            $("#video_title").html("Pre-training for Video Captioning Challenge");
+            $("#video_title").html("Pre-training for Video Understanding Challenge");
           });
         $("#video_year_2017").click(function(){
           $("#video_overview").fadeOut();
           $("#video_non_overview").fadeIn();
           $(this).addClass("active");
           $("#video_button").removeClass("active");
-          $("#video_title").html("Pre-training for Video Captioning Challenge");
+          $("#video_title").html("Pre-training for Video Understanding Challenge");
         });
       });
     </script>
@@ -676,7 +676,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2016
             </a>
             <a id="auto_button" class="list-group-item" style="cursor:pointer">
-              Pre-training for Video Captioning Challenge
+              Pre-training for Video Understanding Challenge
               </a>
             <a class="list-group-item" href="http://www.auto-video-captions.top/2020">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2020
@@ -685,7 +685,7 @@
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2021
           </a>
             <!-- <a href="#auto-captions" aria-controls="qa" role="tab" data-toggle="tab" class="list-group-item active">
-                Pre-training for Video Captioning Challenge
+                Pre-training for Video Understanding Challenge
             </a> -->
 
             <!-- <a href="#qa" aria-controls="qa" role="tab" data-toggle="tab" class="list-group-item disabled">
