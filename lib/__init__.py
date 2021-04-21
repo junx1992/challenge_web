@@ -49,7 +49,7 @@ def send_email(member, message):
         return 'error'
 
 
-def check_team_member(challenge_type, username, password, team_name, member):
+def check_team_member(challenge_type, username, password, team_name, member, track_id):
 
     from model import MongoDB
     db = MongoDB().db
@@ -77,6 +77,7 @@ def check_team_member(challenge_type, username, password, team_name, member):
         'username':username,
         'password':hashlib.md5(password.encode('utf-8')).hexdigest(),
         'teamname':team_name,
+        'track_id':track_id,
         'member':member})
     team_id = str(_id)
     # for i in range(length):

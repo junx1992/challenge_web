@@ -55,7 +55,7 @@ def register():
 			})
 
 	from lib import check_team_member
-	status, err, place = check_team_member(challenge_type, username, password, teamname, member)
+	status, err, place = check_team_member(challenge_type, username, password, teamname, member, track_id)
 	if status == False:
 		if err == TEAM_NAME_UNAVALIABLE:
 			return jsonify(res=TEAM_NAME_UNAVALIABLE)
