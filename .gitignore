@@ -8,6 +8,6 @@ pycocoevalcap/spice/*.log
 pycocoevalcap/spice/tmp/
 pycocoevalcap/spice/cache/
 pycocoevalcap/spice/tokenizer/
-email_list.txt
-team.txt
+./email_list.txt
+./team.txt
 final_report
