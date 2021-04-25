@@ -33,8 +33,8 @@
         <p>This year we will focus on two tasks, i.e., pre-training for video captioning downstream task and pre-training for video categorization downstream task.</p>
         <p>In the first track, given the GIF videos and the corresponding captions in ACTION, the goal of pre-training is to learn a generic representation or structure that can better reflect the cross-modal interaction between visual content and textual sentence. The learnt generic representation or structure is further adapted to facilitate the downstream task of video captioning, i.e., describing video content with a complete and natural sentence.</p><br>
         <p>The contestants are asked to develop video captioning system based on the ACTION dataset provided by the Challenge (as pre-training data) and the public MSR-VTT benchmark (as training data for downstream task). For the evaluation purpose, a contesting system is asked to produce at least one sentence of the test videos. The accuracy will be evaluated against human pre-generated sentence(s).</p>
-        <p>In the second track, given the YouTube videos and the corresponding searched queries & titles in YOVO-3M, the goal is to pre-train a generic video representation, which can be further leveraged to facilitate the downstream task of video categorization.</p><br>
-        <p>The contestants are asked to develop video categorization system based on the YOVO-3M dataset provided by the Challenge (as pre-training data) and the released YOVO-Downstream dataset (as training data for downstream task). For the evaluation purpose, a contesting system is asked to predict the category of the test videos. The accuracy will be evaluated against human annotated categories during evaluation stage.</p>
+        <p>In the second track, given the YouTube videos and the corresponding searched queries & titles in a Weakly-Supervised dataset, the goal is to pre-train a generic video representation, which can be further leveraged to facilitate the downstream task of video categorization.</p><br>
+        <p>The contestants are asked to develop video categorization system based on the Weakly-Supervised dataset provided by the Challenge (as pre-training data) and the released Downstream dataset (as training data for downstream task). For the evaluation purpose, a contesting system is asked to predict the category of the test videos. The accuracy will be evaluated against human annotated categories during evaluation stage.</p>
     </div>
 </section>
 
@@ -98,7 +98,7 @@
     ],
     "pre-training_data":{
     "used": "true", <font color='brown'># Boolean flag. True indicates used of pre-trained data(i.e., Auto-captions on GIF).</font>
-    "details": "First pre-train captioning model with YOVO-3M and then fine-tune it with YOVO-Downstream" <font color='brown'># String with details of how to train your models with pre-training data</font>
+    "details": "First pre-train captioning model with the Weakly-Supervised dataset and then fine-tune it with Downstream" <font color='brown'># String with details of how to train your models with pre-training data</font>
     }
 }
         </pre><br>
