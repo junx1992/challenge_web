@@ -1,15 +1,148 @@
-junx
-junx	junx1992@gmail.com	123321
+test_a
+test_a	junx1992@gmail.com	test_a
 
 
 
-123321
-123321	junx1992@gmail.com	123321
+BAONIU
+PAN YINGWEI	panyw.ustc@gmail.com	JD AI Research
 
 
 
-eee
-eee	junx1992@gmail.com	eee
+Summer Rick
+YuanXin	coma405593483@163.com	UESTC
+YinKexin	ykx96211@foxmail.com	SWJTU
+
+
+
+IVIPC-King
+WangLanxiao	lanxiao.wang@std.uestc.edu.cn	University of Electronic Science and Technology of China
+
+
+
+Gene
+Lidian	goodli@tencent.com	Tencent.com
+raofengyun	fengyunrao@tencent.com	Tencent.com
+liuzhenhua	edinliu@tencent.com	Tencent.com
+zhanyuwang	zhanyuwang@tencent.com	Tencent.com
+mktang	mktang@tencent.com	Tencent.com
+
+
+
+diggers
+GuangxiaoNiu	ngx2333@163.com	UESTC
+
+
+
+buaa
+zonghengtang	tzhhhh123@buaa.edu.cn	beihang university
+
+
+
+DongZhe
+DongZhe	202035118@mail.sdu.edu.cn	Shandong University
+
+
+
+json
+json	755901938@qq.com	PKU
+
+
+
+MIC219-GO
+litengpeng	1158257243@qq.com	tongji university
+
+
+
+CVIP
+Felikue	xfeif.im@gmail.com	CVIP@SUSTech
+
+
+
+dejie
+dejie	yangdejie@iie.ac.cn	PKU
+
+
+
+iLearn-01
+杨逸君	yangyijun@mail.sdu.edu.cn	Shandong University
+
+
+
+MIC-No.1
+kriswu	454951085@qq.com	tongji
+
+
+
+MSVLPT
+ArrowL	hs_luo@qq.com	SWJTU
+
+
+
+Silver_Bullet
+Liwei Jin	liwei.jin97@gmail.com	Nanjing University
+Haoyue Cheng	161220023@smail.nju.edu.cn	Nanjing University
+
+
+
+XIONGXIONG
+xiongxiong	panyw.ustc@gmail.com	test
+
+
+
+aimc_21
+陈坳珠	caz@ruc.edu.cn	中国人民大学
+胡帆	hufan_hf@ruc.edu.cn	中国人民大学
+周方铭	Fangming_zhou@ruc.edu.cn	中国人民大学
+王子寒	874593724@qq.com	中国人民大学
+
+
+
+SYSU-SCS
+Jingwen Chen	chenjw87@mail2.sysu.edu.cn	Sun Yat-sen University
+
+
+
+brainy_lch
+lichenhao	launchauto@outlook.com	HUST
+
+
+
+brainy_launch
+lichenhao	launchauto@outlook.com	HUST
+
+
+
+Micro Genius
+YiqingHuang	huang-yq17@mails.tsinghua.edu.cn	Tsinghua University
+HongweiXue	gh051120@mail.ustc.edu.cn	University of Science and Technology of China
+
+
+
+debut_kele
+Kele Xu	kelele.xu@Gmail.com	National University of Defense Technology
+Lehan Yang	xsourse.cc@gmail.com	The University of Sydney
+Huaimin Wang	308388063@qq.com	National University of Defense Technology
+
+
+
+Tencent-NB
+mktang	1183339199@qq.com	Tencent
+zhanyuwang	zhanyu_w16@163.com	Tencent
+
+
+
+KeepTheLastOne
+wulong	1144181135@qq.com	uestc
+
+
+
+one piece
+liuyifeng	liuyifeng.lyf@alibaba-inc.com	alibaba
+
+
+
+Nameless
+JinWang	jim_wang2014@163.com	Tianjin University; PCL
 
 
 
