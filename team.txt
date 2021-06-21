@@ -146,3 +146,35 @@ JinWang	jim_wang2014@163.com	Tianjin University; PCL
 
 
 
+JiangNan
+JiangNan	fengyunrao@tencent.com	Tencent
+
+
+
+AIMC_caption
+Chengbo Dong	dongchengbo@ruc.edu.cn	RUC
+Xinru Chen	chen_xinru1999@163.com	RUC
+Aozhu Chen	caz@ruc.edu.cn	RUC
+
+
+
+mhttx
+huiye	591338937	none
+
+
+
+SOSTKD
+zhenhualiu	edinliu@tencent.com	tencent
+
+
+
+AI
+y	825778126@qq.com	a
+
+
+
+IIE_MRG
+Xiaoshuai Hao	haoxiaoshuai@iie.ac.cn	Institute of Information Engineering，Chinese Academy of Sciences
+
+
+
