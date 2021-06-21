@@ -56,16 +56,16 @@
             var submitText = "";
             var submitReportText = "";
             if(hasSubmit==false)
-              submitText = "Submit Result";
+              submitText = "Submit Track 1 Result";
             else {
               $("#download_submission").show();
-              submitText = "Resubmit Result";
+              submitText = "Resubmit Track 1 Result";
             }
             if(hasSubmitReport==false)
-              submitReportText = "Submit Report";
+              submitReportText = "Submit Track 1 Report";
             else {
               $("#download_report").show();
-              submitReportText = "Resubmit Report";
+              submitReportText = "Resubmit Track 1 Report";
             }
             $("#video-head").append(sprintf(addhtml, teamname, namelist, submitText, submitReportText))
           }
@@ -863,7 +863,7 @@ year={2016}}</blockquote></pre>
                 <select name="track" id="track">
                   <option value="1">Track 1: Video Captioning</option>
                   <option value="2">Track 2: Video Categorization</option>
-                  <option value="3"">Track 1+2: Video Captioning + Video Categorization</option>
+                  <option value="3">Track 1+2: Video Captioning + Video Categorization</option>
                 </select>
                 
               </div>
