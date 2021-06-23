@@ -450,7 +450,7 @@
               $("#submit_button_2").removeClass("disabled");
               $("#submit-modal_2").modal("hide");
               $("#submit_2").text("Resubmit Track 2 Result");
-              $("#download_submission").show();
+              $("#download_submission_2").show();
             }
           })
         });
@@ -496,6 +496,21 @@
           }
           $("#submit_report_description").text(sprintf("%s  %.2f%s",name,size,d));
           $("#submit_report_progress").show();
+        });
+        $(document).on("change", "#submit_report_real_file_2", function() {
+          var name = this.files[0].name;
+          var size = parseInt(this.files[0].size);
+          var d = "B";
+          if (size > 1024) {
+            size = size * 1.0 / 1024;
+            d = "KB";
+          }
+          if (size > 1024) {
+            size = size * 1.0 / 1024;
+            d = "MB";
+          }
+          $("#submit_report_description_2").text(sprintf("%s  %.2f%s",name,size,d));
+          $("#submit_report_progress_2").show();
         });
         $(document).on("click", "#submit_report_button", function() {
           $("#submit_report_progress").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
@@ -569,7 +584,7 @@
               $("#submit_report_button_2").removeClass("disabled");
               $("#submit-report-modal_2").modal("hide");
               $("#submit_report_2").text("Resubmit Track 2 Report");
-              $("#download_report").show();
+              $("#download_report_2").show();
             }
           })
         });
