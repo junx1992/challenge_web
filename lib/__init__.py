@@ -225,6 +225,24 @@ def team_submit_report(temp):
     register_team = eval("db.%s"%challenge_type)
     register_team.update({'_id':_id}, {'$set':{'hasSubmitReport':True}})
 
+def team_submit_2(temp):
+    team_id, challenge_type = temp.split('_')
+    from bson import ObjectId
+    _id = ObjectId(team_id)
+    from model import MongoDB
+    db = MongoDB().db
+    register_team = eval("db.%s"%challenge_type)
+    register_team.update({'_id':_id}, {'$set':{'hasSubmit_2':True}})
+
+def team_submit_report_2(temp):
+    team_id, challenge_type = temp.split('_')
+    from bson import ObjectId
+    _id = ObjectId(team_id)
+    from model import MongoDB
+    db = MongoDB().db
+    register_team = eval("db.%s"%challenge_type)
+    register_team.update({'_id':_id}, {'$set':{'hasSubmitReport_2':True}})
+
 def get_all_team(challenge_type):
     from model import MongoDB
     db = MongoDB().db
