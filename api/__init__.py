@@ -241,6 +241,40 @@ def submit():
 	folder = 'tmp/result/'
 	return jsonify(res=SUCCESS)
 
+@api.route('/submit_2', methods=['POST'])
+def submit():
+	cookies = request.cookies
+	if not 'session' in cookies:
+		return jsonify(res=NOT_LOGIN)
+	session = cookies['session']
+
+	from lib import get_teamid_by_session
+	teamid = get_teamid_by_session(session)
+	if teamid == None:
+		resp = jsonify(res=NOT_LOGIN)
+		resp.delete_cookie('session')
+		return resp 
+
+	teamid = teamid.replace('&', '_')
+
+	files = request.files
+	f = files['file']
+	filename = f.filename
+	filetype = filename.split('.')[-1]
+	import time
+	nowtime = time.strftime('%Y-%m-%d-%H-%M', time.localtime(int(time.time())))
+	filename = teamid + '_time_' + nowtime + '_track2.' + filetype
+	import os
+	#os.system("rm tmp/result/%s*"%teamid)
+	f.save('tmp/result/' + filename)
+	os.system("cp tmp/result/%s tmp/result/%s"%(filename, teamid + '_track2.zip'))
+
+	from lib import team_submit
+	team_submit(teamid)
+	folder = 'tmp/result/'
+	return jsonify(res=SUCCESS)
+
+
 @api.route('/submission', methods=['GET'])
 def submission():
 	cookies = request.cookies
@@ -255,6 +289,23 @@ def submission():
 	teamid = teamid.replace('&', '_')
 	if os.path.exists("tmp/result/%s.zip"%teamid):
 		return send_file("tmp/result/%s.zip"%teamid)
+	else:
+		abort(404)
+
+@api.route('/submission_2', methods=['GET'])
+def submission():
+	cookies = request.cookies
+	if not 'session' in cookies:
+		return jsonify(res=NOT_LOGIN)
+	session = cookies['session']
+
+	from lib import get_teamid_by_session
+	teamid = get_teamid_by_session(session)
+	if teamid == None:
+		abort(404)
+	teamid = teamid.replace('&', '_')
+	if os.path.exists("tmp/result/%s_track2.zip"%teamid):
+		return send_file("tmp/result/%s_track2.zip"%teamid)
 	else:
 		abort(404)
 
@@ -307,6 +358,58 @@ def submission_report():
 		return send_file("tmp/report/%s.pdf"%teamid)
 	else:
 		abort(404)
+
+
+@api.route('/submit_report_2', methods=['POST'])
+def submit_report():
+	cookies = request.cookies
+	if not 'session' in cookies:
+		return jsonify(res=NOT_LOGIN)
+	session = cookies['session']
+
+	from lib import get_teamid_by_session
+	teamid = get_teamid_by_session(session)
+	if teamid == None:
+		resp = jsonify(res=NOT_LOGIN)
+		resp.delete_cookie('session')
+		return resp 
+
+	teamid = teamid.replace('&', '_')
+
+	files = request.files
+	f = files['file']
+	filename = f.filename
+	filetype = filename.split('.')[-1]
+	import time
+	nowtime = time.strftime('%Y-%m-%d-%H-%M', time.localtime(int(time.time())))
+	filename = teamid + '_time_' + nowtime + '_track2.' + filetype
+	import os
+	#os.system("rm tmp/report/%s*"%teamid)
+	f.save('tmp/report/' + filename)
+	os.system("cp tmp/report/%s tmp/report/%s"%(filename, teamid + '_track2.pdf'))
+
+	from lib import team_submit_report
+	team_submit_report(teamid)
+
+	return jsonify(res=SUCCESS)
+
+@api.route('/submission_report_2', methods=['GET'])
+def submission_report():
+	cookies = request.cookies
+	if not 'session' in cookies:
+		return jsonify(res=NOT_LOGIN)
+	session = cookies['session']
+
+	from lib import get_teamid_by_session
+	teamid = get_teamid_by_session(session)
+	if teamid == None:
+		abort(404)
+	teamid = teamid.replace('&', '_')
+	if os.path.exists("tmp/report/%s_track2.pdf"%teamid):
+		return send_file("tmp/report/%s_track2.pdf"%teamid)
+	else:
+		abort(404)
+
 
 @api.route('/allteam', methods=['GET'])
 def allteam():

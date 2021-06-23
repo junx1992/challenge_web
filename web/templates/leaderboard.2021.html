@@ -38,6 +38,8 @@
                       <ul class="dropdown-menu" aria-labelledby="submit-menu">\
                       <li><a id="submit" style="cursor:pointer;">%s</a></li>\
                       <li><a id="submit_report" style="cursor:pointer;"import>%s</a></li>\
+                      <li><a id="submit_2" style="cursor:pointer;">%s</a></li>\
+                      <li><a id="submit_report_2" style="cursor:pointer;"import>%s</a></li>\
                       </ul>\
                       </div>\
                       <div style="float:right">&nbsp;&nbsp;</div>\
@@ -55,6 +57,12 @@
             var hasSubmitReport=info.hasSubmitReport;
             var submitText = "";
             var submitReportText = "";
+
+            var hasSubmit_2 = info.hasSubmit_2;
+            var hasSubmitReport_2 = info.hasSubmitReport_2;
+            var submitText_2 = "";
+            var submitReportText_2 = "";
+
             if(hasSubmit==false)
               submitText = "Submit Track 1 Result";
             else {
@@ -67,7 +75,22 @@
               $("#download_report").show();
               submitReportText = "Resubmit Track 1 Report";
             }
-            $("#video-head").append(sprintf(addhtml, teamname, namelist, submitText, submitReportText))
+            // $("#video-head").append(sprintf(addhtml, teamname, namelist, submitText, submitReportText))
+
+            if(hasSubmit_2==false)
+              submitText = "Submit Track 2 Result";
+            else {
+              $("#download_submission").show();
+              submitText_2 = "Resubmit Track 2 Result";
+            }
+            if(hasSubmitReport_2==false)
+              submitReportText_2 = "Submit Track 2 Report";
+            else {
+              $("#download_report").show();
+              submitReportText_2 = "Resubmit Track 2 Report";
+            }
+            $("#video-head").append(sprintf(addhtml, teamname, namelist, submitText, submitReportText, submitText_2, hasSubmitReport_2))
+
           }
           else {
             var addhtml='<button class="btn btn-primary" id="video_register" style="float:right;">Register</button>\
@@ -305,6 +328,17 @@
           $("#submit_description").text("");
           $("#submit-modal").modal("show");
         });
+
+        $(document).on("click", "#submit_2", function() {
+          nowpage = "video";
+          nowtitle = "Pre-training for Video Understanding Challenge Result Submit";
+          $("#submit_title").text(nowtitle);
+          $("#submit_progress").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
+          $("#submit_progress").hide();
+          $("#submit_description").text("");
+          $("#submit-modal_2").modal("show");
+        });
+
         $(document).on("click", "#submit_select_button", function() {
           $("#submit_real_file").click();
         });
@@ -362,6 +396,47 @@
           })
         });
 
+        $(document).on("click", "#submit_button_2", function() {
+          $("#submit_progress").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
+          $(this).addClass("disabled");
+          var files = $("#submit_real_file")[0].files;
+          var len = files.length;
+          var fd = new FormData();
+          fd.append('file', files[0]);
+          $.ajax({
+            url:"/api/submit_2",
+            type:"POST",
+            data:fd,
+            processData:false,
+            contentType:false,
+            xhr:function() {
+              var xhrobj = $.ajaxSettings.xhr();
+              if (xhrobj.upload) {
+                xhrobj.upload.addEventListener("progress", function(event) {
+                  var percent = 0;
+                  var position = event.loaded || event.position;
+                  var total = event.total || event.totalSize;
+                  if (event.lengthComputable) {
+                    percent = Math.ceil(position * 1.0 / total * 100);
+                  }
+                  $("#submit_progress").find(".progress-bar").attr("style",sprintf("min-width:2em;width:%d%%", percent)).attr("aria-valuenow", sprintf("%d", percent)).text(sprintf("%d%%", percent));
+                });
+              }
+              return xhrobj;
+            },
+            success: function() {
+              $("#submit_progress>.progress-bar").addClass("progress-bar-success");
+              alert("submit successful");
+              $("#submit_button_2").removeClass("disabled");
+              $("#submit-modal_2").modal("hide");
+              $("#submit_2").text("Resubmit Result");
+              $("#download_submission").show();
+            }
+          })
+        });
+
+
+
         $(document).on("click", "#submit_report", function() {
           nowpage = "video";
           nowtitle = "Pre-training for Video Understanding Challenge Report Submit";
@@ -371,6 +446,16 @@
           $("#submit_report_description").text("");
           $("#submit-report-modal").modal("show");
         });
+        $(document).on("click", "#submit_report_2", function() {
+          nowpage = "video";
+          nowtitle = "Pre-training for Video Understanding Challenge Report Submit";
+          $("#submit_report_title").text(nowtitle);
+          $("#submit_report_progress").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
+          $("#submit_report_progress").hide();
+          $("#submit_report_description").text("");
+          $("#submit-report-modal_2").modal("show");
+        });
+
         $(document).on("click", "#submit_report_select_button", function() {
           $("#submit_report_real_file").click();
         });
@@ -427,6 +512,46 @@
             }
           })
         });
+        $(document).on("click", "#submit_report_button_2", function() {
+          $("#submit_report_progress").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
+          $(this).addClass("disabled");
+          var files = $("#submit_report_real_file")[0].files;
+          var len = files.length;
+          var fd = new FormData();
+          fd.append('file', files[0]);
+          $.ajax({
+            url:"/api/submit_report_2",
+            type:"POST",
+            data:fd,
+            processData:false,
+            contentType:false,
+            xhr:function() {
+              var xhrobj = $.ajaxSettings.xhr();
+              if (xhrobj.upload) {
+                xhrobj.upload.addEventListener("progress", function(event) {
+                  var percent = 0;
+                  var position = event.loaded || event.position;
+                  var total = event.total || event.totalSize;
+                  if (event.lengthComputable) {
+                    percent = Math.ceil(position * 1.0 / total * 100);
+                  }
+                  $("#submit_report_progress").find(".progress-bar").attr("style",sprintf("min-width:2em;width:%d%%", percent)).attr("aria-valuenow", sprintf("%d", percent)).text(sprintf("%d%%", percent));
+                });
+              }
+              return xhrobj;
+            },
+            success: function() {
+              $("#submit_report_progress>.progress-bar").addClass("progress-bar-success");
+              alert("submit successful");
+              $("#submit_report_button_2").removeClass("disabled");
+              $("#submit-report-modal_2").modal("hide");
+              $("#submit_report_2").text("Resubmit Report");
+              $("#download_report").show();
+            }
+          })
+        });
+
+
         $(document).on("click", "#update", function(){
           nowpage = "video";
           $("#update-modal").modal("show");
@@ -957,6 +1082,34 @@ year={2016}}</blockquote></pre>
       </div>
     </div>
 
+    <div class="modal fade" id="submit-modal_2" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="submit_title"></h4>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="return false;">
+              <input type="file" id="submit_real_file" style="display:none;">
+              <button class="btn btn-primary btn-lg" id="submit_select_button">Select File</button>
+              &nbsp;<a id="download_submission" href="/api/submission_2?r={{random}}" style="display:none;">download latest submission</a>
+              <br><br>
+              <p id="submit_description"></p>
+              <br>
+              <div class="progress" id="submit_progress">
+                <div class="progress-bar" role="progressbar" style="min-width: 2em;width: 0%" aria-valuenow="0" aria-valuemax="100" aria-valuemin="0">0%</div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" id="submit_button_2">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
      <div class="modal fade" id="submit-report-modal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -984,6 +1137,36 @@ year={2016}}</blockquote></pre>
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="submit-report-modal_2" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="submit_report_title"></h4>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="return false;">
+              <input type="file" id="submit_report_real_file" style="display:none;">
+              <button class="btn btn-primary btn-lg" id="submit_report_select_button">Select File</button>
+              &nbsp;<a id="download_report" href="/api/submission_2_report?r={{random}}" style="display:none;">download latest submission</a>
+              <br><br>
+              <p id="submit_report_description"></p>
+              <br>
+              <div class="progress" id="submit_report_progress">
+                <div class="progress-bar" role="progressbar" style="min-width: 2em;width: 0%" aria-valuenow="0" aria-valuemax="100" aria-valuemin="0">0%</div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" id="submit_report_button_2">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
     <div class="modal fade" id="update-modal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
