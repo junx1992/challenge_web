@@ -337,8 +337,8 @@ def submit_report():
 	f.save('tmp/report/' + filename)
 	os.system("cp tmp/report/%s tmp/report/%s"%(filename, teamid + '.pdf'))
 
-	from lib import team_submit_report_2
-	team_submit_report_2(teamid)
+	from lib import team_submit_report
+	team_submit_report(teamid)
 
 	return jsonify(res=SUCCESS)
 
@@ -388,8 +388,8 @@ def submit_report_2():
 	f.save('tmp/report/' + filename)
 	os.system("cp tmp/report/%s tmp/report/%s"%(filename, teamid + '_track2.pdf'))
 
-	from lib import team_submit_report
-	team_submit_report(teamid)
+	from lib import team_submit_report_2
+	team_submit_report_2(teamid)
 
 	return jsonify(res=SUCCESS)
 
