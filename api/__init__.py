@@ -242,7 +242,7 @@ def submit():
 	return jsonify(res=SUCCESS)
 
 @api.route('/submit_2', methods=['POST'])
-def submit():
+def submit_2():
 	cookies = request.cookies
 	if not 'session' in cookies:
 		return jsonify(res=NOT_LOGIN)
@@ -293,7 +293,7 @@ def submission():
 		abort(404)
 
 @api.route('/submission_2', methods=['GET'])
-def submission():
+def submission_2():
 	cookies = request.cookies
 	if not 'session' in cookies:
 		return jsonify(res=NOT_LOGIN)
@@ -361,7 +361,7 @@ def submission_report():
 
 
 @api.route('/submit_report_2', methods=['POST'])
-def submit_report():
+def submit_report_2():
 	cookies = request.cookies
 	if not 'session' in cookies:
 		return jsonify(res=NOT_LOGIN)
@@ -394,7 +394,7 @@ def submit_report():
 	return jsonify(res=SUCCESS)
 
 @api.route('/submission_report_2', methods=['GET'])
-def submission_report():
+def submission_report_2():
 	cookies = request.cookies
 	if not 'session' in cookies:
 		return jsonify(res=NOT_LOGIN)
