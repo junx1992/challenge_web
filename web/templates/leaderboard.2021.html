@@ -417,9 +417,9 @@
         });
 
         $(document).on("click", "#submit_button_2", function() {
-          $("#submit_progress").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
+          $("#submit_progress_2").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
           $(this).addClass("disabled");
-          var files = $("#submit_real_file")[0].files;
+          var files = $("#submit_real_file_2")[0].files;
           var len = files.length;
           var fd = new FormData();
           fd.append('file', files[0]);
@@ -439,13 +439,13 @@
                   if (event.lengthComputable) {
                     percent = Math.ceil(position * 1.0 / total * 100);
                   }
-                  $("#submit_progress").find(".progress-bar").attr("style",sprintf("min-width:2em;width:%d%%", percent)).attr("aria-valuenow", sprintf("%d", percent)).text(sprintf("%d%%", percent));
+                  $("#submit_progress_2").find(".progress-bar").attr("style",sprintf("min-width:2em;width:%d%%", percent)).attr("aria-valuenow", sprintf("%d", percent)).text(sprintf("%d%%", percent));
                 });
               }
               return xhrobj;
             },
             success: function() {
-              $("#submit_progress>.progress-bar").addClass("progress-bar-success");
+              $("#submit_progress_2>.progress-bar").addClass("progress-bar-success");
               alert("submit successful");
               $("#submit_button_2").removeClass("disabled");
               $("#submit-modal_2").modal("hide");
@@ -469,10 +469,10 @@
         $(document).on("click", "#submit_report_2", function() {
           nowpage = "video";
           nowtitle = "Pre-training for Video Understanding Challenge Report Submit";
-          $("#submit_report_title").text(nowtitle);
-          $("#submit_report_progress").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
-          $("#submit_report_progress").hide();
-          $("#submit_report_description").text("");
+          $("#submit_report_title_2").text(nowtitle);
+          $("#submit_report_progress_2").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
+          $("#submit_report_progress_2").hide();
+          $("#submit_report_description_2").text("");
           $("#submit-report-modal_2").modal("show");
         });
 
@@ -551,9 +551,9 @@
           })
         });
         $(document).on("click", "#submit_report_button_2", function() {
-          $("#submit_report_progress").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
+          $("#submit_report_progress_2").find(".progress-bar").removeClass("progress-bar-success").attr("style","min-width:2em;width:0%").attr("aria-valuenow", "0").text("0%");
           $(this).addClass("disabled");
-          var files = $("#submit_report_real_file")[0].files;
+          var files = $("#submit_report_real_file_2")[0].files;
           var len = files.length;
           var fd = new FormData();
           fd.append('file', files[0]);
@@ -573,13 +573,13 @@
                   if (event.lengthComputable) {
                     percent = Math.ceil(position * 1.0 / total * 100);
                   }
-                  $("#submit_report_progress").find(".progress-bar").attr("style",sprintf("min-width:2em;width:%d%%", percent)).attr("aria-valuenow", sprintf("%d", percent)).text(sprintf("%d%%", percent));
+                  $("#submit_report_progress_2").find(".progress-bar").attr("style",sprintf("min-width:2em;width:%d%%", percent)).attr("aria-valuenow", sprintf("%d", percent)).text(sprintf("%d%%", percent));
                 });
               }
               return xhrobj;
             },
             success: function() {
-              $("#submit_report_progress>.progress-bar").addClass("progress-bar-success");
+              $("#submit_report_progress_2>.progress-bar").addClass("progress-bar-success");
               alert("submit successful");
               $("#submit_report_button_2").removeClass("disabled");
               $("#submit-report-modal_2").modal("hide");
