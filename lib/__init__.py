@@ -187,11 +187,23 @@ def get_info_by_session(session):
         flag2 = True
     else:
         flag2 = False
+
+    if 'hasSubmit_2' in one:
+        flag3 = True
+    else:
+        flag3 = False
+    if 'hasSubmitReport_2' in one:
+        flag4 = True
+    else:
+        flag4 = False
+
     res = {
         'teamname':one['teamname'],
         'member':one['member'],
         'hasSubmit':flag,
-        'hasSubmitReport':flag2
+        'hasSubmitReport':flag2,
+        'hasSubmit_2':flag3,
+        'hasSubmitReport_2': flag4
     }
     return True, res
 
