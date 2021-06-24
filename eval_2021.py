@@ -105,7 +105,6 @@ def caption_eval():
 
     for sub_folder in sub_folders:
         if '_video_time_' in sub_folder and 'track2' not in sub_folder: 
-            coco = COCO(annFile)
             name_mapping = get_team_id_mail_mapping()
             base_name = os.path.basename(sub_folder)
             index = base_name.index('_video_time')
@@ -122,6 +121,7 @@ def caption_eval():
             if not os.path.exists(performace_txt):
                 if not os.path.exists(except_txt):
                     try:
+                        coco = COCO(annFile)
                         if count_mapping[team_time_id] < 3:
                             resFiles = [resFile for resFile in os.listdir(sub_folder) if '.json' in resFile]
                             res_count = 0 
