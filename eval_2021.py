@@ -92,7 +92,7 @@ def caption_eval():
     #name_mapping = get_team_id_mail_mapping()
     count_mapping = {}
     for sub_folder in sub_folders:
-        if '_video_time_' in sub_folder and 'track_2' not in sub_folder:
+        if '_video_time_' in sub_folder and 'track2' not in sub_folder:
             base_name = os.path.basename(sub_folder)
             index = base_name.index('_video_time')
             team_id = base_name[0:index]
@@ -106,7 +106,7 @@ def caption_eval():
                 count_mapping[team_time_id] += 1 
 
     for sub_folder in sub_folders:
-        if '_video_time_' in sub_folder and 'track_2' not in sub_folder: 
+        if '_video_time_' in sub_folder and 'track2' not in sub_folder: 
             base_name = os.path.basename(sub_folder)
             index = base_name.index('_video_time')
             team_id = base_name[0:index]
@@ -164,7 +164,7 @@ def class_eval():
     #name_mapping = get_team_id_mail_mapping()
     count_mapping = {}
     for sub_folder in sub_folders:
-        if '_video_time_' in sub_folder and 'track_2' in sub_folder:
+        if '_video_time_' in sub_folder and 'track2' in sub_folder:
             base_name = os.path.basename(sub_folder)
             index = base_name.index('_video_time')
             team_id = base_name[0:index]
@@ -178,7 +178,7 @@ def class_eval():
                 count_mapping[team_time_id] += 1 
 
     for sub_folder in sub_folders:
-        if '_video_time_' in sub_folder and 'track_2' in sub_folder: 
+        if '_video_time_' in sub_folder and 'track2' in sub_folder: 
             base_name = os.path.basename(sub_folder)
             index = base_name.index('_video_time')
             team_id = base_name[0:index]
