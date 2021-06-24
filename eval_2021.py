@@ -84,7 +84,6 @@ def load_json_evaluate(input):
 
 def caption_eval():
     annFile='./tmp/groundtruth/mm2021_test_sen.json'
-    coco = COCO(annFile)
     folder = './tmp/result'
 
     unzip_folder(folder)
@@ -107,6 +106,7 @@ def caption_eval():
 
     for sub_folder in sub_folders:
         if '_video_time_' in sub_folder and 'track2' not in sub_folder: 
+            coco = COCO(annFile)
             base_name = os.path.basename(sub_folder)
             index = base_name.index('_video_time')
             team_id = base_name[0:index]
