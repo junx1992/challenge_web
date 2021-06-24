@@ -83,7 +83,7 @@ def load_json_evaluate(input):
     return accuracy
 
 def caption_eval():
-    annFile='./tmp/groundtruth/mm2020_test_sen.json'
+    annFile='./tmp/groundtruth/mm2021_test_sen.json'
     coco = COCO(annFile)
     folder = './tmp/result'
 
