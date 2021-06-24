@@ -2,7 +2,7 @@
 from pycocotools.coco import COCO
 from pycocoevalcap.eval import COCOEvalCap
 import matplotlib.pyplot as plt
-import json
+import json as js
 from json import encoder
 import argparse
 import os
