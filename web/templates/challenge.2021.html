@@ -75,7 +75,7 @@
   }
   ],
   "pre-training_data":{
-    "used": "true", <font color='brown'># Boolean flag. True indicates used of pre-trained data(i.e., ACTION).</font>
+    "used": "true", <font color='brown'># Boolean flag. True indicates used of pre-trained data.</font>
     "details": "First pre-train captioning model with ACTION and then fine-tune it with MSR-VTT" <font color='brown'># String with details of how to train your models with pre-training data, e.g., first pre-train captioning model with ACTION and then fine-tune it with MSR-VTT, or train captioning model over the joint combination of ACTION on GIF and MSR-VTT.</font>
   }
 }
@@ -93,18 +93,18 @@
     ...
     {
     "video_id": "video6822",
-    "caption": 100
+    "category_id": 2
     }
     ],
     "pre-training_data":{
-    "used": "true", <font color='brown'># Boolean flag. True indicates used of pre-trained data(i.e., Auto-captions on GIF).</font>
+    "used": "true", <font color='brown'># Boolean flag. True indicates used of pre-trained data.</font>
     "details": "First pre-train captioning model with the Weakly-Supervised dataset and then fine-tune it with Downstream" <font color='brown'># String with details of how to train your models with pre-training data</font>
     }
 }
         </pre><br>
 
               <p><b>Note: </b>comments in <font color='brown'>brown</font> are illustrative and help us to provide inline detailed explanations. Please avoid them in your sumisions.</p>
-              <p>To help with better understanding the format of the submission text file, a sample submission can be seen <a href="/static/resource/result.zip">here</a>. Participants please strictly follow the submission format.</p><br>
+	      <p>To help with better understanding the format of the submission text file, a sample submission can be seen <a href="/static/resource/result.zip">track_1</a> and <a href="/static/resource/result_track2.zip">track_2</a>. Participants please strictly follow the submission format.</p><br>
 <p class="text-danger">All the results should be zipped into a single file named by result.zip. Within the zipped folder, results from different runs (up to three) should be placed in separate files (e.g., result1.json, result2.json, result3.json). Every team is also required to upload a one-page notebook paper that briefly describes your system. The paper format follows <a href="http://www.acm.org/publications/proceedings-template">ACM proceeding style</a>.</p><br>
 <br>   
 </div>

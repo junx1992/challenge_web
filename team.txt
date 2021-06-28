@@ -94,6 +94,8 @@ aimc_21
 胡帆	hufan_hf@ruc.edu.cn	中国人民大学
 周方铭	Fangming_zhou@ruc.edu.cn	中国人民大学
 王子寒	874593724@qq.com	中国人民大学
+董程博	dongchengbo@ruc.edu.cn	中国人民大学
+陈欣茹	chen_xinru1999@163.com	中国人民大学
 
 
 
@@ -125,9 +127,9 @@ Huaimin Wang	308388063@qq.com	National University of Defense Technology
 
 
 
-Tencent-NB
-mktang	1183339199@qq.com	Tencent
-zhanyuwang	zhanyu_w16@163.com	Tencent
+Tsinghua
+youchenghui	1183339199@qq.com	Tsinghua
+zhuyi	1690345351@qq.com	Tsinghua
 
 
 
@@ -155,6 +157,9 @@ AIMC_caption
 Chengbo Dong	dongchengbo@ruc.edu.cn	RUC
 Xinru Chen	chen_xinru1999@163.com	RUC
 Aozhu Chen	caz@ruc.edu.cn	RUC
+Fan Hu	hufan_hf@ruc.edu.cn	RUC
+Fangming Zhou	Fangming_zhou@ruc.edu.cn	RUC
+Zihan Wang	874539724@qq.com	RUC
 
 
 
@@ -175,6 +180,43 @@ y	825778126@qq.com	a
 
 IIE_MRG
 Xiaoshuai Hao	haoxiaoshuai@iie.ac.cn	Institute of Information Engineering，Chinese Academy of Sciences
+
+
+
+XJTeam
+YIFeixu	280296760@qq.com	XJ
+
+
+
+WhatHappened
+guangxiaoniu	1790279427@qq.com	UESTC
+
+
+
+mercuryy
+Yijiao Li	793735486@qq.com	None
+
+
+
+iva
+zjzhao	469078207@qq.com	casia
+
+
+
+njucs1
+haoyue	161220023@smail.nju.edu.cn	nju
+liwei	liwei.jin97@gmail.com	nju
+
+
+
+mrbird_team
+mrbird	jin_liwei@foxmail.com	N/A
+
+
+
+OKTeam
+Caroline	948005247@qq.com	nju
+jinliwei	liwei.jin97@gmail.com	nju
 
 
 
