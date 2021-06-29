@@ -15,9 +15,11 @@ fh = open('team.txt','w')
 for item in a:
     all_num += 1
     print (item['_id'], item['teamname'])
-    fh.write(str(item['teamname']))
+    fh.write(str(item['_id']) + ' ' + str(item['teamname']))
+    fh.wirte('\n')
     if 'track_id' in item:
         print('track_id ', str(item['track_id']))
+        fh.write('track_id '+ str(item['track_id'])+'\n')
     fh.write('\n')
     for member in item['member']:
         print(member['name'], member['email'], member['organization'])
