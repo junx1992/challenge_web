@@ -57,7 +57,7 @@ def track_1():
             mail_list.append(mail)
             performace_txt = os.path.join(sub_folder, 'performance2.txt')
             except_txt = os.path.join(sub_folder, 'exception.txt')
-            message = "Here is your evaluation result for " + time + " on track 1 \n"
+            message = "Here is your evaluation result for " + time + " on track 1. \n\n"
             send_txt = os.path.join(sub_folder, 'send.txt')
             if os.path.exists(performace_txt) and not os.path.exists(send_txt) and not os.path.exists(except_txt):
                 with open(performace_txt) as fh:
