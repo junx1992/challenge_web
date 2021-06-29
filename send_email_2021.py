@@ -21,8 +21,9 @@ def send_email(mail_list, message, time):
         smtp.sendmail("root@auto-video-captions.top", mail_list, msg.as_string())
         print('send email success')
         return 'ok'
-    except:
+    except Exception as e:
         print('send failed')
+        print(str(e))
         return 'error'
 
 def get_team_id_mail_mapping():
