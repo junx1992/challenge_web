@@ -71,7 +71,7 @@ def load_json_evaluate(input):
     with open(input,'r') as fr:
         pred = js.load(fr)
         version, result = pred['version'], pred['result']
-        assert version == 'VERSION 1.3', 'version should be 1.3.'
+        #assert version == 'VERSION 1.3', 'version should be 1.3.'
         assert len(result) == len(vname), 'video prediction number should be 16554.'
         for v in result:
             vname = v['video_id'][:11]
@@ -105,7 +105,7 @@ def caption_eval():
 
     for sub_folder in sub_folders:
         if '_video_time_' in sub_folder and 'track2' not in sub_folder: 
-            name_mapping = get_team_id_mail_mapping()
+            #name_mapping = get_team_id_mail_mapping()
             base_name = os.path.basename(sub_folder)
             index = base_name.index('_video_time')
             team_id = base_name[0:index]
@@ -114,7 +114,7 @@ def caption_eval():
             team_time_id = team_id + '_' +day_time 
             if not team_time_id in count_mapping:
                 count_mapping[team_time_id] = 0            
-            mail_list = name_mapping[team_id]
+            #mail_list = name_mapping[team_id]
             performace_txt = os.path.join(sub_folder, 'performance2.txt')
             except_txt = os.path.join(sub_folder, 'exception.txt')
             message = "Here is your evaluation result for " + time + " on track 1 \n"
@@ -138,8 +138,8 @@ def caption_eval():
                             message += '\n\n'
                             message += 'Best,\n'
                             message += 'Organizing Committee'                
-                            send_email(mail_list, message, time)
-                            print('send email for success', mail_list)
+                            #send_email(mail_list, message, time)
+                            #print('send email for success', mail_list)
                             count_mapping[team_time_id] += 1
                     except Exception as e:
                         with open(except_txt, 'w') as fh:
@@ -148,8 +148,8 @@ def caption_eval():
                         err_message += '\n\n'
                         err_message += 'Best,\n'
                         err_message += 'Organizing Committee'
-                        send_email(mail_list, message, time)  
-                        print('send email for fail', mail_list)                                            
+                        #send_email(mail_list, message, time)  
+                        #print('send email for fail', mail_list)                                            
                         print(str(e))
  
 
@@ -178,7 +178,7 @@ def class_eval():
 
     for sub_folder in sub_folders:
         if '_video_time_' in sub_folder and 'track2' in sub_folder: 
-            name_mapping = get_team_id_mail_mapping()
+            #name_mapping = get_team_id_mail_mapping()
             base_name = os.path.basename(sub_folder)
             index = base_name.index('_video_time')
             team_id = base_name[0:index]
@@ -187,7 +187,7 @@ def class_eval():
             team_time_id = team_id + '_' +day_time 
             if not team_time_id in count_mapping:
                 count_mapping[team_time_id] = 0            
-            mail_list = name_mapping[team_id]
+            #mail_list = name_mapping[team_id]
             performace_txt = os.path.join(sub_folder, 'performance2.txt')
             except_txt = os.path.join(sub_folder, 'exception.txt')
             message = "Here is your evaluation result for " + time + " on track 2 \n"
@@ -211,8 +211,8 @@ def class_eval():
                             message += '\n\n'
                             message += 'Best,\n'
                             message += 'Organizing Committee'                
-                            send_email(mail_list, message, time)
-                            print('send email for success', mail_list)
+                            #send_email(mail_list, message, time)
+                            #print('send email for success', mail_list)
                             count_mapping[team_time_id] += 1
                     except Exception as e:
                         with open(except_txt, 'w') as fh:
@@ -221,8 +221,8 @@ def class_eval():
                         err_message += '\n\n'
                         err_message += 'Best,\n'
                         err_message += 'Organizing Committee'
-                        send_email(mail_list, message, time)  
-                        print('send email for fail', mail_list)                                            
+                        #send_email(mail_list, message, time)  
+                        #print('send email for fail', mail_list)                                            
                         print(str(e))
 
 
