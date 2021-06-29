@@ -1,25 +1,35 @@
-test_a
+6080083d2c6a21cb90c7e4ef test_a
+track_id 1
+
 test_a	junx1992@gmail.com	test_a
 
 
 
-BAONIU
+6080098e4a9822640e19f479 BAONIU
+track_id 3
+
 PAN YINGWEI	panyw.ustc@gmail.com	JD AI Research
 
 
 
-Summer Rick
+6080e0c389547ec535061150 Summer Rick
+track_id 1
+
 YuanXin	coma405593483@163.com	UESTC
 YinKexin	ykx96211@foxmail.com	SWJTU
 
 
 
-IVIPC-King
+60812ed54a9822640e19f47c IVIPC-King
+track_id 1
+
 WangLanxiao	lanxiao.wang@std.uestc.edu.cn	University of Electronic Science and Technology of China
 
 
 
-Gene
+6081322eccc26d9c03ffcb58 Gene
+track_id 3
+
 Lidian	goodli@tencent.com	Tencent.com
 raofengyun	fengyunrao@tencent.com	Tencent.com
 liuzhenhua	edinliu@tencent.com	Tencent.com
@@ -28,68 +38,94 @@ mktang	mktang@tencent.com	Tencent.com
 
 
 
-diggers
+60815964ccc26d9c03ffcb5a diggers
+track_id 1
+
 GuangxiaoNiu	ngx2333@163.com	UESTC
 
 
 
-buaa
+60822091babfcbd720d3b8ae buaa
+track_id 1
+
 zonghengtang	tzhhhh123@buaa.edu.cn	beihang university
 
 
 
-DongZhe
+60826afbfb7146a26c571c44 DongZhe
+track_id 3
+
 DongZhe	202035118@mail.sdu.edu.cn	Shandong University
 
 
 
-json
+60826c284d977ee68fdc9073 json
+track_id 3
+
 json	755901938@qq.com	PKU
 
 
 
-MIC219-GO
+6082a5e69db2ec7b39f39b7b MIC219-GO
+track_id 1
+
 litengpeng	1158257243@qq.com	tongji university
 
 
 
-CVIP
+6084def9dd31fd3b829c21f0 CVIP
+track_id 3
+
 Felikue	xfeif.im@gmail.com	CVIP@SUSTech
 
 
 
-dejie
+60851f88d547f6ecbaf50f04 dejie
+track_id 3
+
 dejie	yangdejie@iie.ac.cn	PKU
 
 
 
-iLearn-01
+608636c413ba0223891cf076 iLearn-01
+track_id 3
+
 杨逸君	yangyijun@mail.sdu.edu.cn	Shandong University
 
 
 
-MIC-No.1
+6086b8ca16236309a6285cc0 MIC-No.1
+track_id 3
+
 kriswu	454951085@qq.com	tongji
 
 
 
-MSVLPT
+60894b3066dfff74199c034a MSVLPT
+track_id 3
+
 ArrowL	hs_luo@qq.com	SWJTU
 
 
 
-Silver_Bullet
+608be3a5acb4162fb5fff761 Silver_Bullet
+track_id 3
+
 Liwei Jin	liwei.jin97@gmail.com	Nanjing University
 Haoyue Cheng	161220023@smail.nju.edu.cn	Nanjing University
 
 
 
-XIONGXIONG
+6093bad64e2f709d097eba4f XIONGXIONG
+track_id 3
+
 xiongxiong	panyw.ustc@gmail.com	test
 
 
 
-aimc_21
+6093e5ac34845d9a4af7ca6c aimc_21
+track_id 3
+
 陈坳珠	caz@ruc.edu.cn	中国人民大学
 胡帆	hufan_hf@ruc.edu.cn	中国人民大学
 周方铭	Fangming_zhou@ruc.edu.cn	中国人民大学
@@ -99,61 +135,83 @@ aimc_21
 
 
 
-SYSU-SCS
+609546c819f03f62ec35f9bb SYSU-SCS
+track_id 1
+
 Jingwen Chen	chenjw87@mail2.sysu.edu.cn	Sun Yat-sen University
 
 
 
-brainy_lch
+60964fdb2e3b955d5da9474b brainy_lch
+track_id 3
+
 lichenhao	launchauto@outlook.com	HUST
 
 
 
-brainy_launch
+609651745bcf3a51e8d4e1b5 brainy_launch
+track_id 3
+
 lichenhao	launchauto@outlook.com	HUST
 
 
 
-Micro Genius
+609c945a4f79658621949449 Micro Genius
+track_id 1
+
 YiqingHuang	huang-yq17@mails.tsinghua.edu.cn	Tsinghua University
 HongweiXue	gh051120@mail.ustc.edu.cn	University of Science and Technology of China
 
 
 
-debut_kele
+609dd1624e2f709d097eba53 debut_kele
+track_id 1
+
 Kele Xu	kelele.xu@Gmail.com	National University of Defense Technology
 Lehan Yang	xsourse.cc@gmail.com	The University of Sydney
 Huaimin Wang	308388063@qq.com	National University of Defense Technology
 
 
 
-Tsinghua
+60a609da7eb9fac2b26fec11 Tsinghua
+track_id 1
+
 youchenghui	1183339199@qq.com	Tsinghua
 zhuyi	1690345351@qq.com	Tsinghua
 
 
 
-KeepTheLastOne
+60b8827f7eb9fac2b26fec18 KeepTheLastOne
+track_id 3
+
 wulong	1144181135@qq.com	uestc
 
 
 
-one piece
+60be18290279f4b59c2ca5a2 one piece
+track_id 1
+
 liuyifeng	liuyifeng.lyf@alibaba-inc.com	alibaba
 
 
 
-Nameless
+60c16738463937ba689280fa Nameless
+track_id 1
+
 JinWang	jim_wang2014@163.com	Tianjin University; PCL
 
 
 
-JiangNan
+60c2cb34f1efc90aeddabb87 JiangNan
+track_id 1
+
 JiangNan	fengyunrao@tencent.com	Tencent
 
 
 
-AIMC_caption
+60c959b14a9c2c7e7b2b3218 AIMC_caption
+track_id 1
+
 Chengbo Dong	dongchengbo@ruc.edu.cn	RUC
 Xinru Chen	chen_xinru1999@163.com	RUC
 Aozhu Chen	caz@ruc.edu.cn	RUC
@@ -163,58 +221,80 @@ Zihan Wang	874539724@qq.com	RUC
 
 
 
-mhttx
+60c9b6c7e4461bb30c51caad mhttx
+track_id 1
+
 huiye	591338937	none
 
 
 
-SOSTKD
+60cae924e689da331d54c91a SOSTKD
+track_id 2
+
 zhenhualiu	edinliu@tencent.com	tencent
 
 
 
-AI
+60cb2ec4bfa4df0edfbaf547 AI
+track_id 2
+
 y	825778126@qq.com	a
 
 
 
-IIE_MRG
+60d035a470bda89a8edf4119 IIE_MRG
+track_id 3
+
 Xiaoshuai Hao	haoxiaoshuai@iie.ac.cn	Institute of Information Engineering，Chinese Academy of Sciences
 
 
 
-XJTeam
+60d747898be839a59117db58 XJTeam
+track_id 2
+
 YIFeixu	280296760@qq.com	XJ
 
 
 
-WhatHappened
+60d74e7df2289c4a14e2fabf WhatHappened
+track_id 2
+
 guangxiaoniu	1790279427@qq.com	UESTC
 
 
 
-mercuryy
+60d84f03c6daa4cae47fc880 mercuryy
+track_id 1
+
 Yijiao Li	793735486@qq.com	None
 
 
 
-iva
+60d88223870b7a0c7bb3eb99 iva
+track_id 3
+
 zjzhao	469078207@qq.com	casia
 
 
 
-njucs1
+60d8853886871d9e0d2d248e njucs1
+track_id 2
+
 haoyue	161220023@smail.nju.edu.cn	nju
 liwei	liwei.jin97@gmail.com	nju
 
 
 
-mrbird_team
+60d9481886871d9e0d2d2499 mrbird_team
+track_id 3
+
 mrbird	jin_liwei@foxmail.com	N/A
 
 
 
-OKTeam
+60d94a8d4b164f43c8dc0145 OKTeam
+track_id 2
+
 Caroline	948005247@qq.com	nju
 jinliwei	liwei.jin97@gmail.com	nju
 
