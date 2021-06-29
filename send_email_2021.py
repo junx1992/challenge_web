@@ -22,8 +22,8 @@ def send_email(mail_list, message, time):
         print('send email success')
         return 'ok'
     except:
-        return 'error'
         print('send failed')
+        return 'error'
 
 def get_team_id_mail_mapping():
     db = MongoDB().db
