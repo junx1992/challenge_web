@@ -16,7 +16,7 @@ for item in a:
     all_num += 1
     print (item['_id'], item['teamname'])
     fh.write(str(item['_id']) + ' ' + str(item['teamname']))
-    fh.wirte('\n')
+    fh.write('\n')
     if 'track_id' in item:
         print('track_id ', str(item['track_id']))
         fh.write('track_id '+ str(item['track_id'])+'\n')
