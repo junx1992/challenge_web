@@ -1,0 +1,21 @@
+{
+  "version": "3",
+  "result":[
+  {
+    "video_id": "video2218",
+    "caption": "a panel of people talk about things"
+  },
+  {
+    "video_id": "video1835",
+    "caption": "a person is playing the piano"
+  },
+  {
+    "video_id": "video1234",
+    "caption": "a person is playing basketball"
+  }
+  ],
+  "external_data":{
+    "used": "true",
+    "details": "First fully-connected layer from VGG-16 pre-trained on ILSVRC-2012 training set"
+  }
+}
