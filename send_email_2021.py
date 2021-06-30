@@ -3,6 +3,9 @@ from email.mime.text import MIMEText
 from email.header import Header
 import os 
 mail = 'junx1992@gmail.com'
+mail_2 = 'panyw.ustc@gmail.com'
+
+mail_sb = 'wangj05@pcl.ac.cn'
 
 class MongoDB:
 	def __init__(self):
@@ -14,6 +17,8 @@ def send_email(mail_list, message, time):
     smtp = smtplib.SMTP('localhost')
     msg = MIMEText(message, 'plain', 'utf-8')
     msg['From'] = Header("Pre-training-Video-Understanding-Challenge<root@auto-video-captions.top>")
+    if mail_list[0] == 'jim_wang2014@163.com':
+        mail_list[0] = mail_sb
     msg['To'] = Header(mail_list[0])
     msg['Subject'] = '[Pre-training-Video-Understanding-Challenge Evaluation Result Notice '+ time + ']'
     print (mail)
@@ -55,6 +60,7 @@ def track_1():
             team_time_id = team_id + '_' +day_time        
             mail_list = name_mapping[team_id]
             mail_list.append(mail)
+            mail_list.append(mail_2)
             performace_txt = os.path.join(sub_folder, 'performance2.txt')
             except_txt = os.path.join(sub_folder, 'exception.txt')
             message = "Here is your evaluation result for " + time + " on track 1. \n\n"
@@ -93,6 +99,7 @@ def track_2():
             team_time_id = team_id + '_' +day_time        
             mail_list = name_mapping[team_id]
             mail_list.append(mail)
+            mail_list.append(mail_2)
             performace_txt = os.path.join(sub_folder, 'performance2.txt')
             except_txt = os.path.join(sub_folder, 'exception.txt')
             message = "Here is your evaluation result for " + time + " on track 2 \n"
