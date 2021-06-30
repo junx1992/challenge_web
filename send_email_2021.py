@@ -5,7 +5,7 @@ import os
 mail = 'junx1992@gmail.com'
 mail_2 = 'panyw.ustc@gmail.com'
 
-mail_sb = 'wangj05@pcl.ac.cn'
+mail_sb = '985776482@qq.com'
 
 class MongoDB:
 	def __init__(self):
