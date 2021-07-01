@@ -7,6 +7,8 @@ mail_2 = 'panyw.ustc@gmail.com'
 
 mail_sb = '985776482@qq.com'
 
+mail_sb_2 = 'huangyq95@163.com'
+
 class MongoDB:
 	def __init__(self):
 		from pymongo import MongoClient
@@ -19,6 +21,8 @@ def send_email(mail_list, message, time):
     msg['From'] = Header("Pre-training-Video-Understanding-Challenge<root@auto-video-captions.top>")
     if mail_list[0] == 'jim_wang2014@163.com':
         mail_list[0] = mail_sb
+    if mail_list[0] == 'huang-yq17@mails.tsinghua.edu.cn':
+        mail_list[0] = mail_sb_2
     msg['To'] = Header(mail_list[0])
     msg['Subject'] = '[Pre-training-Video-Understanding-Challenge Evaluation Result Notice '+ time + ']'
     print (mail)
