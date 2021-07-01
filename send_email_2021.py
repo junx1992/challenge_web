@@ -7,7 +7,7 @@ mail_2 = 'panyw.ustc@gmail.com'
 
 mail_sb = '985776482@qq.com'
 
-mail_sb_2 = 'huangyq95@163.com'
+mail_sb_2 = '442720389@qq.com'
 
 class MongoDB:
 	def __init__(self):
